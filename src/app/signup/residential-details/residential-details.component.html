@@ -1,0 +1,92 @@
+<body>
+    <div class="container">
+        <div class="row pt-4 signupcard">
+            <div class="col-md-8 gridEight">
+                <h3 class="ps-5" style=" color: #0F4D5C ">RESIDENTIAL DETAILS</h3>
+                <div class="row mt-4 ps-5 pe-5">
+                    <div class="col-md-6">
+                        <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
+                            Country
+                        </label>
+                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
+                            aria-describedby="addon-wrapping" placeholder="ex: Pakistan">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
+                            Province
+                        </label>
+                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
+                            aria-describedby="addon-wrapping" placeholder="ex: Punjab">
+                    </div>
+                </div>
+                <div class="row mt-4 ps-5 pe-5">
+                    <div class="col-md-6">
+                        <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
+                            City
+                        </label>
+                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
+                            aria-describedby="addon-wrapping" placeholder="ex: Lahore">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
+                            House </label>
+                        <select class="form-select rounded-pill" aria-label="Default select example">
+                            <option selected>Select Status</option>
+                            <option value="1">Owned</option>
+                            <option value="2">Rental</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mt-4 ps-5 pe-5">
+                    <div class="col-md-6">
+                        <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
+                            Any Other Nationality
+                        </label>
+                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
+                            aria-describedby="addon-wrapping" placeholder="ex: UAE">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
+                            Future Plans to live in
+                        </label>
+                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
+                            aria-describedby="addon-wrapping" placeholder="ex: UAE">
+                    </div>
+                </div>
+                <div class="row mt-5 ps-5 pe-5">
+                    <div class="col-md-6">
+                        <button type="button" class="btnNext" (click)="gotoSignupThirdPage()">
+                            Previous
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btnNext" (click)="gotoSignupSixthPage()">
+                            Next Step
+                        </button>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="col-md-4 gridFour d-flex flex-column justify-content-evenly">
+                <span class="stepNxt"> 1 </span>
+                <button style="background-color: #91A8AD" type="button" class="btnOne ms-5 me-5">BASIC DETAILS</button>
+                <span class="stepNxt"> 2 </span>
+                <button style="background-color: #91A8AD" type="button" class="btnTwo ms-5 me-5">PERSONAL
+                    DETAILS</button>
+                <span class="stepNxt"> 3 </span>
+                <button style="background-color: #91A8AD" type="button" class="btnThree ms-5 me-5">MORE PERSONAL
+                    DETAILS</button>
+                <span class="step"> 4 </span>
+                <button style="background-color: #ffffff" type="button" class="btnFour ms-5 me-5">RESIDENTIAL
+                    DETAILS</button>
+                <span class="stepNxt"> 5 </span>
+                <button style="background-color: #91A8AD" type="button" class="btnFive ms-5 me-5">PROFESSIONAL DETAILS</button>
+                <span class="stepNxt"> 6 </span>
+                <button style="background-color: #91A8AD" type="button" class="btnSix ms-5 me-5">FAMILY DETAILS</button>
+                <span class="stepNxt"> 7 </span>
+                <button style="background-color: #91A8AD" type="button" class="btnSeven ms-5 me-5">CONTACT DETAILS</button>
+            </div>
+        </div>
+    </div>
+</body>
