@@ -15,7 +15,7 @@ export class ResidentialDetailsComponent{
     this.router.navigate(['More-Personal-Details']);
 }
 gotoSignupSixthPage(){
-  this.router.navigate(['Family-Details']);
+  this.router.navigate(['Professional-Details']);
 }
 
 

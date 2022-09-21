@@ -14,7 +14,7 @@ export class FamilyDetailsComponent{
     this.router.navigate(['Contact-Details']);
 }
 gotoSignupFourthPage(){
-  this.router.navigate(['Residential-Details']);
+  this.router.navigate(['Professional-Details']);
 }
 
 }

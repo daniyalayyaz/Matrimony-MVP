@@ -6,6 +6,7 @@ import { ContactDetailsComponent } from './signup/contact-details/contact-detail
 import { FamilyDetailsComponent } from './signup/family-details/family-details.component';
 import { MorePersonalDetailsComponent } from './signup/more-personal-details/more-personal-details.component';
 import { PersonalDetailsComponent } from './signup/personal-details/personal-details.component';
+import { ProfessionalDetailsComponent } from './signup/professional-details/professional-details.component';
 import { ResidentialDetailsComponent } from './signup/residential-details/residential-details.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path:'Personal-Details', component: PersonalDetailsComponent},
   { path:'More-Personal-Details', component: MorePersonalDetailsComponent},
   { path:'Residential-Details', component: ResidentialDetailsComponent},
+  { path:'Professional-Details', component: ProfessionalDetailsComponent},
   { path:'Family-Details', component: FamilyDetailsComponent},
   { path:'Contact-Details', component: ContactDetailsComponent},
 
