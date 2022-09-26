@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FilterInterestComponent } from './filter-interest/filter-interest.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { InterestsComponent } from './interests/interests.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'Profile', component: ProfileComponent},
   {path: 'Subscribe', component: SubscribePackageComponent},
   {path: 'Gallery', component: GalleryComponent},
-  {path: 'Interests', component: InterestsComponent}
+  {path: 'Interests', component: InterestsComponent},
+  {path: 'Filter-Interest', component: FilterInterestComponent}
 
 
 

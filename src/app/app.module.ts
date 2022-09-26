@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SubscribePackageComponent } from './subscribe-package/subscribe-package.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { InterestsComponent } from './interests/interests.component';
+import { FilterInterestComponent } from './filter-interest/filter-interest.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { InterestsComponent } from './interests/interests.component';
     ProfileComponent,
     SubscribePackageComponent,
     GalleryComponent,
-    InterestsComponent
+    InterestsComponent,
+    FilterInterestComponent
   ],
   imports: [
     BrowserModule,
