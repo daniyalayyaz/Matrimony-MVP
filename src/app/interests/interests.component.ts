@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-interests',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./interests.component.css']
 })
 export class InterestsComponent {
+  constructor(private router: Router) {}
 
   users = [
     {
@@ -37,5 +39,7 @@ export class InterestsComponent {
       distance: "15 Mile away",
     },
   ];
-
+  gotoFilterInterests(){
+    this.router.navigate(['Filter-Interest']);
+  }
 }

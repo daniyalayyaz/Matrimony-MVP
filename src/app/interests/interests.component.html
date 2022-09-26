@@ -27,12 +27,12 @@
 
 <div class="container-fluid text-center bgEdtCol p-4 mt-5">
     <div class="row">
-        <div class="col text-end">
+        <div class="col-md-6 text-end col-res">
             <button class="btnRev" type="button">
                 Received Requests
             </button>
         </div>
-        <div class="col text-start">
+        <div class="col-md-6 text-start col-res">
             <button class="btnAcp" type="button">
                 Accepted Request
             </button>
@@ -78,7 +78,7 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <button class="btnGreen cardSize" type="button">
+                                        <button class="btnGreen cardSize" type="button" (click)="gotoFilterInterests()">
                                             ACCEPT
                                         </button>
                                     </div>

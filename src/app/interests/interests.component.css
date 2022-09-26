@@ -63,3 +63,19 @@ body {
     padding: 10px;
     width: 150px;
 }
+@media (max-width: 576px){
+    .col-res{
+        width: 50%;
+    }
+    .btnRev{
+        width: 100%;
+    }
+    .btnAcp{
+        width: 100%;
+    }
+    .resnav{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+      }
+}
