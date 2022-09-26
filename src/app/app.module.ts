@@ -15,6 +15,8 @@ import { BasicDetailsComponent } from './signup/basic-details/basic-details.comp
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SubscribePackageComponent } from './subscribe-package/subscribe-package.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { InterestsComponent } from './interests/interests.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { SubscribePackageComponent } from './subscribe-package/subscribe-package
     BasicDetailsComponent,
     DashboardComponent,
     ProfileComponent,
-    SubscribePackageComponent
+    SubscribePackageComponent,
+    GalleryComponent,
+    InterestsComponent
   ],
   imports: [
     BrowserModule,

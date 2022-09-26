@@ -155,6 +155,12 @@ export class DashboardComponent {
   gotoProfile(){
     this.router.navigate(['Profile']);
   }
+  gotoGallery(){
+    this.router.navigate(['Gallery']);
+  }
+  gotoInterests(){
+    this.router.navigate(['Interests']);
+  }
 
 
 }

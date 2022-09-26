@@ -8,7 +8,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="nav resnav">
-                    <li class="nav-item">
+                    <li class="nav-item" (click)="gotoInterests()" style="cursor: pointer;">
                         <div class="fs-4 me-5 text-white">
                             <i class="fa-solid fa-user text-white me-2"></i>
                             Interests
@@ -49,7 +49,7 @@
                             <i class="fa-solid fa-id-card-clip sizeOfIcons"></i>
                             <p>Edit Profile</p>
                         </div>
-                        <div>
+                        <div (click)="gotoGallery()" style="cursor: pointer">
                             <i class="fa-solid fa-images sizeOfIcons"></i>
                             <p>My Photos</p>
                         </div>
