@@ -1,0 +1,94 @@
+.boxBtn {
+    border: 2px solid white;
+    height: 90px;
+    background: transparent linear-gradient(180deg, #cacaca 0%, #777676 100%) 0% 0% no-repeat padding-box;
+}
+
+.cardBtnBg {
+    background: transparent linear-gradient(180deg, #cacaca 0%, #777676 100%) 0% 0% no-repeat padding-box;
+}
+.bgcolor {
+    background-color: #0F4D5C;
+}
+.btnPrivate {
+    color: black;
+    border: none;
+    width: 240px;
+    top: 455px;
+    left: 130px;
+    padding: 8px;
+}
+.profileBgColor{
+    font-family: 'Gill Sans';
+}
+.card-overlay{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.btnRqt {
+    background: #0F4D5C 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    color: white;
+    padding: 8px;
+    width: 242px;
+    border: none;
+    font-size: small;
+    margin-right: 12px;
+}
+
+.bgRow {
+    background: transparent linear-gradient(180deg, #FC7E6B 0%, #EF5281 100%) 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    color: white;
+    height: 150px;
+}
+
+.profileBgColor {
+    background: rgb(252, 219, 225);  
+}
+
+.underLine {
+    color: #ED7E9E;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.pointOfInformation {
+    list-style: none;
+    color: #ED7E9E;
+}
+
+.infoOfPoint {
+    list-style: none;
+    color: #0F4D5C;
+}
+@media (max-width: 576px){
+    .resImgHide{
+        padding: 10px;
+    }
+    .bgRow{
+        height: 10%;
+    }
+    .resfont{
+        font-size: 24px;
+    }
+    .rescol{
+        margin-left: 0 !important;
+    }
+    .respadding{
+        padding: 10px;
+    }
+    .rescard{
+        width: 50%;
+    }
+    .pointOfInformation{
+        width: 100%;
+    }
+    .overflowcontainer{
+        overflow-x: hidden !important;
+    }
+    .padding-zero{
+        padding-left: 0;
+    }
+}

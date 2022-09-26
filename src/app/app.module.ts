@@ -13,6 +13,7 @@ import { ContactDetailsComponent } from './signup/contact-details/contact-detail
 import { ExtraDetailsComponent } from './signup/extra-details/extra-details.component';
 import { BasicDetailsComponent } from './signup/basic-details/basic-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ContactDetailsComponent,
     ExtraDetailsComponent,
     BasicDetailsComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

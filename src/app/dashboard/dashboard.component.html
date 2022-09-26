@@ -147,7 +147,7 @@
                                 <div *ngFor="let onlinePerson of onlinePersons" class="col-md-4 mb-3">
                                     <div style="
                           height: 300px;
-                          border: 1px solid #ffff," class="card text-bg-dark cardEdit">
+                          border: 1px solid #ffff," class="card text-bg-dark cardEdit" (click)="gotoProfile()">
                                         <img style="height: 300px" src={{onlinePerson.image}} class="card-img" />
                                         <div class="card-img-overlay">
                                             <h5 class="onlineBtn float-end">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  constructor(private router: Router) {}
 
  messages = [
     {
@@ -150,7 +152,9 @@ export class DashboardComponent {
       image: "https://bit.ly/3SdMAix",
     },
   ];
-
+  gotoProfile(){
+    this.router.navigate(['Profile']);
+  }
 
 
 }

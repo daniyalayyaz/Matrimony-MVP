@@ -1,0 +1,155 @@
+<div class="profileBgColor">
+    <nav class="navbar navbar-expand-lg navbar-dark bgcolor p-3">
+        <div class="container">
+            <a class="navbar-brand">
+                Logo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-md-auto gap-2">
+                    <li class="nav-item rounded">
+                        <a class="nav-link" aria-current="page">
+                            <i class="bi bi-house-fill me-2"></i>HOME
+                        </a>
+                    </li>
+                    <li class="nav-item rounded">
+                        <a class="nav-link active">
+                            <i class="bi bi-people-fill me-2"></i>GALLERY
+                        </a>
+                    </li>
+                    <li class="nav-item rounded">
+                        <a class="nav-link">
+                            LOGIN
+                        </a>
+                    </li>
+                    <li class="nav-item rounded">
+                        <a class="nav-link">
+                            REGISTER
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="overflowcontainer text-center mt-5">
+        <div class="row" style="margin-left: 20px; margin-right: 20px">
+            <div class="col-md-3 padding-zero">
+                <div style="
+              height: 300px;
+              border: 1px solid #ffff;
+        " class="card text-bg-dark cardEdit">
+                    <img style="height: 300px" src="https://bit.ly/3S3gTsn" className="card-img" />
+                    <div class="card-overlay">
+                        <p class="card-text cardDetalis text-dark cardBtnBg">
+                            <img src={{pathleft}} alt="Girl in a jacket" width="50" height="60" />
+                            <img src={{pathmessage}} alt="Girl in a jacket" width="50" height="60" />
+                            <img src={{pathheart}} alt="Girl in a jacket" width="50" height="50" />
+                            <img src={{pathright}} alt="Girl in a jacket" width="50" height="60" />
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row mt-2 resImgHide">
+                    <div class="col-4 boxBtn"></div>
+                    <div class="col-4 boxBtn"></div>
+                    <div class="col-4 boxBtn "></div>
+                </div>
+
+                <button type="button" class="btnRqt mb-3 mt-3">
+                    INTEREST REQUEST
+                </button>
+            </div>
+
+            <div class="col-md-9 padding-zero">
+                <div class="bgRow">
+                    <div class="row">
+                        <div class="col-6 ps-5 pt-3">
+                            <h1 class="text-start resfont">Emma Saeed, 22yrs</h1>
+                        </div>
+                        <div class="col-6 text-end pe-5 pt-3">
+                            <p class="pt-3 pe-4">Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-6 ps-5 pt-3">
+                            <h3 class="text-start">Art Director</h3>
+                        </div>
+                        <div class="col-6 text-end pe-5 pt-3">
+                            <img class="text-end" src="https://bit.ly/3BbFu7p" alt="pakistan" width="80" height="40" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="text-start bg-white mt-2 p-3" *ngFor="let info of profileInfo">
+                    <p style="color: #ED7E9E">{{info.title}}</p>
+                    <hr class="underLine" />
+                    <p>{{info.information}}</p>
+                </div>
+                <div class="row mt-3 text-start">
+                    <div class="col-md-5 ms-3 mb-3 bg-white rescol">
+                        <p style="color: #ED7E9E" class="ps-4 mt-4">Personal Information</p>
+                        <hr class="underLine" />
+                        <div class="row">
+                            <div class="col-md-6 rescard">
+                                <ul class="pointOfInformation">
+                                    <li class="pt-3">My Sect</li>
+                                    <li class="pt-3">Religiousness</li>
+                                    <li class="pt-3">My Profession</li>
+                                    <li class="pt-3">Marital Status</li>
+                                    <li class="pt-3">State</li>
+                                    <li class="pt-3">Country</li>
+                                    <li class="pt-3">Registration</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 rescard">
+                                <ul class="infoOfPoint">
+                                    <li class="pt-3">Sunni</li>
+                                    <li class="pt-3">Religious</li>
+                                    <li class="pt-3">Pharmacist</li>
+                                    <li class="pt-3">Single</li>
+                                    <li class="pt-3">London</li>
+                                    <li class="pt-3">United Kingdom</li>
+                                    <li class="pt-3">To Find Partner</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 ms-5 mb-3 bg-white rescol">
+                        <p style="color: #ED7E9E" class="ps-4 mt-4">Personal Information</p>
+                        <hr class="underLine" />
+                        <div class="row">
+                            <div class="col-md-6 rescard">
+                                <ul class="pointOfInformation">
+                                    <li class="pt-3">My Sect</li>
+                                    <li class="pt-3">Religiousness</li>
+                                    <li class="pt-3">My Profession</li>
+                                    <li class="pt-3">Marital Status</li>
+                                    <li class="pt-3">State</li>
+                                    <li class="pt-3">Country</li>
+                                    <li class="pt-3">Registration</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 rescard">
+                                <ul class="infoOfPoint">
+                                    <li class="pt-3">Sunni</li>
+                                    <li class="pt-3">Religious</li>
+                                    <li class="pt-3">Pharmacist</li>
+                                    <li class="pt-3">Single</li>
+                                    <li class="pt-3">London</li>
+                                    <li class="pt-3">United Kingdom</li>
+                                    <li class="pt-3">To Find Partner</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
