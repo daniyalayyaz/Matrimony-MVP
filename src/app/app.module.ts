@@ -12,6 +12,7 @@ import { FamilyDetailsComponent } from './signup/family-details/family-details.c
 import { ContactDetailsComponent } from './signup/contact-details/contact-details.component';
 import { ExtraDetailsComponent } from './signup/extra-details/extra-details.component';
 import { BasicDetailsComponent } from './signup/basic-details/basic-details.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { BasicDetailsComponent } from './signup/basic-details/basic-details.comp
     FamilyDetailsComponent,
     ContactDetailsComponent,
     ExtraDetailsComponent,
-    BasicDetailsComponent
+    BasicDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

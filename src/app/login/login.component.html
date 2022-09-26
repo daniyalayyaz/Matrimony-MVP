@@ -23,7 +23,7 @@
             <label class="passwordlabel" for="password">FORGET?</label>
             <input class="form-control mt-2 py-3 px-2" id="password" type="password" placeholder="PASSWORD"/>
             </div>
-            <button class="btn btn-danger my-4 d-block w-100 responsiveness" >
+            <button class="btn btn-danger my-4 d-block w-100 responsiveness" (click)="gotoDashboard()">
                   LOGIN
                 </button>
             <p class="text-end mt-5">Don't have an account? <a (click)="gotoSignupFirstPage()" style="cursor: pointer;">Sign up</a></p>

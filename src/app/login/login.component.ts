@@ -13,4 +13,7 @@ export class LoginComponent {
   gotoSignupFirstPage(){
     this.router.navigate(['Basic-Details']);
 }
+gotoDashboard(){
+  this.router.navigate(['Dashboard']);
+}
 }
