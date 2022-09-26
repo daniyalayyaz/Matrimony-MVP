@@ -14,6 +14,7 @@ import { ExtraDetailsComponent } from './signup/extra-details/extra-details.comp
 import { BasicDetailsComponent } from './signup/basic-details/basic-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SubscribePackageComponent } from './subscribe-package/subscribe-package.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
     ExtraDetailsComponent,
     BasicDetailsComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    SubscribePackageComponent
   ],
   imports: [
     BrowserModule,

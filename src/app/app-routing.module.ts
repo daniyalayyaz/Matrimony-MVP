@@ -10,6 +10,7 @@ import { MorePersonalDetailsComponent } from './signup/more-personal-details/mor
 import { PersonalDetailsComponent } from './signup/personal-details/personal-details.component';
 import { ProfessionalDetailsComponent } from './signup/professional-details/professional-details.component';
 import { ResidentialDetailsComponent } from './signup/residential-details/residential-details.component';
+import { SubscribePackageComponent } from './subscribe-package/subscribe-package.component';
 
 const routes: Routes = [
   { path:'', component: LoginComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path:'Family-Details', component: FamilyDetailsComponent},
   { path:'Contact-Details', component: ContactDetailsComponent},
   { path: 'Dashboard', component: DashboardComponent},
-  {path: 'Profile', component: ProfileComponent}
+  {path: 'Profile', component: ProfileComponent},
+  {path: 'Subscribe', component: SubscribePackageComponent}
 
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +11,7 @@ export class ProfileComponent{
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
   pathright: string="../../assets/right.png"
+  constructor(private router: Router) {}
 
    profileInfo = [
     {
@@ -62,5 +64,7 @@ export class ProfileComponent{
         registration: "To Find Partner",
     },
   ]
-
+  gotoSubscribe(){
+    this.router.navigate(['Subscribe']);
+  }
 }
