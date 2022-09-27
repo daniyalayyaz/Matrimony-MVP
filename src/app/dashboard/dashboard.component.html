@@ -145,8 +145,8 @@
                             </div>
                             <div class="row responsivelist">
 
-                                <div class="col-md-6 mt-5" *ngFor="let person of persons">
-                                    <div class="card mb-3 styleCard" style="width: 100%" (click)="gotoProfile()">
+                                <div class="col-md-6 mt-3" *ngFor="let person of persons">
+                                    <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;" (click)="gotoProfile()">
                                         <div class="row g-0 styleCard">
                                             <div class="col-md-4 cardImageRes">
                                                 <img src={{person.image}} class="rounded-start cardImage" alt="..." />
@@ -167,12 +167,12 @@
                                                         {{person.gender}} | {{person.age}} | {{person.cast}}
                                                     </p>
                                                     <p class="card-text text-muted">
-                                                        {{person.training}} | {{person.profession}} | {{person.city}}
+                                                        {{person.profession}} | {{person.city}}
                                                     </p>
                                                     <p class="card-text text-muted">
                                                         {{person.appearance}} | {{person.color}} | {{person.height}}
                                                     </p>
-                                                    <div class="d-flex">
+                                                    <div class="d-flex mt-2">
                                                         <div class="me-auto">
                                                             <img src={{pathmessage}} class="imgCard1" alt="..." />
                                                         </div>

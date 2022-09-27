@@ -175,7 +175,10 @@
 }
 
 
-
+.card-text{
+  margin-bottom: 0;
+  text-align: left;
+}
 
 .insterest {
   background-color: #0F4D5C;

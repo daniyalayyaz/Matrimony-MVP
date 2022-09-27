@@ -91,4 +91,26 @@
     .padding-zero{
         padding-left: 0;
     }
+    .card-overlay{
+        display: none;
+    }
+    .resImgHide{
+        display: none;
+    }
+    .btnRqt{
+        display: none;
+    }
+    .cardEdit{
+        margin: 0 auto;
+    }
+    .OnMobileAvatar{
+        border-radius: 50% !important;
+        height: 120px;
+        width: 120px;
+        border: 5px solid white;
+        margin-bottom: -50px;
+    }
+    .bgRow{
+        padding-top: 50px !important;
+    }
 }
