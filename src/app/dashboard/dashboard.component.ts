@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
- messages = [
+  messages = [
     {
       image: "https://bit.ly/3RzZK9J",
       name: "Cristina Rohmer",
@@ -57,9 +57,6 @@ export class DashboardComponent {
     },
   ];
 
-  // end off profile setting
-
-  // this the 2nd options of profile setting / start
   optionCard = [
     {
       icon: 'fa-solid fa-headset',
@@ -86,79 +83,97 @@ export class DashboardComponent {
       color2: "#7C0E0E ",
     },
   ];
-
-  onlinePersons = [
+  pathfemale: string = "../../assets/female.png";
+  pathmessage: string = "../../assets/message.png";
+  pathheart: string = "../../assets/pinkheart.png";
+  pathmale: string = "../../assets/male.png"
+  persons = [
     {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
+      name: "Dr Aiman Fairy",
       image: "https://bit.ly/3SdMAix",
+      gender: "Female",
+      age: "24",
+      cast: "shah",
+      training: "PG Trainee",
+      profession: "Psychologist",
+      city: "Lahore",
+      appearance: "Good Looking",
+      color: "White",
+      height: "5'5 Tall",
     },
     {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
+      name: "Dr Aiman Fairy",
       image: "https://bit.ly/3SdMAix",
+      gender: "Female",
+      age: "24",
+      cast: "shah",
+      training: "PG Trainee",
+      profession: "Psychologist",
+      city: "Lahore",
+      appearance: "Good Looking",
+      color: "White",
+      height: "5'5 Tall",
     },
     {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
+      name: "Dr Aiman Fairy",
       image: "https://bit.ly/3SdMAix",
+      gender: "Female",
+      age: "24",
+      cast: "shah",
+      training: "PG Trainee",
+      profession: "Psychologist",
+      city: "Lahore",
+      appearance: "Good Looking",
+      color: "White",
+      height: "5'5 Tall",
     },
     {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
+      name: "Dr Aiman Fairy",
       image: "https://bit.ly/3SdMAix",
+      gender: "Female",
+      age: "24",
+      cast: "shah",
+      training: "PG Trainee",
+      profession: "Psychologist",
+      city: "Lahore",
+      appearance: "Good Looking",
+      color: "White",
+      height: "5'5 Tall",
     },
     {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
+      name: "Dr Aiman Fairy",
       image: "https://bit.ly/3SdMAix",
+      gender: "Female",
+      age: "24",
+      cast: "shah",
+      training: "PG Trainee",
+      profession: "Psychologist",
+      city: "Lahore",
+      appearance: "Good Looking",
+      color: "White",
+      height: "5'5 Tall",
     },
     {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
+      name: "Dr Aiman Fairy",
       image: "https://bit.ly/3SdMAix",
-    },
-    {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
-      image: "https://bit.ly/3SdMAix",
-    },
-    {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
-      image: "https://bit.ly/3SdMAix",
-    },
-    {
-      name: "Amna Fariy",
-      age: "23 yrs",
-      work: "Art Director",
-      flag: "https://bit.ly/3BJ3wIg",
-      image: "https://bit.ly/3SdMAix",
+      gender: "Female",
+      age: "24",
+      cast: "shah",
+      training: "PG Trainee",
+      profession: "Psychologist",
+      city: "Lahore",
+      appearance: "Good Looking",
+      color: "White",
+      height: "5'5 Tall",
     },
   ];
-  gotoProfile(){
+  gotoProfile() {
     this.router.navigate(['Profile']);
   }
-  gotoGallery(){
+  gotoGallery() {
     this.router.navigate(['Gallery']);
   }
-  gotoInterests(){
+  gotoInterests() {
     this.router.navigate(['Interests']);
   }
 
