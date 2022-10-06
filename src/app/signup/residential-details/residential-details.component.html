@@ -8,15 +8,20 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Country
                         </label>
-                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
-                            aria-describedby="addon-wrapping" placeholder="ex: Pakistan">
+                        <select class="form-select rounded-pill" aria-label="Default select example">
+                            <option selected>Select Country</option>
+                            <option *ngFor="let Country of countries" value={{Country}}>{{Country}}</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Province
                         </label>
-                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
-                            aria-describedby="addon-wrapping" placeholder="ex: Punjab">
+                        <select class="form-select rounded-pill" aria-label="Default select example">
+                            <option selected>Select Province</option>
+                            <option *ngFor="let Province of ['Province' , 'Sindh', 'Balochistan', 'Khyber Pukhtunkhwah', 'Gilgit Baltistan']"
+                            value={{Province}}>{{Province}}</option>
+                          </select>
                     </div>
                 </div>
                 <div class="row mt-4 ps-5 pe-5">
@@ -24,8 +29,10 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             City
                         </label>
-                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
-                            aria-describedby="addon-wrapping" placeholder="ex: Lahore">
+                        <select class="form-select rounded-pill" aria-label="Default select example">
+                            <option selected>Select City</option>
+                            <option *ngFor="let city of cities" value={{city}}>{{city}}</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
@@ -43,8 +50,13 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Any Other Nationality
                         </label>
-                        <input type="text" class="form-control  rounded-pill" aria-label="Age"
-                            aria-describedby="addon-wrapping" placeholder="ex: UAE">
+                        <select
+                        class="form-select rounded-pill"
+                        aria-label="Default select example"
+                      >
+                        <option selected>Select Country</option>
+                        <option *ngFor="let country of countries" value={{country}}>{{country}}</option>
+                      </select>
                     </div>
                     <div class="col-md-6">
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
@@ -81,11 +93,13 @@
                 <button style="background-color: #ffffff" type="button" class="btnFour ms-5 me-5">RESIDENTIAL
                     DETAILS</button>
                 <span class="stepNxt"> 5 </span>
-                <button style="background-color: #91A8AD" type="button" class="btnFive ms-5 me-5">PROFESSIONAL DETAILS</button>
+                <button style="background-color: #91A8AD" type="button" class="btnFive ms-5 me-5">PROFESSIONAL
+                    DETAILS</button>
                 <span class="stepNxt"> 6 </span>
                 <button style="background-color: #91A8AD" type="button" class="btnSix ms-5 me-5">FAMILY DETAILS</button>
                 <span class="stepNxt"> 7 </span>
-                <button style="background-color: #91A8AD" type="button" class="btnSeven ms-5 me-5">CONTACT DETAILS</button>
+                <button style="background-color: #91A8AD" type="button" class="btnSeven ms-5 me-5">CONTACT
+                    DETAILS</button>
             </div>
         </div>
     </div>

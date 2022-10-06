@@ -116,7 +116,9 @@ body {
     border: none;
     font-weight: bold;
   }
-  
+  option:hover {
+    background-color: yellow;
+  }
   @media only screen and (max-width: 600px) {
     .gridFour {
       visibility: hidden;

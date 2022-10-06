@@ -155,6 +155,7 @@ body {
     margin-bottom: -75px;
     border: 1px solid black;
   }
+  
   @media (max-width: 576px){
     .signupcard{
       padding: 10px;
