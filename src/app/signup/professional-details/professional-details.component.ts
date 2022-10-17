@@ -11,7 +11,12 @@ export class ProfessionalDetailsComponent {
 
   constructor(private router: Router) {}
 qualifications=["Allergy", "Andrology", "Anesthesiology", "Cardiacsurgery", "Cardiology", "Community", "Dentistry", "Dermatology", "DiabetesandEndocrinology", "E.N.T", "Gastroenterology", "GeneralPractice", "GeneralSurgery", "Gynae/Obs", "Hepatology", "Medicine", "Nephrology", "Neurology", "Neurosurgery", "Nutrition", "Oncology", "Ophthalmology", "Orthopedics", "Paediatricsurgery", "Paediatrics", "Pathology", "Physiotherapy", "PlasticSurgery", "Psychiatry", "PsychologyPulmonology", "Radiology", "Rheumatology", "Urology"]
-  gotoSignupSeventhPage(){
+ProfessionalDetails:any={};
+eventonKey(event: any) {
+ this.ProfessionalDetails[event.target.name]=event.target.value;
+ console.log( this.ProfessionalDetails);
+}  
+gotoSignupSeventhPage(){
     this.router.navigate(['Family-Details']);
 }
 gotoSignupFourthPage(){

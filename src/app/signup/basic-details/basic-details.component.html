@@ -7,10 +7,10 @@
                     <div class="col-md-12">
                         <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
                             Profile created for</label>
-                        <select class="form-select rounded-pill" aria-label="Default select example">
+                        <select class="form-select rounded-pill" aria-label="Default select example" (change)="ProfileonKey($event)">
                             <option selected>Myself</option>
-                            <option value="1">Daughter</option>
-                            <option value="2">Son</option>
+                            <option>Daughter</option>
+                            <option>Son</option>
                         </select>
                     </div>
         
@@ -19,10 +19,10 @@
                     <div class="col-md-12">
                         <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
                             Candidate is </label>
-                        <select class="form-select rounded-pill" aria-label="Default select example">
+                        <select class="form-select rounded-pill" aria-label="Default select example" (change)="GenderonKey($event)">
                             <option selected>Select Gender</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
+                            <option>Male</option>
+                            <option>Female</option>
                         </select>
                     </div>
                 </div>

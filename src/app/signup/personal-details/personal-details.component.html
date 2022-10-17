@@ -12,15 +12,18 @@
                 type="text"
                 class="form-control  rounded-pill"
                 aria-label="Name"
+                name="name"
                 aria-describedby="addon-wrapping"
                 placeholder="ex: Ahmad Ali"
+                (keyup)="eventonKey($event)"
               >
           </div>
           <div class="col-md-6">
             <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
               Age
             </label>
-            <select class="form-select rounded-pill" aria-label="Default select example">
+            <select class="form-select rounded-pill" aria-label="Default select example" name="age" (change)="eventonKey($event)"
+            >
               <option selected>Select Age</option>
               <option *ngFor="let age of [18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]"
               value={{age}}>{{age}}</option>
@@ -35,6 +38,8 @@
               <select
                 class="form-select rounded-pill"
                 aria-label="Default select example"
+                name="MartialStatus"
+                (change)="eventonKey($event)"
               >
                 <option selected>Select Status</option>
                 <option *ngFor="let status of MartialStatus" value={{status.value}}>{{status.label}}</option>
@@ -47,6 +52,8 @@
               <select
                 class="form-select rounded-pill"
                 aria-label="Default select example"
+                name="Religious"
+                (change)="eventonKey($event)"
               >
                 <option selected>Select Religious</option>
                 <option *ngFor="let rel of Religious" value={{rel.value}}>{{rel.label}}</option>
@@ -63,6 +70,8 @@
               <select
                 class="form-select rounded-pill"
                 aria-label="Default select example"
+                name="Sect"
+                (change)="eventonKey($event)"
               >
                 <option selected>Select Sect</option>
                 <option *ngFor="let sect of Sect" value={{sect.value}}>{{sect.label}}</option>
@@ -76,6 +85,8 @@
               <select
                 class="form-select rounded-pill"
                 aria-label="Default select example"
+                name="ReligiousStatus"
+                (change)="eventonKey($event)"
               >
                 <option selected>Select Status</option>
                 <option *ngFor="let status of ReligiosStatus" value={{status.value}}>{{status.label}}</option>
@@ -89,6 +100,8 @@
               <select
                 class="form-select rounded-pill"
                 aria-label="Default select example"
+                name="Caste"
+                (change)="eventonKey($event)"
               >
                 <option selected>Select Caste</option>
                 <option *ngFor="let caste of castes" value={{caste}}>{{caste}}</option>
@@ -107,6 +120,8 @@
                 aria-label="Age"
                 aria-describedby="addon-wrapping"
                 placeholder="ex: Arain"
+                name="Clan"
+                (keyup)="eventonKey($event)"
               >
           </div>
           <div class="col-md-6">
@@ -116,6 +131,8 @@
               <select
               class="form-select rounded-pill"
               aria-label="Default select example"
+              name="MotherTongue"
+              (change)="eventonKey($event)"
             >
               <option selected>Select Mother Tongue</option>
               <option *ngFor="let tongue of MotherTongue" value={{tongue.value}}>{{tongue.label}}</option>

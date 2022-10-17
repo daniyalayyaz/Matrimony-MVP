@@ -8,7 +8,8 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Country
                         </label>
-                        <select class="form-select rounded-pill" aria-label="Default select example">
+                        <select class="form-select rounded-pill" aria-label="Default select example" name="Country"
+                            (change)="eventonKey($event)">
                             <option selected>Select Country</option>
                             <option *ngFor="let Country of countries" value={{Country}}>{{Country}}</option>
                         </select>
@@ -17,11 +18,13 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Province
                         </label>
-                        <select class="form-select rounded-pill" aria-label="Default select example">
+                        <select class="form-select rounded-pill" aria-label="Default select example" name="Province"
+                            (change)="eventonKey($event)">
                             <option selected>Select Province</option>
-                            <option *ngFor="let Province of ['Province' , 'Sindh', 'Balochistan', 'Khyber Pukhtunkhwah', 'Gilgit Baltistan']"
-                            value={{Province}}>{{Province}}</option>
-                          </select>
+                            <option
+                                *ngFor="let Province of ['Punjab' , 'Sindh', 'Balochistan', 'Khyber Pukhtunkhwah', 'Gilgit Baltistan']"
+                                value={{Province}}>{{Province}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row mt-4 ps-5 pe-5">
@@ -29,7 +32,8 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             City
                         </label>
-                        <select class="form-select rounded-pill" aria-label="Default select example">
+                        <select class="form-select rounded-pill" aria-label="Default select example" name="City"
+                            (change)="eventonKey($event)">
                             <option selected>Select City</option>
                             <option *ngFor="let city of cities" value={{city}}>{{city}}</option>
                         </select>
@@ -37,7 +41,8 @@
                     <div class="col-md-6">
                         <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
                             House </label>
-                        <select class="form-select rounded-pill" aria-label="Default select example">
+                        <select class="form-select rounded-pill" aria-label="Default select example" name="HouseStatus"
+                            (change)="eventonKey($event)">
                             <option selected>Select Status</option>
                             <option value="1">Owned</option>
                             <option value="2">Rental</option>
@@ -50,20 +55,19 @@
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Any Other Nationality
                         </label>
-                        <select
-                        class="form-select rounded-pill"
-                        aria-label="Default select example"
-                      >
-                        <option selected>Select Country</option>
-                        <option *ngFor="let country of countries" value={{country}}>{{country}}</option>
-                      </select>
+                        <select class="form-select rounded-pill" aria-label="Default select example"
+                            name="AnyOtherNationality" (change)="eventonKey($event)">
+                            <option selected>Select Country</option>
+                            <option *ngFor="let country of countries" value={{country}}>{{country}}</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                             Future Plans to live in
                         </label>
                         <input type="text" class="form-control  rounded-pill" aria-label="Age"
-                            aria-describedby="addon-wrapping" placeholder="ex: UAE">
+                            aria-describedby="addon-wrapping" placeholder="ex: UAE" name="FuturePlanstoLiveIn"
+                            (keyup)="eventonKey($event)">
                     </div>
                 </div>
                 <div class="row mt-5 ps-5 pe-5">

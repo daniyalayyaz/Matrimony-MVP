@@ -11,12 +11,14 @@
                   <select
                     class="form-select rounded-pill"
                     aria-label="Default select example"
+                    name="Looks"
+                    (change)="eventonKey($event)"
                   >
                     <option selected>Select Looks</option>
-                    <option value="1">Humble</option>
-                    <option value="2">Average</option>
-                    <option value="3">Attractive</option>
-                    <option value="4">Very Attractive</option>
+                    <option>Humble</option>
+                    <option>Average</option>
+                    <option>Attractive</option>
+                    <option>Very Attractive</option>
 
                   </select>
               </div>
@@ -27,13 +29,16 @@
                   <select
                     class="form-select rounded-pill"
                     aria-label="Default select example"
+                    name="Complexion"
+                    (change)="eventonKey($event)"
+
                   >
                     <option selected>Select Complexion</option>
-                    <option value="0">Dark</option>
+                    <option>Dark</option>
 
-                    <option value="1">Tanned</option>
-                    <option value="2">Wheatish</option>
-                    <option value="3">Fair</option>
+                    <option>Tanned</option>
+                    <option>Wheatish</option>
+                    <option>Fair</option>
 
                   </select>
               </div>
@@ -46,11 +51,14 @@
                   <select
                     class="form-select rounded-pill"
                     aria-label="Default select example"
+                    name="build"
+                    (change)="eventonKey($event)"
+
                   >
                     <option selected>Select Build</option>
-                    <option value="1">Chubby</option>
-                    <option value="2">Average</option>
-                    <option value="3">Athletic</option>
+                    <option>Chubby</option>
+                    <option>Average</option>
+                    <option>Athletic</option>
                   </select>
               </div>
               <div class="col-md-6">
@@ -63,6 +71,9 @@
                     aria-label="Religious"
                     aria-describedby="addon-wrapping"
                     placeholder="ex: 5'10"
+                    name="height"
+                    (keyup)="eventonKey($event)"
+
                   >
               </div>
             </div>
@@ -78,7 +89,8 @@
                     aria-label="Age"
                     aria-describedby="addon-wrapping"
                     placeholder="ex: Playing Football"
-    
+                    name="hobbies"
+                    (change)="eventonKey($event)"
                   >
               </div>
             </div>

@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 export class MorePersonalDetailsComponent  {
 
   constructor(private router: Router) {}
-
+  MorePersonalDetails:any={};
+  eventonKey(event: any) {
+   this.MorePersonalDetails[event.target.name]=event.target.value;
+   console.log( this.MorePersonalDetails);
+  }
   gotoSignupSecondPage(){
     this.router.navigate(['Personal-Details']);
 }

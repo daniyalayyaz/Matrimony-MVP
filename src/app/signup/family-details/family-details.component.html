@@ -11,6 +11,9 @@
                   <select
                   class="form-select rounded-pill"
                   aria-label="Default select example"
+                  name="FatherOccupation"
+                  (change)="eventonKey($event)"
+
                 >
                   <option selected>Select Profession</option>
                   <option *ngFor="let Profession of professions" value={{Profession}}>{{Profession}}</option>
@@ -23,6 +26,9 @@
                   <select
                   class="form-select rounded-pill"
                   aria-label="Default select example"
+                  name="MotherOccupation"
+                  (change)="eventonKey($event)"
+
                 >
                   <option selected>Select Profession</option>
                   <option *ngFor="let Profession of professions" value={{Profession}}>{{Profession}}</option>
@@ -37,6 +43,9 @@
                   <select
                   class="form-select rounded-pill"
                   aria-label="Default select example"
+                  name="SisterCount"
+                  (change)="eventonKey($event)"
+
                 >
                   <option selected>Select Count</option>
                   <option *ngFor="let count of [0,1,2,3,4]" value={{count}}>{{count}}</option>
@@ -49,6 +58,9 @@
                   <select
                   class="form-select rounded-pill"
                   aria-label="Default select example"
+                  name="BrotherCount"
+                  (change)="eventonKey($event)"
+
                 >
                   <option selected>Select Count</option>
                   <option *ngFor="let count of [0,1,2,3,4,5]" value={{count}}>{{count}}</option>
@@ -60,7 +72,8 @@
               <div class="col-md-6">
                 <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
                     Socioeconomic Status</label>
-                <select class="form-select rounded-pill" aria-label="Default select example">
+                <select class="form-select rounded-pill" aria-label="Default select example" name="SocioeconomicStatus"                     (change)="eventonKey($event)"
+                >
                     <option selected>Select Status</option>
                     <option value="1">Lower Middle</option>
                     <option value="2">Middle Class</option>
@@ -77,6 +90,9 @@
                     aria-label="Religious"
                     aria-describedby="addon-wrapping"
                     placeholder="ex: Joint Family"
+                    name="OtherFamilyInfo"
+                    (keyup)="eventonKey($event)"
+
                   >
               </div>
             </div>

@@ -8,19 +8,22 @@
             <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
               Profession
             </label>
-            <select class="form-select rounded-pill" aria-label="Default select example">
+            <select class="form-select rounded-pill" aria-label="Default select example" name="Profession"
+              (change)="eventonKey($event)">
               <option selected>Select Profession</option>
-              <option *ngFor="let Profession of ['Doctor' , 'Allied Health', 'Other']"
-              value={{Profession}}>{{Profession}}</option>
+              <option *ngFor="let Profession of ['Doctor' , 'Allied Health', 'Other']" value={{Profession}}>
+                {{Profession}}</option>
             </select>
           </div>
           <div class="col-md-6">
             <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
               Job Status</label>
-            <select class="form-select rounded-pill" aria-label="Default select example">
+            <select class="form-select rounded-pill" aria-label="Default select example" name="JobStatus"
+              (change)="eventonKey($event)">
               <option selected>Select Job Status</option>
-              <option *ngFor="let status of ['Specialist' , 'PG Trainee', 'General Practitioner' , 'MBBS Student' , 'PG Exam Candidate' , 'House Officer']"
-              value={{status}}>{{status}}</option>
+              <option
+                *ngFor="let status of ['Specialist' , 'PG Trainee', 'General Practitioner' , 'MBBS Student' , 'PG Exam Candidate' , 'House Officer']"
+                value={{status}}>{{status}}</option>
             </select>
           </div>
         </div>
@@ -30,13 +33,15 @@
               Workplace
             </label>
             <input type="text" class="form-control  rounded-pill" aria-label="Religious"
-              aria-describedby="addon-wrapping" placeholder="ex: NextBridge">
+              aria-describedby="addon-wrapping" placeholder="ex: NextBridge" name="Workplace"
+              (change)="eventonKey($event)">
           </div>
           <div class="col-md-6">
             <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
               Qualifications
             </label>
-            <select class="form-select rounded-pill" aria-label="Default select example">
+            <select class="form-select rounded-pill" aria-label="Default select example" name="Qualification"
+              (change)="eventonKey($event)">
               <option selected>Select Specialty</option>
               <option *ngFor="let Specialty of qualifications" value={{Specialty}}>{{Specialty}}</option>
             </select>
@@ -49,13 +54,15 @@
               Institution
             </label>
             <input type="text" class="form-control  rounded-pill" aria-label="Religious"
-              aria-describedby="addon-wrapping" placeholder="ex: Punjab University">
+              aria-describedby="addon-wrapping" placeholder="ex: Punjab University" name="Institution"
+              (keyup)="eventonKey($event)">
           </div>
           <div class="col-md-6">
             <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
               Monthly Income
             </label>
-            <select class="form-select rounded-pill" aria-label="Default select example">
+            <select class="form-select rounded-pill" aria-label="Default select example" name="Income"
+              (change)="eventonKey($event)">
               <option selected>Select Income</option>
               <option *ngFor="let income of ['50k' , '100k', '150k' , '200k' , '300k' , '400k' , '500k']"
                 value={{income}}>Upto {{income}}</option>
@@ -68,7 +75,8 @@
               Any other professional info
             </label>
             <input type="text" class="form-control  rounded-pill" aria-label="Religious"
-              aria-describedby="addon-wrapping" placeholder="ex: I have side businesses">
+              aria-describedby="addon-wrapping" placeholder="ex: I have side businesses" name="AnyotherInfo"
+              (keyup)="eventonKey($event)">
           </div>
         </div>
         <div class="row mt-5 ps-5 pe-5">
