@@ -16,6 +16,8 @@ eventonKey(event: any) {
  console.log( this.FamilyDetails);
 }
 gotoSignupSeventhPage(){
+  localStorage.setItem('FamilyDetails', JSON.stringify(this.FamilyDetails))
+    console.log(JSON.parse(localStorage.getItem('FamilyDetails') as string))
     this.router.navigate(['Contact-Details']);
 }
 gotoSignupFourthPage(){

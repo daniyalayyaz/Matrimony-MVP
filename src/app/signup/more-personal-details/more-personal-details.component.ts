@@ -18,6 +18,8 @@ export class MorePersonalDetailsComponent  {
     this.router.navigate(['Personal-Details']);
 }
 gotoSignupFourthPage(){
+  localStorage.setItem('MorePersonalDetails', JSON.stringify(this.MorePersonalDetails))
+    console.log(JSON.parse(localStorage.getItem('MorePersonalDetails') as string))
   this.router.navigate(['Residential-Details']);
 }
 

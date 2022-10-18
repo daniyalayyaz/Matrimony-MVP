@@ -15,6 +15,8 @@ export class ContactDetailsComponent {
    console.log( this.ContactDetails);
   }
   gotoSignupSecondPage(){
+    localStorage.setItem('ContactDetails', JSON.stringify(this.ContactDetails))
+    console.log(JSON.parse(localStorage.getItem('ContactDetails') as string))
     this.router.navigate(['Personal-Details']);
 }
 gotoSignupFourthPage(){

@@ -136,6 +136,8 @@ eventonKey(event: any) {
  console.log( this.personal);
 }
 gotoSignupThirdPage(){
+  localStorage.setItem('PersonalDetails', JSON.stringify(this.personal))
+    console.log(JSON.parse(localStorage.getItem('PersonalDetails') as string))
     this.router.navigate(['More-Personal-Details']);
 }
 gotoSignupFirstPage(){

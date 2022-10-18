@@ -21,6 +21,8 @@ gotoSignupThirdPage(){
     this.router.navigate(['More-Personal-Details']);
 }
 gotoSignupSixthPage(){
+  localStorage.setItem('ResidentialDetails', JSON.stringify(this.ResidentialDetails))
+    console.log(JSON.parse(localStorage.getItem('ResidentialDetails') as string))
   this.router.navigate(['Professional-Details']);
 }
 

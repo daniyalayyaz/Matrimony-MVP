@@ -16,6 +16,8 @@ export class BasicDetailsComponent {
    console.log( this.BasicDetails);
   }
   gotoSignupSecondPage(){
+    localStorage.setItem('BasicDetails', JSON.stringify(this.BasicDetails))
+    console.log(JSON.parse(localStorage.getItem('BasicDetails') as string))
     this.router.navigate(['Personal-Details']);
 
 }

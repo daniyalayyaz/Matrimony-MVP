@@ -17,6 +17,8 @@ eventonKey(event: any) {
  console.log( this.ProfessionalDetails);
 }  
 gotoSignupSeventhPage(){
+  localStorage.setItem('ProfessionalDetails', JSON.stringify(this.ProfessionalDetails))
+    console.log(JSON.parse(localStorage.getItem('ProfessionalDetails') as string))
     this.router.navigate(['Family-Details']);
 }
 gotoSignupFourthPage(){
