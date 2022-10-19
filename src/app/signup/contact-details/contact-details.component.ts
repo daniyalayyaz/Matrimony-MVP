@@ -70,10 +70,10 @@ export class ContactDetailsComponent {
     });
     
   }
-  gotoSignupSecondPage(){
+ 
+  SubmitDetails(){
     localStorage.setItem('ContactDetails', JSON.stringify(this.ContactDetails))
-    console.log(JSON.parse(localStorage.getItem('ContactDetails') as string))
-    this.router.navigate(['Personal-Details']);
+    this.RegisterUsers()
 }
 gotoSignupFourthPage(){
   this.router.navigate(['Family-Details']);
