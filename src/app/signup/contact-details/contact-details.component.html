@@ -3,6 +3,10 @@
         <div class="row pt-4 signupcard">
           <div class="col-md-8 gridEight">
             <h3 class="ps-5" style=" color: #0F4D5C ">CONTACT DETAILS</h3>
+            <div class="form-check form-switch ms-5 mt-2">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Lock Contact Details</label>
+            </div>
             <div class="row mt-4 ps-5 pe-5">
               <div class="col-md-6">
                 <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
@@ -104,7 +108,7 @@
                 </button>
               </div>
               <div class="col-md-6">
-              <button type="button" class="btnNext">
+              <button type="button" class="btnNext" (click)="RegisterUsers()">
                   Submit
                 </button>
               </div>

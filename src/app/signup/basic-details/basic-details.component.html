@@ -2,16 +2,19 @@
     <div class="container">
         <div class="row pt-4 signupcard">
             <div class="col-md-8 gridEight">
+                <form (submit)="gotoSignupSecondPage()">
                 <h3 class="ps-5" style=" color: #0F4D5C ">BASIC DETAILS</h3>
                 <div class="row mt-4 ps-5 pe-5">
                     <div class="col-md-12">
                         <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
                             Profile created for</label>
-                        <select class="form-select rounded-pill" aria-label="Default select example" name="ProfileCreatedFor" (change)="eventonKey($event)"                        >
-                            <option selected>Myself</option>
+                        <select class="form-select rounded-pill" aria-label="Default select example" name="ProfileCreatedFor" (change)="eventonKey($event)" required="true">
+                            <option value="" selected>Choose Option</option>
+                            <option>Myself</option>
                             <option>Daughter</option>
                             <option>Son</option>
                         </select>
+                        
                     </div>
         
                 </div>
@@ -19,8 +22,8 @@
                     <div class="col-md-12">
                         <label for="formGroupExampleInput" class="form-label" style="color: #0F4D5C">
                             Candidate is </label>
-                        <select class="form-select rounded-pill" aria-label="Default select example" name="GenderSelected" (change)="eventonKey($event)">
-                            <option selected>Select Gender</option>
+                        <select class="form-select rounded-pill" aria-label="Default select example" name="GenderSelected" (change)="eventonKey($event)" required="true">
+                            <option selected value="">Select Gender</option>
                             <option>Male</option>
                             <option>Female</option>
                         </select>
@@ -34,12 +37,13 @@
                         </button>
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btnNext" (click)="gotoSignupSecondPage()">
+                        <button type="submit" class="btnNext">
                             Next Step
                         </button>
                     </div>
                 </div>
                 <div></div>
+            </form>
             </div>
             <div class="col-md-4 gridFour d-flex flex-column justify-content-evenly">
                 <span class="step"> 1 </span>

@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row pt-4 signupcard">
           <div class="col-md-8 gridEight">
+            <form (submit)="gotoSignupFourthPage()">
             <h3 class="ps-5" style=" color: #0F4D5C ">MORE PERSONAL DETAILS</h3>
             <div class="row mt-4 ps-5 pe-5">
               <div class="col-md-6">
@@ -13,8 +14,9 @@
                     aria-label="Default select example"
                     name="Looks"
                     (change)="eventonKey($event)"
+                    required="true"
                   >
-                    <option selected>Select Looks</option>
+                    <option selected value="">Select Looks</option>
                     <option>Humble</option>
                     <option>Average</option>
                     <option>Attractive</option>
@@ -64,8 +66,17 @@
               <div class="col-md-6">
                 <label for="formGroupExampleInput" class="form-label" style=" color: #0F4D5C ">
                     Height
-                  </label>
-                  <input
+                  </label><br>
+                  <input type="range" id="temp" name="height" list="tickmarks" (change)="eventonKey($event)"/>
+
+                  <datalist id="tickmarks">
+                    <option value="91.44" label="3ft"></option>
+                    <option value="121.92" label="4ft"></option>
+                    <option value="152.4" label="5ft"></option>
+                    <option value="182.88" label="6ft"></option>
+                    <option value="213.36" label="7ft"></option>
+                  </datalist>
+                  <!-- <input
                     type="text"
                     class="form-control  rounded-pill"
                     aria-label="Religious"
@@ -74,7 +85,7 @@
                     name="height"
                     (keyup)="eventonKey($event)"
 
-                  >
+                  > -->
               </div>
             </div>
     
@@ -101,12 +112,13 @@
                 </button>
               </div>
               <div class="col-md-6">
-              <button type="button" class="btnNext" (click)="gotoSignupFourthPage()">
+              <button type="submit" class="btnNext">
                   Next Step
                 </button>
               </div>
             </div>
             <div></div>
+          </form>
           </div>
           <div class="col-md-4 gridFour d-flex flex-column justify-content-evenly">
           <span class="stepNxt"> 1 </span> 

@@ -18,6 +18,7 @@ import { SubscribePackageComponent } from './subscribe-package/subscribe-package
 import { GalleryComponent } from './gallery/gallery.component';
 import { InterestsComponent } from './interests/interests.component';
 import { FilterInterestComponent } from './filter-interest/filter-interest.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FilterInterestComponent } from './filter-interest/filter-interest.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
