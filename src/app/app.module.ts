@@ -19,6 +19,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { InterestsComponent } from './interests/interests.component';
 import { FilterInterestComponent } from './filter-interest/filter-interest.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VerificationpageComponent } from './verificationpage/verificationpage.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     SubscribePackageComponent,
     GalleryComponent,
     InterestsComponent,
-    FilterInterestComponent
+    FilterInterestComponent,
+    VerificationpageComponent
   ],
   imports: [
     BrowserModule,

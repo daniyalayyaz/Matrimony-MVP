@@ -16,4 +16,7 @@ export class LoginComponent {
 gotoDashboard(){
   this.router.navigate(['Dashboard']);
 }
+gotoVerification(){
+  this.router.navigate(['Verification']);
+}
 }

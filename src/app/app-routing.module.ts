@@ -14,6 +14,7 @@ import { PersonalDetailsComponent } from './signup/personal-details/personal-det
 import { ProfessionalDetailsComponent } from './signup/professional-details/professional-details.component';
 import { ResidentialDetailsComponent } from './signup/residential-details/residential-details.component';
 import { SubscribePackageComponent } from './subscribe-package/subscribe-package.component';
+import { VerificationpageComponent } from './verificationpage/verificationpage.component';
 
 const routes: Routes = [
   { path:'', component: LoginComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'Subscribe', component: SubscribePackageComponent},
   {path: 'Gallery', component: GalleryComponent},
   {path: 'Interests', component: InterestsComponent},
-  {path: 'Filter-Interest', component: FilterInterestComponent}
+  {path: 'Filter-Interest', component: FilterInterestComponent},
+  {path: 'Verification', component: VerificationpageComponent}
 
 
 
