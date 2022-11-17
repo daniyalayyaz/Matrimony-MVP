@@ -6,9 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './personal-details.component.html',
   styleUrls: ['./personal-details.component.css']
 })
-export class PersonalDetailsComponent{
-
+export class PersonalDetailsComponent implements OnInit {
+  ReligiousSelect: any;
   constructor(private router: Router) {}
+  
+  ngOnInit(): void {
+  }
 MartialStatus=[
   {
     value: 'Unmarried',

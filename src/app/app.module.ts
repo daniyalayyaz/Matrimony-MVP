@@ -20,6 +20,7 @@ import { InterestsComponent } from './interests/interests.component';
 import { FilterInterestComponent } from './filter-interest/filter-interest.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationpageComponent } from './verificationpage/verificationpage.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { VerificationpageComponent } from './verificationpage/verificationpage.c
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
