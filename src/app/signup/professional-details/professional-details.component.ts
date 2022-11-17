@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class ProfessionalDetailsComponent implements OnInit {
 
   ProfessionSelect: any;
+  StatusSelect: any;
   constructor(private router: Router) {}
   ngOnInit(): void {
   }

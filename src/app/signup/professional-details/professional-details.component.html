@@ -28,7 +28,41 @@
               </option>
             </select>
           </div>
-          <div *ngIf="ProfessionSelect != 'Other'" class="col-md-6">
+          <div *ngIf="ProfessionSelect == 'Doctor'" class="col-md-6">
+            <label
+              for="formGroupExampleInput"
+              class="form-label"
+              style="color: #0f4d5c"
+            >
+              Job Status</label
+            >
+            <select
+              class="form-select rounded-pill"
+              aria-label="Default select example"
+              name="JobStatus"
+              (change)="eventonKey($event)"
+              [(ngModel)]="StatusSelect"
+            >
+              <option selected>Select Job Status</option>
+              <option
+                *ngFor="
+                  let status of [
+                    'Specialist',
+                    'PG Trainee',
+                    'General Practitioner',
+                    'MBBS Student',
+                    'PG Exam Candidate',
+                    'House Officer'
+                  ]
+                "
+                value="{{ status }}"
+              >
+                {{ status }}
+              </option>
+            </select>
+          </div>
+
+          <div *ngIf="ProfessionSelect == 'Allied Health'" class="col-md-6">
             <label
               for="formGroupExampleInput"
               class="form-label"
@@ -46,12 +80,13 @@
               <option
                 *ngFor="
                   let status of [
-                    'Specialist',
-                    'PG Trainee',
-                    'General Practitioner',
-                    'MBBS Student',
-                    'PG Exam Candidate',
-                    'House Officer'
+                    'Physiotherapist',
+                    'Nurse',
+                    'Optemetrist',
+                    'Nutritionist',
+                    'Psycologist',
+                    'Pharmacist',
+                    'Health Technician'
                   ]
                 "
                 value="{{ status }}"
@@ -80,13 +115,16 @@
               (change)="eventonKey($event)"
             />
           </div>
-          <div *ngIf="ProfessionSelect != 'Other'" class="col-md-6">
+          <div
+            *ngIf="StatusSelect == 'Specialist' || StatusSelect == 'PG Trainee'"
+            class="col-md-6"
+          >
             <label
               for="formGroupExampleInput"
               class="form-label"
               style="color: #0f4d5c"
             >
-              Qualifications
+              Specialties
             </label>
             <select
               class="form-select rounded-pill"
