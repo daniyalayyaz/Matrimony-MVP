@@ -136,6 +136,25 @@
                 </option>
               </select>
             </div>
+            <div *ngIf="ReligiousSelect == 'Other'" class="col-md-4">
+              <label
+                for="formGroupExampleInput"
+                class="form-label"
+                style="color: #0f4d5c"
+              >
+                Other Religion
+              </label>
+              <input
+                type="text"
+                class="form-control rounded-pill"
+                aria-label="Age"
+                aria-describedby="addon-wrapping"
+                placeholder="ex: Buddhists"
+                name="Clan"
+                (keyup)="eventonKey($event)"
+              />
+            </div>
+
             <div class="col-md-4">
               <label
                 for="formGroupExampleInput"
