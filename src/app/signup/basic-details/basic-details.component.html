@@ -17,7 +17,9 @@
                 class="form-select rounded-pill"
                 aria-label="Default select example"
                 name="ProfileCreatedFor"
-                [value]="ProfileCreatedFor != null ? ProfileCreatedFor : ''"
+                [value]="
+                  ProfileCreatedFor != undefined ? ProfileCreatedFor : ''
+                "
                 (change)="eventonKey($event)"
                 required="true"
               >

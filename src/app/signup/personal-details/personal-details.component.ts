@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./personal-details.component.css']
 })
 export class PersonalDetailsComponent implements OnInit {
-  personal:any={name:""};
+  personal:any={};
 
   ReligiousSelect: any;
   name:any;
@@ -22,18 +22,43 @@ export class PersonalDetailsComponent implements OnInit {
 
 
   constructor(private router: Router) {
-    this.name = JSON.parse(localStorage.getItem('PersonalDetails') as string).name
-    this.age = JSON.parse(localStorage.getItem('PersonalDetails') as string).age
-    this.ReligiousSelect = JSON.parse(localStorage.getItem('PersonalDetails') as string).Religious
-    this.SectSelect = JSON.parse(localStorage.getItem('PersonalDetails') as string).Sect
-    this.MotherTongueSelect = JSON.parse(localStorage.getItem('PersonalDetails') as string).MotherTongue
-    this.MartialStatusSelect = JSON.parse(localStorage.getItem('PersonalDetails') as string).MartialStatus
-    this.Clan = JSON.parse(localStorage.getItem('PersonalDetails') as string).Clan
-    this.CasteSelect = JSON.parse(localStorage.getItem('PersonalDetails') as string).Caste
-    this.OtherReligion = JSON.parse(localStorage.getItem('PersonalDetails') as string).OtherReligion
-    this.ReligiousStatusSelect = JSON.parse(localStorage.getItem('PersonalDetails') as string).ReligiousStatus
+    if(localStorage.getItem('PersonalDetails') as string=='null') {
+    this.name =JSON.parse(localStorage.getItem('PersonalDetails') as string).name
+    this.age =JSON.parse(localStorage.getItem('PersonalDetails') as string).age
+    this.ReligiousSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).Religious
+    this.SectSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).Sect
+    this.MotherTongueSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).MotherTongue
+    this.MartialStatusSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).MartialStatus
+    this.Clan =JSON.parse(localStorage.getItem('PersonalDetails') as string).Clan
+    this.CasteSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).Caste
+    this.OtherReligion =JSON.parse(localStorage.getItem('PersonalDetails') as string).OtherReligion
+    this.ReligiousStatusSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).ReligiousStatus
   }
-  
+  else{
+    this.name =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).name
+    this.age =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).age
+    this.ReligiousSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).Religious
+    this.SectSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).Sect
+    this.MotherTongueSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).MotherTongue
+    this.MartialStatusSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).MartialStatus
+    this.Clan =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).Clan
+    this.CasteSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).Caste
+    this.OtherReligion =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).OtherReligion
+    this.ReligiousStatusSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).ReligiousStatus
+    this.personal={
+      name:this.name,
+      age:this.age,
+      Religious:this.ReligiousSelect,
+      Sect:this.SectSelect,
+      MotherTongue:this.MotherTongueSelect,
+      MartialStatus:this.MartialStatusSelect,
+      Clan:this.Clan,
+      Caste:this.CasteSelect,
+      OtherReligion:this.OtherReligion,
+      ReligiousStatus:this.ReligiousStatusSelect
+    }
+  }
+}
   ngOnInit(): void {
   }
 MartialStatus=[
@@ -165,7 +190,7 @@ eventonKey(event: any) {
 gotoSignupThirdPage(){
   localStorage.setItem('PersonalDetails', JSON.stringify(this.personal))
     console.log(JSON.parse(localStorage.getItem('PersonalDetails') as string))
-    this.router.navigate(['More-Personal-Details']);
+    // this.router.navigate(['More-Personal-Details']);
 }
 gotoSignupFirstPage(){
   this.router.navigate(['Basic-Details']);

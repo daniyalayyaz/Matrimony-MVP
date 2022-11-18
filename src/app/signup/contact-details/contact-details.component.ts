@@ -9,6 +9,7 @@ import { Observable, BehaviorSubject } from "rxjs";
   styleUrls: ['./contact-details.component.css']
 })
 export class ContactDetailsComponent {
+  ContactDetails:any={};
   Email:any;
   FacebookLink:any;
   InstaLink:any;
@@ -17,14 +18,25 @@ export class ContactDetailsComponent {
   TwitterLink:any;
 
   constructor(private router: Router, private http: HttpClient) {
+    if(localStorage.getItem('ContactDetails') as string=='null') {
     this.Email= JSON.parse(localStorage.getItem('ContactDetails') as string).Email
     this.FacebookLink= JSON.parse(localStorage.getItem('ContactDetails') as string).FacebookLink
     this.InstaLink= JSON.parse(localStorage.getItem('ContactDetails') as string).InstaLink
     this.ParentsPhone= JSON.parse(localStorage.getItem('ContactDetails') as string).ParentsPhone
     this.Phone= JSON.parse(localStorage.getItem('ContactDetails') as string).Phone
     this.TwitterLink= JSON.parse(localStorage.getItem('ContactDetails') as string).TwitterLink
+    }
+    else{
+      this.Email=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).Email
+      this.FacebookLink=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).FacebookLink
+      this.InstaLink=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).InstaLink
+      this.ParentsPhone=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).ParentsPhone
+      this.Phone=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).Phone
+      this.TwitterLink=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).TwitterLink
+      this.ContactDetails={Email:this.Email,FacebookLink:this.FacebookLink,InstaLink:this.InstaLink,ParentsPhone:this.ParentsPhone,Phone:this.Phone,TwitterLink:this.TwitterLink}
+    }
   }
-  ContactDetails:any={};
+
   eventonKey(event: any) {
    this.ContactDetails[event.target.name]=event.target.value;
    console.log( this.ContactDetails);
