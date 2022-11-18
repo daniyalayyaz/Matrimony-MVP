@@ -18,6 +18,7 @@
               name="Country"
               (change)="eventonKey($event)"
               [(ngModel)]="CountrySelect"
+              [value]="CountrySelect != null ? CountrySelect : ''"
             >
               <option selected>Select Country</option>
               <option *ngFor="let Country of countries" value="{{ Country }}">
@@ -38,6 +39,7 @@
               aria-label="Default select example"
               name="Province"
               (change)="eventonKey($event)"
+              [value]="Province != null ? Province : ''"
             >
               <option selected>Select Province</option>
               <option
@@ -71,6 +73,7 @@
               aria-label="Default select example"
               name="City"
               (change)="eventonKey($event)"
+              [value]="City != null ? City : ''"
             >
               <option selected>Select City</option>
               <option *ngFor="let city of cities" value="{{ city }}">
@@ -91,6 +94,7 @@
               aria-label="Default select example"
               name="HouseStatus"
               (change)="eventonKey($event)"
+              [value]="HouseStatus != null ? HouseStatus : ''"
             >
               <option selected>Select Status</option>
               <option value="1">Owned</option>
@@ -113,6 +117,7 @@
               aria-label="Default select example"
               name="AnyOtherNationality"
               (change)="eventonKey($event)"
+              [value]="AnyOtherNationality != null ? AnyOtherNationality : ''"
             >
               <option selected>Select Country</option>
               <option *ngFor="let country of countries" value="{{ country }}">
@@ -136,6 +141,7 @@
               placeholder="ex: UAE"
               name="FuturePlanstoLiveIn"
               (keyup)="eventonKey($event)"
+              [value]="FuturePlanstoLiveIn != null ? FuturePlanstoLiveIn : ''"
             />
           </div>
         </div>
