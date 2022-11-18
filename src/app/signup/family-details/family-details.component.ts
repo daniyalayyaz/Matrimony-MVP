@@ -8,7 +8,21 @@ import { Router } from '@angular/router';
 })
 export class FamilyDetailsComponent{
 
-  constructor(private router: Router) {}
+  BrotherCount:any;
+  FatherOccupation:any;
+  MotherOccupation:any;
+  OtherFamilyInfo:any;
+  SisterCount:any;
+  SocioeconomicStatus:any;
+
+  constructor(private router: Router) {
+    this.SocioeconomicStatus = JSON.parse(localStorage.getItem('FamilyDetails') as string).SocioeconomicStatus
+    this.SisterCount = JSON.parse(localStorage.getItem('FamilyDetails') as string).SisterCount
+    this.OtherFamilyInfo = JSON.parse(localStorage.getItem('FamilyDetails') as string).OtherFamilyInfo
+    this.MotherOccupation = JSON.parse(localStorage.getItem('FamilyDetails') as string).MotherOccupation
+    this.FatherOccupation = JSON.parse(localStorage.getItem('FamilyDetails') as string).FatherOccupation
+    this.BrotherCount = JSON.parse(localStorage.getItem('FamilyDetails') as string).BrotherCount
+  }
 professions=["accountant", "actor", "actress", "air traffic controller", "architect", "artist", "attorney", "banker", "barber", "bookkeeper", "builder", "businessperson", "butcher", "carpenter", "cashier", "chef", "coach", "designer", "developer", "economist", "editor", "electrician", "engineer", "farmer", "filmmaker", "fisherman", "flight attendant", "jeweler", "judge", "lawyer", "mechanic", "musician", "painter", "pharmacist", "photographer", "pilot", "plumber", "police officer", "politician", "programmer", "receptionist", "salesperson", "singer", "teacher", "translator", "videographer", "waiter", "writer"]
 FamilyDetails:any={};
 eventonKey(event: any) {
