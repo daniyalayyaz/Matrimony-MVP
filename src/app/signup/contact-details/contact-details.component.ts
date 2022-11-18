@@ -9,8 +9,21 @@ import { Observable, BehaviorSubject } from "rxjs";
   styleUrls: ['./contact-details.component.css']
 })
 export class ContactDetailsComponent {
+  Email:any;
+  FacebookLink:any;
+  InstaLink:any;
+  ParentsPhone:any;
+  Phone:any;
+  TwitterLink:any;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {
+    this.Email= JSON.parse(localStorage.getItem('ContactDetails') as string).Email
+    this.FacebookLink= JSON.parse(localStorage.getItem('ContactDetails') as string).FacebookLink
+    this.InstaLink= JSON.parse(localStorage.getItem('ContactDetails') as string).InstaLink
+    this.ParentsPhone= JSON.parse(localStorage.getItem('ContactDetails') as string).ParentsPhone
+    this.Phone= JSON.parse(localStorage.getItem('ContactDetails') as string).Phone
+    this.TwitterLink= JSON.parse(localStorage.getItem('ContactDetails') as string).TwitterLink
+  }
   ContactDetails:any={};
   eventonKey(event: any) {
    this.ContactDetails[event.target.name]=event.target.value;
