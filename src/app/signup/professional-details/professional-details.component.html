@@ -18,6 +18,7 @@
               name="Profession"
               (change)="eventonKey($event)"
               [(ngModel)]="ProfessionSelect"
+              [value]="ProfessionSelect != null ? ProfessionSelect : ''"
             >
               <option selected>Select Profession</option>
               <option
@@ -42,6 +43,7 @@
               name="JobStatus"
               (change)="eventonKey($event)"
               [(ngModel)]="StatusSelect"
+              [value]="StatusSelect != null ? StatusSelect : ''"
             >
               <option selected>Select Job Status</option>
               <option
@@ -73,8 +75,9 @@
             <select
               class="form-select rounded-pill"
               aria-label="Default select example"
-              name="JobStatus"
+              name="AlliedJobStatus"
               (change)="eventonKey($event)"
+              [value]="AlliedJobStatus != null ? AlliedJobStatus : ''"
             >
               <option selected>Select Job Status</option>
               <option
@@ -112,6 +115,7 @@
               aria-describedby="addon-wrapping"
               placeholder="ex: NextBridge"
               name="Workplace"
+              [value]="Workplace != null ? Workplace : ''"
               (change)="eventonKey($event)"
             />
           </div>
@@ -130,6 +134,7 @@
               class="form-select rounded-pill"
               aria-label="Default select example"
               name="Qualification"
+              [value]="Qualification != null ? Qualification : ''"
               (change)="eventonKey($event)"
             >
               <option selected>Select Specialty</option>
@@ -155,8 +160,9 @@
               aria-label="Religious"
               aria-describedby="addon-wrapping"
               placeholder="ex: BSCS , BBA"
-              name="AnyotherInfo"
+              name="OtherInfo"
               (keyup)="eventonKey($event)"
+              [value]="OtherInfo != null ? OtherInfo : ''"
             />
           </div>
         </div>
@@ -178,6 +184,7 @@
               placeholder="ex: Punjab University"
               name="Institution"
               (keyup)="eventonKey($event)"
+              [value]="Institution != null ? Institution : ''"
             />
           </div>
           <div class="col-md-6">
@@ -193,6 +200,7 @@
               aria-label="Default select example"
               name="Income"
               (change)="eventonKey($event)"
+              [value]="Income != null ? Income : ''"
             >
               <option selected>Select Income</option>
               <option
@@ -231,6 +239,7 @@
               placeholder="ex: I have side businesses"
               name="AnyotherInfo"
               (keyup)="eventonKey($event)"
+              [value]="AnyotherInfo != null ? AnyotherInfo : ''"
             />
           </div>
         </div>
