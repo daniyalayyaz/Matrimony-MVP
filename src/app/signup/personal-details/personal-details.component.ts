@@ -11,7 +11,7 @@ export class PersonalDetailsComponent implements OnInit {
 
   ReligiousSelect: any;
   name:any;
-  age:any;
+  userage:any;
   ReligiousStatusSelect:any;
   SectSelect:any;
   MotherTongueSelect:any;
@@ -24,7 +24,7 @@ export class PersonalDetailsComponent implements OnInit {
   constructor(private router: Router) {
     if(localStorage.getItem('PersonalDetails') as string=='null') {
     this.name =JSON.parse(localStorage.getItem('PersonalDetails') as string).name
-    this.age =JSON.parse(localStorage.getItem('PersonalDetails') as string).age
+    this.userage =JSON.parse(localStorage.getItem('PersonalDetails') as string).age
     this.ReligiousSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).Religious
     this.SectSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).Sect
     this.MotherTongueSelect =JSON.parse(localStorage.getItem('PersonalDetails') as string).MotherTongue
@@ -36,7 +36,7 @@ export class PersonalDetailsComponent implements OnInit {
   }
   else{
     this.name =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).name
-    this.age =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).age
+    this.userage =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).age
     this.ReligiousSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).Religious
     this.SectSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).Sect
     this.MotherTongueSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).MotherTongue
@@ -47,7 +47,7 @@ export class PersonalDetailsComponent implements OnInit {
     this.ReligiousStatusSelect =localStorage.getItem('PersonalDetails')&& JSON.parse(localStorage.getItem('PersonalDetails') as string).ReligiousStatus
     this.personal={
       name:this.name,
-      age:this.age,
+      age:this.userage,
       Religious:this.ReligiousSelect,
       Sect:this.SectSelect,
       MotherTongue:this.MotherTongueSelect,
@@ -58,6 +58,7 @@ export class PersonalDetailsComponent implements OnInit {
       ReligiousStatus:this.ReligiousStatusSelect
     }
   }
+  console.log(this.userage)
 }
   ngOnInit(): void {
   }
