@@ -27,6 +27,7 @@ export class ProfessionalDetailsComponent implements OnInit {
     this.Income = JSON.parse(localStorage.getItem('ProfessionalDetails') as string).Income
     this.Institution = JSON.parse(localStorage.getItem('ProfessionalDetails') as string).Institution
     this.Qualification = JSON.parse(localStorage.getItem('ProfessionalDetails') as string).Qualification
+    this.Workplace = JSON.parse(localStorage.getItem('ProfessionalDetails') as string).Workplace
     }
     else{
       this.ProfessionSelect =localStorage.getItem('ProfessionalDetails') && JSON.parse(localStorage.getItem('ProfessionalDetails') as string).Profession

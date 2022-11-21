@@ -190,7 +190,7 @@ eventonKey(event: any) {
 gotoSignupThirdPage(){
   localStorage.setItem('PersonalDetails', JSON.stringify(this.personal))
     console.log(JSON.parse(localStorage.getItem('PersonalDetails') as string))
-    // this.router.navigate(['More-Personal-Details']);
+    this.router.navigate(['More-Personal-Details']);
 }
 gotoSignupFirstPage(){
   this.router.navigate(['Basic-Details']);
