@@ -26,6 +26,8 @@ import { environment } from 'src/environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+import { NgOtpInputModule } from  'ng-otp-input';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     GalleryComponent,
     InterestsComponent,
     FilterInterestComponent,
-    VerificationpageComponent
+    VerificationpageComponent,
+    OtpVerificationComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     RouterModule,
     HttpClientModule,
     FormsModule,
+    NgOtpInputModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

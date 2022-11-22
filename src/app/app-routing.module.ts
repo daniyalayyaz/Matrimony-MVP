@@ -5,6 +5,7 @@ import { FilterInterestComponent } from './filter-interest/filter-interest.compo
 import { GalleryComponent } from './gallery/gallery.component';
 import { InterestsComponent } from './interests/interests.component';
 import { LoginComponent } from './login/login.component';
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasicDetailsComponent } from './signup/basic-details/basic-details.component';
 import { ContactDetailsComponent } from './signup/contact-details/contact-details.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'Gallery', component: GalleryComponent},
   {path: 'Interests', component: InterestsComponent},
   {path: 'Filter-Interest', component: FilterInterestComponent},
+  {path: 'otp-verification', component: OtpVerificationComponent},
   {path: 'verify/:id', component: VerificationpageComponent}
 
 
