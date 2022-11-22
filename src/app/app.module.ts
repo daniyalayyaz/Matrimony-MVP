@@ -21,6 +21,11 @@ import { FilterInterestComponent } from './filter-interest/filter-interest.compo
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationpageComponent } from './verificationpage/verificationpage.component';
 import { FormsModule } from '@angular/forms';
+import {AngularFireModule} from "@angular/fire/compat"
+import { environment } from 'src/environments/environment';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -48,7 +53,11 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

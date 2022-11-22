@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "matrimony-mvp-angular:build:production",
+            "firebaseProject": "matrimony-e3819",
+            "firebaseHostingSite": "matrimony-e3819"
+          }
         }
       }
     }
