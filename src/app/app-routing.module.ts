@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'Gallery', component: GalleryComponent},
   {path: 'Interests', component: InterestsComponent},
   {path: 'Filter-Interest', component: FilterInterestComponent},
-  {path: 'Verification', component: VerificationpageComponent}
+  {path: 'verify/:id', component: VerificationpageComponent}
 
 
 

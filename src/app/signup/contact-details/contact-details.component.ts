@@ -100,7 +100,7 @@ export class ContactDetailsComponent {
   SubmitDetails(){
     localStorage.setItem('ContactDetails', JSON.stringify(this.ContactDetails))
     this.RegisterUsers()
-    this.router.navigate(['Dashboard']);
+    // this.router.navigate(['Dashboard']);
 }
 gotoSignupFourthPage(){
   this.router.navigate(['Family-Details']);
