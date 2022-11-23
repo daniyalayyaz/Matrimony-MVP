@@ -2,7 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import  firebase from "firebase/compat/app"
+// import  firebase from "firebase/compat/app"
+
 @Component({
   selector: 'app-otp-verification',
   templateUrl: './otp-verification.component.html',
@@ -17,17 +18,17 @@ export class OtpVerificationComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void{
     console.log("Top ngAfterinit")
-    let captchaElement = document.getElementById('recaptcha-container')
-    if (captchaElement != null) {
-    let verify = new firebase.auth.RecaptchaVerifier_Instance("recaptcha-container",{
-      size:"invisible"
-    })
+    // let captchaElement = document.getElementById('recaptcha-container')
+    // if (captchaElement != null) {
+    // let verify = new firebase.auth.RecaptchaVerifier_Instance("recaptcha-container",{
+    //   size:"invisible"
+    // })
 
-    this.afauth.signInWithPhoneNumber("+923054055977", verify).then((result) => {
+    // this.afauth.signInWithPhoneNumber("+923054055977", verify).then((result) => {
 
-      this.final = result
-    });
-  }
+    //   this.final = result
+    // });
+  // }
     console.log("ngAfterinit")
   }
   ngOnInit(): void {
