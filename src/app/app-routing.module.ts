@@ -26,7 +26,7 @@ const routes: Routes = [
   { path:'Professional-Details', component: ProfessionalDetailsComponent},
   { path:'Family-Details', component: FamilyDetailsComponent},
   { path:'Contact-Details', component: ContactDetailsComponent},
-  { path: 'Dashboard', component: DashboardComponent},
+  { path:'Dashboard', component: DashboardComponent},
   {path: 'Profile', component: ProfileComponent},
   {path: 'Subscribe', component: SubscribePackageComponent},
   {path: 'Gallery', component: GalleryComponent},

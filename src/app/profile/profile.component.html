@@ -44,8 +44,8 @@
                     <div class="card-overlay">
                         <p class="card-text cardDetalis text-dark cardBtnBg">
                             <img src={{pathleft}} alt="Girl in a jacket" width="50" height="60" />
-                            <img src={{pathmessage}} alt="Girl in a jacket" width="50" height="60" />
-                            <img src={{pathheart}} alt="Girl in a jacket" width="50" height="50" />
+                            <img src={{pathmessage}} (click)="OnMessageClick()" alt="Girl in a jacket" width="50" height="60" />
+                            <img src={{pathheart}} (click)="OnFavClick()" alt="Girl in a jacket" width="50" height="50" />
                             <img src={{pathright}} alt="Girl in a jacket" width="50" height="60" />
                         </p>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="bgRow pt-4">
                     <div class="row ms-3 me-3">
                         <div class="col-6">
-                            <h1 class="text-start resfont">Sara Ali</h1>
+                            <h1 class="text-start resfont">{{profileDetails.name}}</h1>
                         </div>
                         <div class="col-6">
                             <p class="text-end">Pakistan</p>
@@ -95,24 +95,38 @@
                         <div class="row">
                             <div class="col-md-6 rescard">
                                 <ul class="pointOfInformation">
-                                    <li class="pt-3">My Sect</li>
-                                    <li class="pt-3">Religiousness</li>
-                                    <li class="pt-3">My Profession</li>
-                                    <li class="pt-3">Marital Status</li>
-                                    <li class="pt-3">State</li>
-                                    <li class="pt-3">Country</li>
-                                    <li class="pt-3">Registration</li>
+                                    <li class="pt-3">Email</li>
+                                    <li class="pt-3">Personal Contact</li>
+                                    <li class="pt-3">Parent Contact</li>
+                                    <li class="pt-3">Gender</li>
+                                    <li class="pt-3">Age</li>
+                                    <li class="pt-3">Status</li>
+                                    <li class="pt-3">Relegion</li>
+                                    <li class="pt-3">Other Relegion</li>
+                                    <li class="pt-3">Other Qualification</li>
+                                    <li class="pt-3">Job Status</li>
+                                    <li class="pt-3">Work Place</li>
+                                    <li class="pt-3">Nationality</li>
+                                    <li class="pt-3">Future Plans</li>
+                                    <li class="pt-3">Professional</li>
                                 </ul>
                             </div>
                             <div class="col-md-6 rescard">
                                 <ul class="infoOfPoint">
-                                    <li class="pt-3">Sunni</li>
-                                    <li class="pt-3">Religious</li>
-                                    <li class="pt-3">Pharmacist</li>
-                                    <li class="pt-3">Single</li>
-                                    <li class="pt-3">London</li>
-                                    <li class="pt-3">United Kingdom</li>
-                                    <li class="pt-3">To Find Partner</li>
+                                    <li class="pt-3">{{profileDetails.email}}</li>
+                                    <li class="pt-3">{{profileDetails.personalContact}}</li>
+                                    <li class="pt-3">{{profileDetails.parentContact}}</li>
+                                    <li class="pt-3">{{profileDetails.gender}}</li>
+                                    <li class="pt-3">{{profileDetails.age}}</li>
+                                    <li class="pt-3">{{profileDetails.status}}</li>
+                                    <li class="pt-3">{{profileDetails.religious}}</li>
+                                    <li class="pt-3">{{profileDetails.otherreligion}}</li>
+                                    <li class="pt-3">{{profileDetails.anotherqualification}}</li>
+                                    <li class="pt-3">{{profileDetails.jobStatus}}</li>
+                                    <li class="pt-3">{{profileDetails.workplace}}</li>
+                                    <li class="pt-3">{{profileDetails.nationality}}</li>
+                                    <li class="pt-3">{{profileDetails.futurePlans}}</li>
+                                    <li class="pt-3">{{profileDetails.professional}}</li>
                                 </ul>
                             </div>
 
@@ -125,23 +139,37 @@
                             <div class="col-md-6 rescard">
                                 <ul class="pointOfInformation">
                                     <li class="pt-3">My Sect</li>
-                                    <li class="pt-3">Religiousness</li>
-                                    <li class="pt-3">My Profession</li>
-                                    <li class="pt-3">Marital Status</li>
-                                    <li class="pt-3">State</li>
+                                    <li class="pt-3">Caste</li>
+                                    <li class="pt-3">Relegious Status</li>
+                                    <li class="pt-3">Clan</li>
+                                    <li class="pt-3">Mother Tongue</li>
+                                    <li class="pt-3">Looks</li>
+                                    <li class="pt-3">Complexion</li>
+                                    <li class="pt-3">Height</li>
+                                    <li class="pt-3">Build</li>
+                                    <li class="pt-3">Hobbies</li>
                                     <li class="pt-3">Country</li>
-                                    <li class="pt-3">Registration</li>
+                                    <li class="pt-3">Province</li>
+                                    <li class="pt-3">City</li>
+                                    <li class="pt-3">House</li>
                                 </ul>
                             </div>
                             <div class="col-md-6 rescard">
                                 <ul class="infoOfPoint">
-                                    <li class="pt-3">Sunni</li>
-                                    <li class="pt-3">Religious</li>
-                                    <li class="pt-3">Pharmacist</li>
-                                    <li class="pt-3">Single</li>
-                                    <li class="pt-3">London</li>
-                                    <li class="pt-3">United Kingdom</li>
-                                    <li class="pt-3">To Find Partner</li>
+                                    <li class="pt-3">{{profileDetails.sect}}</li>
+                                    <li class="pt-3">{{profileDetails.caste}}</li>
+                                    <li class="pt-3">{{profileDetails.religiousStatus}}</li>
+                                    <li class="pt-3">{{profileDetails.clan}}</li>
+                                    <li class="pt-3">{{profileDetails.montherTonque}}</li>
+                                    <li class="pt-3">{{profileDetails.looks}}</li>
+                                    <li class="pt-3">{{profileDetails.complexion}}</li>
+                                    <li class="pt-3">{{profileDetails.height}}</li>
+                                    <li class="pt-3">{{profileDetails.build}}</li>
+                                    <li class="pt-3">{{profileDetails.hobbies}}</li>
+                                    <li class="pt-3">{{profileDetails.country}}</li>
+                                    <li class="pt-3">{{profileDetails.province}}</li>
+                                    <li class="pt-3">{{profileDetails.city}}</li>
+                                    <li class="pt-3">{{profileDetails.house}}</li>
                                 </ul>
                             </div>
 

@@ -66,7 +66,7 @@
 
                 <div class="col-md-7 bgProfile margin-left">
                     <h6 class="bgMsg">Messages</h6>
-                    <div *ngFor="let message of messages">
+                    <div *ngFor="let message of messagesList">
                         <div class="d-flex mb-3">
                             <div class="p-2 statusIcon">
                                 <img class="msgImg" src={{message.image}} alt="Girl in a jacket" />
@@ -145,11 +145,11 @@
                             </div>
                             <div class="row responsivelist">
 
-                                <div class="col-md-6 mt-3" *ngFor="let person of persons">
-                                    <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;" (click)="gotoProfile()">
+                                <div class="col-md-6 mt-3" *ngFor="let person of personList">
+                                    <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;" (click)="gotoProfile(person)">
                                         <div class="row g-0 styleCard">
                                             <div class="col-md-4 cardImageRes">
-                                                <img src={{person.image}} class="rounded-start cardImage" alt="..." />
+                                                <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage" alt="..." />
                                             </div>
                                             <div class="col-md-8 cardbg cardbgRes">
                                                 <div class="card-body">
@@ -164,13 +164,13 @@
                                                     </div>
 
                                                     <p class="card-text text-muted">
-                                                        {{person.gender}} | {{person.age}} | {{person.cast}}
+                                                        {{person.gender? person.gender: "undefined"}} | {{person.age}} | {{person.caste}}
                                                     </p>
                                                     <p class="card-text text-muted">
-                                                        {{person.profession}} | {{person.city}}
+                                                        {{person.professional? person.professional: "undefined"}} | {{person.city? person.city: "undefined"}}
                                                     </p>
                                                     <p class="card-text text-muted">
-                                                        {{person.appearance}} | {{person.color}} | {{person.height}}
+                                                        {{person.appearance? person.appearance: "undefined"}} | {{person.color? person.color: "undefined"}} | {{person.height ? person.height: "undefined"}}
                                                     </p>
                                                     <div class="d-flex mt-2">
                                                         <div class="me-auto">
@@ -180,7 +180,7 @@
                                                             <img src={{pathheart}} class="imgCard2" alt="..." />
                                                         </div>
                                                         <div class="ms-auto">
-                                                            <button type="submit" class="insterest">
+                                                            <button type="submit" (click)="onSendInterestClick(person); $event.stopPropagation();" class="insterest">
                                                                 Send Interest
                                                             </button>
                                                         </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, BehaviorSubject } from "rxjs";
+// import { ToastrService } from 'ngx-toastr';
+import { AppService } from 'src/app/app.service';
+import { LocalStorageItem } from 'src/app/helpers/localStorageItem.enum';
 
 @Component({
   selector: 'app-contact-details',
@@ -17,7 +18,10 @@ export class ContactDetailsComponent {
   Phone:any;
   TwitterLink:any;
 
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, 
+              private appService: AppService,
+              // private toasterservice: ToastrService
+              ) {
     if(localStorage.getItem('ContactDetails') as string=='null') {
     this.Email= JSON.parse(localStorage.getItem('ContactDetails') as string).Email
     this.FacebookLink= JSON.parse(localStorage.getItem('ContactDetails') as string).FacebookLink
@@ -90,17 +94,20 @@ export class ContactDetailsComponent {
       familyInfo:JSON.parse(localStorage.getItem('FamilyDetails') as string).OtherFamilyInfo,
     
      }
-    console.log("dddd");
-    this.http.post<any>('http://localhost:5000/api/user/createprofile',d).subscribe(data => {
-    
-  })
+     this.appService.createProfile(d).subscribe(res => {
+      if (res.user) {
+        localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
+        
+        // this.toasterservice.success("User Saved Successfully");
+        this.router.navigateByUrl(`Dashboard`);
+      }
+     })
    
   }
  
   SubmitDetails(){
     localStorage.setItem('ContactDetails', JSON.stringify(this.ContactDetails))
     this.RegisterUsers()
-    // this.router.navigate(['Dashboard']);
 }
 gotoSignupFourthPage(){
   this.router.navigate(['Family-Details']);

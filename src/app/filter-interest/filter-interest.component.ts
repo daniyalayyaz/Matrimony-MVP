@@ -1,11 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+import { User } from '../models/user.modal';
 
 @Component({
   selector: 'app-filter-interest',
   templateUrl: './filter-interest.component.html',
   styleUrls: ['./filter-interest.component.css']
 })
-export class FilterInterestComponent{
+export class FilterInterestComponent implements OnInit{
+
+  personsList: Array<User>  = [];
+  
+  constructor(private router: Router,
+    private appService: AppService) { }
+
+  ngOnInit(): void {
+
+  }
   pathfemale: string = "../../assets/female.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";

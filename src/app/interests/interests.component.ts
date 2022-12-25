@@ -1,13 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+import { User } from '../models/user.modal';
 
 @Component({
   selector: 'app-interests',
   templateUrl: './interests.component.html',
   styleUrls: ['./interests.component.css']
 })
-export class InterestsComponent {
-  constructor(private router: Router) {}
+export class InterestsComponent implements OnInit {
+
+  personList: Array<User> = [];
+  
+  constructor(private router: Router,
+              private appService: AppService
+              ) { }
+  
+  ngOnInit(): void {
+
+  }
+
 
   users = [
     {
@@ -39,6 +51,7 @@ export class InterestsComponent {
       distance: "15 Mile away",
     },
   ];
+
   gotoFilterInterests(){
     this.router.navigate(['Filter-Interest']);
   }

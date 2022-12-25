@@ -28,7 +28,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { NgOtpInputModule } from  'ng-otp-input';
-
+// import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [

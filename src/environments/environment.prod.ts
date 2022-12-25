@@ -1,3 +1,5 @@
+import { LocalStorageItem } from "src/app/helpers/localStorageItem.enum";
+
 export const environment = {
   firebase: {
     projectId: 'matrimony-e3819',
@@ -7,5 +9,6 @@ export const environment = {
     authDomain: 'matrimony-e3819.firebaseapp.com',
     messagingSenderId: '180744314389',
   },
-  production: true
+  production: true,
+  apiBaseUrl: 'http://localhost:5000/api',
 };

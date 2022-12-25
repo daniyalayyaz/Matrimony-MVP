@@ -1,11 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+import { User } from '../models/user.modal';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent {
+export class GalleryComponent implements OnInit {
+
+  personList: Array<User> = [];
+  
+  constructor(private router: Router,
+    private appService: AppService) { }
+  
+  ngOnInit(): void {
+
+  }
+
   pathleft: string = "../../assets/left.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";

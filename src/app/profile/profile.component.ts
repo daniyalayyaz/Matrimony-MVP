@@ -1,17 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageItem } from '../helpers/localStorageItem.enum';
+import { ProfileDetail } from '../models/profile-detail.modal';
+import { User } from '../models/user.modal';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent{
+export class ProfileComponent implements OnInit{
   pathleft: string = "../../assets/left.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
   pathright: string="../../assets/right.png"
+  
+  profileDetails: User;
+
   constructor(private router: Router) {}
+  
+  ngOnInit(): void {
+   let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
+   if (profileDetail) {
+    this.profileDetails = JSON.parse(profileDetail);
+   }
+  }
+
+  OnFavClick() {
+
+  }
+
+  OnMessageClick() {
+
+  }
 
    profileInfo = [
     {

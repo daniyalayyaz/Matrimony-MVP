@@ -1,34 +1,57 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
+import { AppService } from '../app.service';
+import { Gender } from '../enums/genders.enum';
+import { LocalStorageItem } from '../helpers/localStorageItem.enum';
+import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
+import { Message } from '../models/message.modal';
+import { User } from '../models/user.modal';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
-  constructor(private router: Router) { }
+export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
-  messages = [
-    {
-      image: "https://bit.ly/3RzZK9J",
-      name: "Cristina Rohmer",
-      msg: "That was wonderful. Thanks..",
-      time: "01.02.21",
-    },
-    {
-      image: "https://bit.ly/3RzZK9J",
-      name: "Cristina Rohmer",
-      msg: "That was wonderful. Thanks..",
-      time: "01.02.21",
-    },
-    {
-      image: "https://bit.ly/3RzZK9J",
-      name: "Cristina Rohmer",
-      msg: "That was wonderful. Thanks..",
-      time: "01.02.21",
-    },
-  ];
+  personList: Array<User> = [];
+  messagesList: Array<Message>;
+  pathfemale: string = "../../assets/female.png";
+  pathmessage: string = "../../assets/message.png";
+  pathheart: string = "../../assets/pinkheart.png";
+  pathmale: string = "../../assets/male.png"
+  
+  constructor(private router: Router,
+              private appService: AppService) {
+                super()
+               }
+
+  ngOnInit(): void {
+    this.appService.onlineUser(Gender.FEMALE).pipe(takeUntil(this.Unsubscribe$)).subscribe(persons => this.personList = persons);
+
+    this.messagesList = [
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
+    ];
+  }
+
 
   options = [
     {
@@ -83,117 +106,9 @@ export class DashboardComponent {
       color2: "#7C0E0E ",
     },
   ];
-  pathfemale: string = "../../assets/female.png";
-  pathmessage: string = "../../assets/message.png";
-  pathheart: string = "../../assets/pinkheart.png";
-  pathmale: string = "../../assets/male.png"
-  persons = [
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-    {
-      name: "Dr Aiman Fairy",
-      image: "https://bit.ly/3SdMAix",
-      gender: "Female",
-      age: "24",
-      cast: "shah",
-      training: "PG Trainee",
-      profession: "Psychologist",
-      city: "Lahore",
-      appearance: "Good Looking",
-      color: "White",
-      height: "5'5 Tall",
-    },
-  ];
-  gotoProfile() {
+  
+  gotoProfile(person: User) {
+    localStorage.setItem(LocalStorageItem.SELECTED_PROFILE,JSON.stringify(person));
     this.router.navigate(['Profile']);
   }
   gotoGallery() {
@@ -201,6 +116,10 @@ export class DashboardComponent {
   }
   gotoInterests() {
     this.router.navigate(['Interests']);
+  }
+
+  onSendInterestClick(person: User) {
+
   }
 
 
