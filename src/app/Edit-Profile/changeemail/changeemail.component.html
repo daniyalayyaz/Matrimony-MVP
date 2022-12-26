@@ -1,0 +1,68 @@
+<div>
+    <!--  NAVBAR-->
+    <nav class="navbar navbar-expand-lg" style="background-color: #E75480; font-family: georgia ; ">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light ps-5" href="#">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <form class="d-flex " role="search">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item text-end">
+                            <a class="nav-link text-light" href="#"><span><i class="fa-solid fa-user"></i></span>
+                                Interset</a>
+                        </li>
+                    </ul>
+
+                    <button class="btn text-bg-light text-dark" type="submit">
+                        <span><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        LOG OUT
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- SIDE NAVBAR -->
+    <div class="sidenav">
+        <img class="sidenav-img"
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+            <a (click)="gotoEditProfile()"> Edit My Profile</a>
+            <a (click)="gotoEditPhotos()"> Edit My Photos</a>
+            <a (click)="gotoEditUsername()">Change Username</a>
+            <a (click)="gotoEditEmail()">Change Email</a>
+            <a (click)="gotoEditPassword()"> Change Password</a>
+            <a (click)="gotoEditPhone()">Change Phone</a>
+    </div>
+
+    <div class="about">
+        <div class="main-card">
+            <h1>Change Email</h1>
+            <hr>
+            <form>
+                <label>New Email</label>
+                <input type="text">
+                <br>
+
+                <label>Confirm New Email</label>
+                <input type="text">
+                <br>
+
+                <label>Account Password</label>
+                <input type="text">
+                <br>
+                <br>
+                <button class="btn btn-primary buttn">Update</button>
+                <br><br>
+                <a href="" class="text-decoration-none link">Send me a
+                    <b>one-time Password</b>
+                </a>
+                <br>
+            </form>
+        </div>
+    </div>
+
+</div>

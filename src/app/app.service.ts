@@ -23,12 +23,12 @@ export class AppService {
     return this.http.post<any>(url, gender);
   }
 
-  AddRemoveFavourite(userId: string, FavUserId: string): Observable<any> {
+  AddRemoveFavourite(userId?: string, FavUserId?: string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/addToFav`;
     return this.http.post<any>(url,{id: userId, uid: FavUserId});
   }
 
-  HandleRequest(userId: string, personId: string, request: RequestType): Observable<any> {
+  HandleRequest(userId?: string, personId?: string, request?: RequestType): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/sentRequest`;
     return this.http.post<any>(url, {id: userId, rid: personId, request});
   }

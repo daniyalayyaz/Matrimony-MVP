@@ -16,7 +16,12 @@ import { ProfessionalDetailsComponent } from './signup/professional-details/prof
 import { ResidentialDetailsComponent } from './signup/residential-details/residential-details.component';
 import { SubscribePackageComponent } from './subscribe-package/subscribe-package.component';
 import { VerificationpageComponent } from './verificationpage/verificationpage.component';
-
+import { ChangeemailComponent } from './Edit-Profile/changeemail/changeemail.component';
+import { ChangepasswordComponent } from './Edit-Profile/changepassword/changepassword.component';
+import { ChangephoneComponent } from './Edit-Profile/changephone/changephone.component';
+import { ChangephotosComponent } from './Edit-Profile/changephotos/changephotos.component';
+import { ChangeusernameComponent } from './Edit-Profile/changeusername/changeusername.component';
+import { EditprofileComponent } from './Edit-Profile/editprofile/editprofile.component';
 const routes: Routes = [
   { path:'', component: LoginComponent},
   { path:'Basic-Details', component: BasicDetailsComponent},
@@ -33,7 +38,13 @@ const routes: Routes = [
   {path: 'Interests', component: InterestsComponent},
   {path: 'Filter-Interest', component: FilterInterestComponent},
   {path: 'otp-verification', component: OtpVerificationComponent},
-  {path: 'verify/:id', component: VerificationpageComponent}
+  {path: 'verify/:id', component: VerificationpageComponent},
+   {path: 'Edit-Profile', component: EditprofileComponent},
+  {path: 'Edit-Email', component: ChangeemailComponent},
+  {path: 'Edit-Username', component: ChangeusernameComponent},
+  {path: 'Edit-Password', component: ChangepasswordComponent},
+  {path: 'Edit-Phone', component: ChangephoneComponent},
+  {path: 'Edit-Photos', component: ChangephotosComponent},
 
 
 

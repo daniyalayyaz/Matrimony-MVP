@@ -18,6 +18,12 @@ import { SubscribePackageComponent } from './subscribe-package/subscribe-package
 import { GalleryComponent } from './gallery/gallery.component';
 import { InterestsComponent } from './interests/interests.component';
 import { FilterInterestComponent } from './filter-interest/filter-interest.component';
+import { ChangeemailComponent } from './Edit-Profile/changeemail/changeemail.component';
+import { ChangepasswordComponent } from './Edit-Profile/changepassword/changepassword.component';
+import { ChangephoneComponent } from './Edit-Profile/changephone/changephone.component';
+import { ChangephotosComponent } from './Edit-Profile/changephotos/changephotos.component';
+import { ChangeusernameComponent } from './Edit-Profile/changeusername/changeusername.component';
+import { EditprofileComponent } from './Edit-Profile/editprofile/editprofile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationpageComponent } from './verificationpage/verificationpage.component';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +55,13 @@ import { NgOtpInputModule } from  'ng-otp-input';
     InterestsComponent,
     FilterInterestComponent,
     VerificationpageComponent,
-    OtpVerificationComponent
+    OtpVerificationComponent,
+    ChangeemailComponent,
+    ChangephoneComponent,
+    ChangepasswordComponent,
+    ChangeusernameComponent,
+    ChangephotosComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,

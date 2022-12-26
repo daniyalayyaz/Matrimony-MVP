@@ -1,0 +1,343 @@
+<div class="main">
+    <!--  NAVBAR-->
+    <nav class="navbar navbar-expand-lg" style="background-color: #E75480;font-family: georgia ;" >
+        <div class="container-fluid">
+            <a class="navbar-brand text-light ps-5" href="#">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <form class="d-flex " role="search">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item text-end">
+                            <a class="nav-link text-light" href="#"><span><i class="fa-solid fa-user"></i></span> Interset</a>
+                        </li>
+                    </ul>
+
+                    <button class="btn text-bg-light text-dark" type="submit">
+                        <span><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        LOG OUT
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDE NAVBAR -->
+    <div class="sidenav">
+        <img class="sidenav-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" >
+        <!-- <input type="image"> -->
+        <a (click)="gotoEditProfile()"> Edit My Profile</a>
+        <a (click)="gotoEditPhotos()"> Edit My Photos</a>
+        <a (click)="gotoEditUsername()">Change Username</a>
+        <a (click)="gotoEditEmail()">Change Email</a>
+        <a (click)="gotoEditPassword()"> Change Password</a>
+        <a (click)="gotoEditPhone()">Change Phone</a>
+    </div>
+
+    <div class="about">
+        <div class="main-card">
+            <h1>Education and Work</h1>
+            <form>
+                <label>My Education Level</label>
+                <select>
+                    <option>Bachelors Degree</option>
+                    <option>College</option>
+                    <option>Doctorate</option>
+                    <option>High School</option>
+                    <option>Masters Degree</option>
+                    <option>No Degree Qualification </option>
+                    <option>Prefer not to stay </option>
+                    <option>Other Degree </option>
+                    <option>Other</option>
+                </select>
+                <br>
+
+                <label for="">My Profession</label>
+                <select id="">
+                    <option>Accountant</option>
+                    <option>Acting Professional</option>
+                    <option>Actor</option>
+                    <option>Administration</option>
+                    <option>Administration Professional</option>
+                    <option>Advertising Professional</option>
+                    <option>Air Hostess</option>
+                    <option>Architect</option>
+                    <option>Architecture</option>
+                    <option>Armed Forces</option>
+                    <option>Art $ Design</option>
+                    <option>Artisan</option>
+                    <option>Audiologist</option>
+                    <option>Banker</option>
+                    <option>Banking</option>
+                    <option>Beauticion </option>
+                    <option>Biologist / Botanist</option>
+                    <option>Business Person</option>
+                    <option>Catering</option>
+                </select>
+                <br>
+
+                <label for="">My First Language</label>
+                <select id="select   ">
+                    <option>Punjabi</option>
+                    <option>Urdu</option>
+                    <option>English</option>
+                    <option>Sindhi</option>
+                    <option>Balochi</option>
+                </select>
+                <br>
+
+                <label for="">My Second Language</label>
+                <select id="">
+                    <option>Punjabi</option>
+                    <option>Urdu</option>
+                    <option>English</option>
+                    <option>Sindhi</option>
+                    <option>Balochi</option>
+                </select>
+                <br>
+                <br>
+                <button class="btn btn-primary buttn">Update</button><br><br>
+            </form>
+        </div>
+
+        <!-- PERSONAL -->
+
+        <div class="main-card">
+            <h1>Personal</h1>
+            <form>
+                <label>My Citizenship</label>
+                <select  id="">
+                    <option >Pakistani</option>
+                    <option>American</option>
+                    <option>British</option>
+                    <option>Canadian</option>
+                    <option>European Union (EU)</option>
+                    <option>Australlian</option>
+                    <option>Indian</option>
+                    <option>Other</option>
+                </select>
+                <br>
+
+                <label>Country Of Orgin</label>
+                <select>
+                    <option>Pakistan</option>
+                    <option>UK</option>
+                    <option>USA</option>
+                </select>
+                <br>
+
+                <label>Willing to Relocate</label>
+                <select >
+                    <option>None</option>
+                    <option>Locally</option>
+                    <option>Nationally</option>
+                    <option>Internationally</option>
+                    <option>Regionally</option>
+                </select>
+                <br>
+
+                <label>Income</label>
+                <select >
+                    <option>up to 15k</option>
+                    <option>15,000-25,000</option>
+                    <option>25,000-50,000</option>
+                    <option>over 50,000</option>
+                    <option>Prefer not to say</option>
+                </select>
+                <br>
+                <label>I am Looking to Marry</label>
+                <select >
+                    <option>As soon as possible</option>
+                    <option>This year </option>
+                    <option>Next year</option>
+                    <option>Unsure</option>
+                </select>
+                <br>
+                
+                
+                <label>Marital Status</label>
+                <select >
+                    <option>Never Married</option>
+                    <option>Legally separated</option>
+                    <option>Divorced</option>
+                    <option>Windowed</option>
+                    <option>Anulled</option>
+                </select>
+                <br>
+
+                <label>Would I like to have Childern</label>
+                <select >
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Unsure</option>
+                </select>
+                <br>
+
+                <label>Do I have Childern</label>
+                <select >
+                    <option>No</option>
+                    <option>Yes</option>
+                    <option>I have one Child</option>
+                    <option>I have two Childern</option>
+                    <option>I have three Childern</option>
+                    <option>I have more than three Childern</option>
+                </select>
+                <br>
+
+                <label>My Living Arrangements</label>
+                <select >
+                    <option>I Live with Alone </option>
+                    <option>I Live with Freinds</option>
+                    <option>I live with Family</option>
+                </select>
+                <br>
+
+                <label>My Height</label>
+                <select >
+                    <option>1.37m(6'6")</option>
+                    <option>1.38m</option>
+                    <option>1.39m</option>
+                    <option>1.40m</option>
+                    <option>1.41m</option>
+                </select>
+                <br>
+
+                <label>My Build</label>
+                <select >
+                    <option>Petite</option>
+                    <option>Slim</option>
+                    <option>Athletic</option>
+                    <option>Medium</option>
+                    <option>Muscular</option>
+                    <option>Large</option>
+                </select>
+                <br>
+
+                <label>My Hair Color</label>
+                <select >
+                    <option>Black</option>
+                    <option>Blonde</option>
+                    <option>Dark Brown</option>
+                    <option>Grey</option>
+                    <option>Light Brown</option>
+                    <option>Medium Brown</option>
+                    <option>Red</option>
+                    <option>Blad</option>
+                    <option>Other</option>
+                </select>
+                <br>
+
+                <label>Colour of My Eyes</label>
+                <select >
+                    <option>Hazel</option>
+                    <option>Brown</option>
+                    <option>Green</option>
+                    <option>Gray</option>
+                    <option>Blue</option>
+                    <option>Other</option>
+                </select>
+                <br>
+
+                <label>Do I Smoke</label>
+                <select >
+                    <option>No</option>
+                    <option>Yes</option>
+                    <option>Sometimes</option>
+                </select>
+                <br>
+
+                <label>Do I Have Any Disabilities?</label>
+                <select>
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+                <br>
+
+                <label>Registration Reason</label>
+                <select >
+                    <option>I'm Registering to find myself a Partner</option>
+                    <option>I'm Registering to find freind a Partner</option>
+                    <option>I'm Registering to find son a Partner</option>
+                    <option>I'm Registering to find daughter a Partner</option>
+                    <option>I'm Registering to find brother a Partner</option>
+                </select>
+                <br>
+                <br>
+                <button class="btn btn-primary buttn">Update</button><br><br>
+
+            </form>
+        </div>
+        
+        <!-- Religion -->
+        <div class="main-card">
+            <h1>Religion</h1>
+            <form>
+                <label>Religiousness</label>
+                <select>
+                    <option>Very Religious</option>
+                    <option>Religious</option>
+                    <option>Somewhat Religious</option>
+                    <option>Not Religious</option>
+                    <option>Prefer not to say</option>
+                </select>
+                <br>
+
+                <label>My Sect</label>
+                <select>
+                    <option>Just Muslim</option>
+                    <option>Sunni</option>
+                    <option>Shia</option>
+                    <option>Other-please ask me</option>
+                </select>
+                <br>
+
+                <label>Do you prefer Hijab/Niqab?</label>
+                <select>
+                    <option>Yes Hijab </option>
+                    <option>Yes Niqab</option>
+                    <option>No</option>
+                    <option>Prefer not to say</option>
+                </select>
+                <br>
+                
+                <label>Do you have a Beard?</label>
+                <select>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Prefer not to say</option>
+                </select>
+                <br>
+                <label>Are you a Revert?</label>
+                <select>
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+                <br>
+
+                <label>Do you keep Halal?</label>
+                <select>
+                    <option>I always keep Halal</option>
+                    <option>Usually keep Halal</option>
+                    <option>I keep Halal at Home Only</option>
+                    <option>I do not keep Halal</option>
+                </select>
+                <br>
+
+                <label>Do you perfom Salaah?</label>
+                <select>
+                    <option>Always</option>
+                    <option>Usually</option>
+                    <option>Sometimes</option>
+                    <option>Never</option>
+                </select>
+                <br>
+                <br>
+                <button class="btn btn-primary buttn">Update</button><br><br>
+            </form>
+        </div>
+    </div>
+</div>

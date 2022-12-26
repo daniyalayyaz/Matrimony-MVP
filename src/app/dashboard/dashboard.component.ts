@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
 import { Gender } from '../enums/genders.enum';
@@ -26,7 +26,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   pathmale: string = "../../assets/male.png"
   
   constructor(private router: Router,
-              private toasterservice: ToastrService, 
+              //private toasterservice: ToastrService, 
               private appService: AppService) {
                 super()
                }
@@ -144,18 +144,20 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   gotoInterests() {
     this.router.navigate(['Interests']);
   }
-
-  onSendInterestClick(person: User) {
+  gotoEditProfile() {
+    this.router.navigate(['Edit-Profile']);
+  }
+  onSendInterestClick(person: User) {   
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      this.toasterservice.success("Interest send successfully");
+      //this.toasterservice.success("Interest Sent Successfully!");
     })
   }
 
   AddtoFavClick(person: User) {
     this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      this.toasterservice.success("Person Add to Favourite Successfully");
+      //this.toasterservice.success("Person has been added to Favourites Successfully!");
     })
   }
 
