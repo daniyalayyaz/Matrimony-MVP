@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
 import { Gender } from '../enums/genders.enum';
+import { RequestType } from '../enums/request.enum';
 import { LocalStorageItem } from '../helpers/localStorageItem.enum';
 import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { Message } from '../models/message.modal';
@@ -17,18 +19,36 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
   personList: Array<User> = [];
   messagesList: Array<Message>;
+  CurrentUser: User;
   pathfemale: string = "../../assets/female.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
   pathmale: string = "../../assets/male.png"
   
   constructor(private router: Router,
+              private toasterservice: ToastrService, 
               private appService: AppService) {
                 super()
                }
 
   ngOnInit(): void {
-    this.appService.onlineUser(Gender.FEMALE).pipe(takeUntil(this.Unsubscribe$)).subscribe(persons => this.personList = persons);
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    if(loggedUser) {
+      this.CurrentUser = JSON.parse(loggedUser);
+
+      switch(this.CurrentUser.gender) {
+        case Gender.FEMALE:
+          this.GetOnlineUsers(Gender.MALE);
+          break;
+        case Gender.MALE:
+          this.GetOnlineUsers(Gender.FEMALE);
+          break
+      }
+
+    }
+
+
+
 
     this.messagesList = [
       {
@@ -50,6 +70,12 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         time: "01.02.21",
       },
     ];
+  }
+
+  public GetOnlineUsers(gender: Gender) {
+    this.appService.onlineUser(gender).pipe(
+      takeUntil(this.Unsubscribe$))
+      .subscribe(persons => this.personList = persons);
   }
 
 
@@ -111,6 +137,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     localStorage.setItem(LocalStorageItem.SELECTED_PROFILE,JSON.stringify(person));
     this.router.navigate(['Profile']);
   }
+
   gotoGallery() {
     this.router.navigate(['Gallery']);
   }
@@ -119,7 +146,17 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   }
 
   onSendInterestClick(person: User) {
+    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      this.toasterservice.success("Interest send successfully");
+    })
+  }
 
+  AddtoFavClick(person: User) {
+    this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      this.toasterservice.success("Person Add to Favourite Successfully");
+    })
   }
 
 

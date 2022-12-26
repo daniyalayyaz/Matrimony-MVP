@@ -144,52 +144,56 @@
                                 </div>
                             </div>
                             <div class="row responsivelist">
-
-                                <div class="col-md-6 mt-3" *ngFor="let person of personList">
-                                    <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;" (click)="gotoProfile(person)">
-                                        <div class="row g-0 styleCard">
-                                            <div class="col-md-4 cardImageRes">
-                                                <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage" alt="..." />
-                                            </div>
-                                            <div class="col-md-8 cardbg cardbgRes">
-                                                <div class="card-body">
-                                                    <div class="d-flex">
-                                                        <div class="me-auto">
-                                                            <h5 class="card-title">{{person.name}}</h5>
+                                <ng-container *ngIf="personList.length > 0">
+                                    <div class="col-md-6 mt-3" *ngFor="let person of personList">
+                                        <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;" (click)="gotoProfile(person)">
+                                            <div class="row g-0 styleCard">
+                                                <div class="col-md-4 cardImageRes">
+                                                    <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage" alt="..." />
+                                                </div>
+                                                <div class="col-md-8 cardbg cardbgRes">
+                                                    <div class="card-body">
+                                                        <div class="d-flex">
+                                                            <div class="me-auto">
+                                                                <h5 class="card-title">{{person.name}}</h5>
+                                                            </div>
+                                                            <div class="">
+                                                                <img src="https://bit.ly/3BJ3wIg" class="imgSize"
+                                                                    alt="..." />
+                                                            </div>
                                                         </div>
-                                                        <div class="">
-                                                            <img src="https://bit.ly/3BJ3wIg" class="imgSize"
-                                                                alt="..." />
-                                                        </div>
-                                                    </div>
-
-                                                    <p class="card-text text-muted">
-                                                        {{person.gender? person.gender: "undefined"}} | {{person.age}} | {{person.caste}}
-                                                    </p>
-                                                    <p class="card-text text-muted">
-                                                        {{person.professional? person.professional: "undefined"}} | {{person.city? person.city: "undefined"}}
-                                                    </p>
-                                                    <p class="card-text text-muted">
-                                                        {{person.appearance? person.appearance: "undefined"}} | {{person.color? person.color: "undefined"}} | {{person.height ? person.height: "undefined"}}
-                                                    </p>
-                                                    <div class="d-flex mt-2">
-                                                        <div class="me-auto">
-                                                            <img src={{pathmessage}} class="imgCard1" alt="..." />
-                                                        </div>
-                                                        <div>
-                                                            <img src={{pathheart}} class="imgCard2" alt="..." />
-                                                        </div>
-                                                        <div class="ms-auto">
-                                                            <button type="submit" (click)="onSendInterestClick(person); $event.stopPropagation();" class="insterest">
-                                                                Send Interest
-                                                            </button>
+    
+                                                        <p class="card-text text-muted">
+                                                            {{person.gender? person.gender: "undefined"}} | {{person.age}} | {{person.caste}}
+                                                        </p>
+                                                        <p class="card-text text-muted">
+                                                            {{person.professional? person.professional: "undefined"}} | {{person.city? person.city: "undefined"}}
+                                                        </p>
+                                                        <p class="card-text text-muted">
+                                                            {{person.appearance? person.appearance: "undefined"}} | {{person.color? person.color: "undefined"}} | {{person.height ? person.height: "undefined"}}
+                                                        </p>
+                                                        <div class="d-flex mt-2">
+                                                            <div class="me-auto">
+                                                                <img src={{pathmessage}} class="imgCard1" alt="..." />
+                                                            </div>
+                                                            <div>
+                                                                <img src={{pathheart}} (click)="AddtoFavClick(person); $event.stopPropagation();" class="imgCard2" alt="..." />
+                                                            </div>
+                                                            <div class="ms-auto">
+                                                                <button type="submit" (click)="onSendInterestClick(person); $event.stopPropagation();" class="insterest">
+                                                                    Send Interest
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </ng-container>
+                                <ng-container *ngIf="personList.length == 0">
+                                        <h5>No Users Found</h5>
+                                </ng-container>
                             </div>
                         </div>
                     </div>
