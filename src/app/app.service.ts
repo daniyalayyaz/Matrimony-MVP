@@ -37,4 +37,19 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/users/viewRequest`;
     return this.http.post<any>(url,{id: userId, rid: requestId});
   }
+
+  viewAllRequests(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/viewAllRequest`;
+    return this.http.post<any>(url,{rid: userId});
+  }
+
+  nearBy(city: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/nearBy`;
+    return this.http.post<any>(url,{city: city});
+  }
+
+  updateUser(userId?: string, user?: any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/userUpdate`;
+    return this.http.post<any>(url,{id: userId, ...user});
+  }
 }

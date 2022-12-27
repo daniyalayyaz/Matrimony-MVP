@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
+import { RequestType } from '../enums/request.enum';
+import { LocalStorageItem } from '../helpers/localStorageItem.enum';
+import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { User } from '../models/user.modal';
 
 @Component({
@@ -8,18 +13,53 @@ import { User } from '../models/user.modal';
   templateUrl: './interests.component.html',
   styleUrls: ['./interests.component.css']
 })
-export class InterestsComponent implements OnInit {
+export class InterestsComponent extends UnsubscribeHandelr implements OnInit {
 
-  personList: Array<User> = [];
-  
+  requestedPersonsList: Array<User> = [];
+
+
   constructor(private router: Router,
-              private appService: AppService
-              ) { }
+              private appService: AppService,
+              private toasterservice: ToastrService,
+              ) { 
+                super()
+              }
   
   ngOnInit(): void {
 
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    if(loggedUser) {
+      this.CurrentUser = JSON.parse(loggedUser);
+      this.ViewAllRequests(this.CurrentUser._id);
+    }
+
   }
 
+  ViewAllRequests(userId?: string) {
+    this.appService.viewAllRequests(userId).pipe(takeUntil(this.Unsubscribe$))
+    .subscribe((requestedPersons: Array<User>) => {
+        if (requestedPersons.length > 0) {
+          this.requestedPersonsList = requestedPersons;
+        } else {
+          this.toasterservice.warning("No Requests Found");
+        }
+    })
+  }
+
+  AcceptRequest(person: User) {
+    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.ACCEPT).pipe(takeUntil(this.Unsubscribe$))
+    .subscribe(response => {
+      this.toasterservice.success("Request Accepted Successfully");
+      this.gotoFilterInterests();
+    })
+  }
+
+  CancelRequest(person: User) {
+    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.CANCEL).pipe(takeUntil(this.Unsubscribe$))
+    .subscribe(response => {
+      this.toasterservice.warning("Request Cancelled Successfully");
+    })
+  }
 
   users = [
     {

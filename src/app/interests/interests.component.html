@@ -43,44 +43,46 @@
 
 <div class="container text-center mt-4">
     <div class="row">
-        <div class="col-md-6" *ngFor="let user of users">
-            <div class="card mb-3 cardBg">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src={{user.image}} class="img-fluid rounded-start" alt="..." />
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="me-auto">
-                                    <h5 class="card-title text-start">
-                                        {{user.name}}
-                                    </h5>
-                                </div>
-                                <div>
-                                    <img src={{user.country}} class="cardImg" alt="..." />
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="me-auto">
-                                    <p class="card-text text-start mlSize">
-                                        {{user.profession}}
-                                    </p>
-                                </div>
-                                <p class="text-end pkrRight">Pakistan</p>
-                            </div>
-                            <p class="card-text text-start">{{user.distance}}</p>
-                            <div class="d-grid gap-2 d-md-block">
+        <ng-container *ngIf="requestedPersonsList.length > 0">
+            <div class="col-md-6" *ngFor="let user of requestedPersonsList">
+                <div class="card mb-3 cardBg">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src={{user.image}} class="img-fluid rounded-start" alt="..." />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
                                 <div class="d-flex">
                                     <div class="me-auto">
-                                        <button class="btnRed me-3 cardSize" type="button">
-                                            IGNORE
-                                        </button>
+                                        <h5 class="card-title text-start">
+                                            {{user.name}}
+                                        </h5>
                                     </div>
                                     <div>
-                                        <button class="btnGreen cardSize" type="button" (click)="gotoFilterInterests()">
-                                            ACCEPT
-                                        </button>
+                                        <img src={{user.country}} class="cardImg" alt="..." />
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="me-auto">
+                                        <p class="card-text text-start mlSize">
+                                            {{user.professional}}
+                                        </p>
+                                    </div>
+                                    <p class="text-end pkrRight">Pakistan</p>
+                                </div>
+                                <p class="card-text text-start">{{user.distance}}</p>
+                                <div class="d-grid gap-2 d-md-block">
+                                    <div class="d-flex">
+                                        <div class="me-auto">
+                                            <button class="btnRed me-3 cardSize" type="button" (click)="CancelRequest(user)">
+                                                IGNORE
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button class="btnGreen cardSize" type="button" (click)="AcceptRequest(user)">
+                                                ACCEPT
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -88,6 +90,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-container>
+        <ng-container *ngIf="requestedPersonsList.length == 0">
+            <div>
+                <h5>
+                    No Request Found
+                </h5>
+            </div>
+        </ng-container>
+        
     </div>
 </div></div>

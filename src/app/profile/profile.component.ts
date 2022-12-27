@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { takeUntil } from 'rxjs';
+import { AppService } from '../app.service';
 import { LocalStorageItem } from '../helpers/localStorageItem.enum';
+import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { ProfileDetail } from '../models/profile-detail.modal';
 import { User } from '../models/user.modal';
 
@@ -9,7 +13,7 @@ import { User } from '../models/user.modal';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
   pathleft: string = "../../assets/left.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
@@ -17,9 +21,19 @@ export class ProfileComponent implements OnInit{
   
   profileDetails: User;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private toasterservice: ToastrService,
+              private appService: AppService) {
+                super()
+              }
   
   ngOnInit(): void {
+
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    if(loggedUser) {
+      this.CurrentUser = JSON.parse(loggedUser);
+    }
+
    let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
    if (profileDetail) {
     this.profileDetails = JSON.parse(profileDetail);
@@ -27,7 +41,10 @@ export class ProfileComponent implements OnInit{
   }
 
   OnFavClick() {
-
+    this.appService.AddRemoveFavourite(this.CurrentUser._id, this.profileDetails._id)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      this.toasterservice.success("Add to Favourite Successfully");
+    })
   }
 
   OnMessageClick() {

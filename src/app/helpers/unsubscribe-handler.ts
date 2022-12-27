@@ -1,11 +1,12 @@
 import { Injectable, OnDestroy } from "@angular/core";
-//import { ToastrService } from "ngx-toastr";
 import { Subject } from "rxjs";
+import { User } from "../models/user.modal";
 
 
 @Injectable()
 export abstract class UnsubscribeHandelr implements OnDestroy{
     protected Unsubscribe$ : Subject<void> = new Subject();
+    CurrentUser: User;
     constructor() {}
     
     ngOnDestroy(): void {

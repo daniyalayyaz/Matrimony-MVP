@@ -27,14 +27,15 @@ import { EditprofileComponent } from './Edit-Profile/editprofile/editprofile.com
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationpageComponent } from './verificationpage/verificationpage.component';
 import { FormsModule } from '@angular/forms';
-import {AngularFireModule} from "@angular/fire/compat"
+import { AngularFireModule } from "@angular/fire/compat"
 import { environment } from 'src/environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { NgOtpInputModule } from  'ng-otp-input';
-// import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -67,8 +68,14 @@ import { NgOtpInputModule } from  'ng-otp-input';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ToastrModule.forRoot({
+        timeOut: 3000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      }),
     NgOtpInputModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),

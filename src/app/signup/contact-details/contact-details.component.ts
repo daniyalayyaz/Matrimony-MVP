@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AppService } from 'src/app/app.service';
+import { takeUntil } from 'rxjs';
 import { LocalStorageItem } from 'src/app/helpers/localStorageItem.enum';
+import { UnsubscribeHandelr } from 'src/app/helpers/unsubscribe-handler';
 
 @Component({
   selector: 'app-contact-details',
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.css']
 })
-export class ContactDetailsComponent {
+export class ContactDetailsComponent extends UnsubscribeHandelr implements OnInit {
   ContactDetails:any={};
   Email:any;
   FacebookLink:any;
@@ -20,8 +22,9 @@ export class ContactDetailsComponent {
 
   constructor(private router: Router, 
               private appService: AppService,
-              // private toasterservice: ToastrService
+              private toasterservice: ToastrService
               ) {
+                super()
     if(localStorage.getItem('ContactDetails') as string=='null') {
     this.Email= JSON.parse(localStorage.getItem('ContactDetails') as string).Email
     this.FacebookLink= JSON.parse(localStorage.getItem('ContactDetails') as string).FacebookLink
@@ -39,6 +42,9 @@ export class ContactDetailsComponent {
       this.TwitterLink=localStorage.getItem('ContactDetails') && JSON.parse(localStorage.getItem('ContactDetails') as string).TwitterLink
       this.ContactDetails={Email:this.Email,FacebookLink:this.FacebookLink,InstaLink:this.InstaLink,ParentsPhone:this.ParentsPhone,Phone:this.Phone,TwitterLink:this.TwitterLink}
     }
+  }
+  ngOnInit(): void {
+
   }
 
   eventonKey(event: any) {
@@ -92,13 +98,12 @@ export class ContactDetailsComponent {
       siblingsCountBrothers:JSON.parse(localStorage.getItem('FamilyDetails') as string).BrotherCount,
       socialEconomic:JSON.parse(localStorage.getItem('FamilyDetails') as string).SocioeconomicStatus,
       familyInfo:JSON.parse(localStorage.getItem('FamilyDetails') as string).OtherFamilyInfo,
-    
      }
-     this.appService.createProfile(d).subscribe(res => {
+     
+     this.appService.createProfile(d).pipe(takeUntil(this.Unsubscribe$)).subscribe(res => {
       if (res.user) {
         localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
-        
-        // this.toasterservice.success("User Saved Successfully");
+        this.toasterservice.success("User Saved Successfully");
         this.router.navigateByUrl(`Dashboard`);
       }
      })
@@ -109,8 +114,8 @@ export class ContactDetailsComponent {
     localStorage.setItem('ContactDetails', JSON.stringify(this.ContactDetails))
     this.RegisterUsers()
 }
-gotoSignupFourthPage(){
-  this.router.navigate(['Family-Details']);
-}
+  gotoSignupFourthPage() {
+    this.router.navigate(['Family-Details']);
+  }
 
 }

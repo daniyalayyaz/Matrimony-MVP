@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
@@ -19,14 +20,13 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
   personList: Array<User> = [];
   messagesList: Array<Message>;
-  CurrentUser: User;
   pathfemale: string = "../../assets/female.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
   pathmale: string = "../../assets/male.png"
   
   constructor(private router: Router,
-              //private toasterservice: ToastrService, 
+              private toasterservice: ToastrService, 
               private appService: AppService) {
                 super()
                }
@@ -75,9 +75,34 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   public GetOnlineUsers(gender: Gender) {
     this.appService.onlineUser(gender).pipe(
       takeUntil(this.Unsubscribe$))
-      .subscribe(persons => this.personList = persons);
+      .subscribe((persons: Array<User>) => 
+        {
+          this.personList = [];
+          this.personList = persons;
+        }  
+      );
   }
 
+  public onNearByClick() {
+    this.appService.nearBy(this.CurrentUser.city).pipe(
+      takeUntil(this.Unsubscribe$))
+      .subscribe((users: Array<User>) => {
+        this.toasterservice.success(`Users of ${this.CurrentUser.city} Loaded successfully`);
+        this.personList = [];
+        this.personList = users;
+      })
+  }
+
+  public onOnlineClick() {
+    switch(this.CurrentUser.gender) {
+      case Gender.FEMALE:
+        this.GetOnlineUsers(Gender.MALE);
+        break;
+      case Gender.MALE:
+        this.GetOnlineUsers(Gender.FEMALE);
+        break
+    }
+  }
 
   options = [
     {
@@ -147,17 +172,18 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   gotoEditProfile() {
     this.router.navigate(['Edit-Profile']);
   }
+  
   onSendInterestClick(person: User) {   
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      //this.toasterservice.success("Interest Sent Successfully!");
+      this.toasterservice.success("Interest Sent Successfully!");
     })
   }
 
   AddtoFavClick(person: User) {
     this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      //this.toasterservice.success("Person has been added to Favourites Successfully!");
+      this.toasterservice.success("Person has been added to Favourites Successfully!");
     })
   }
 
