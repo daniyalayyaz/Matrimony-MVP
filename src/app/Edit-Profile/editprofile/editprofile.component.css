@@ -11,9 +11,20 @@
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    font-family: georgia;
+
     
 }
+.bgColor {
+    background: linear-gradient(0deg, rgba(241, 88, 126, 1) 0%, rgba(249, 117, 112, 1) 100%);
+  }
+  
+  .btnEdit {
+    background-color: white !important;
+    border: none;
+    color: #0F4D5C;
+    padding: 10px;
+    width: 120px;
+  }
 .sidenav-img{
     width: 260px;
     height: 200px;
@@ -37,7 +48,7 @@
     float: right;
     overflow: hidden;
     position: relative;
-    font-family: georgia;
+
 }
 .main-card{
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 15%);

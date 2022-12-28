@@ -31,6 +31,9 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
   gotoEditPassword() {
     this.router.navigate(['Edit-Password']);
   }
+  gotoInterests() {
+    this.router.navigate(['Interests']);
+  }
   gotoEditUsername() {
     this.router.navigate(['Edit-Username']);
   }

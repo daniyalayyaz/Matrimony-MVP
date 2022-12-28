@@ -15,6 +15,9 @@ export class ChangepasswordComponent implements OnInit {
   gotoEditProfile() {
     this.router.navigate(['Edit-Profile']);
   }
+  gotoInterests() {
+    this.router.navigate(['Interests']);
+  }
   gotoEditPassword() {
     this.router.navigate(['Edit-Password']);
   }
