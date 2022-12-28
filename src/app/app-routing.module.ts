@@ -22,16 +22,19 @@ import { ChangephoneComponent } from './Edit-Profile/changephone/changephone.com
 import { ChangephotosComponent } from './Edit-Profile/changephotos/changephotos.component';
 import { ChangeusernameComponent } from './Edit-Profile/changeusername/changeusername.component';
 import { EditprofileComponent } from './Edit-Profile/editprofile/editprofile.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FavouritesComponent } from './favourites/favourites.component';
+import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
 const routes: Routes = [
-  { path:'', component: LoginComponent},
-  { path:'Basic-Details', component: BasicDetailsComponent},
-  { path:'Personal-Details', component: PersonalDetailsComponent},
-  { path:'More-Personal-Details', component: MorePersonalDetailsComponent},
-  { path:'Residential-Details', component: ResidentialDetailsComponent},
-  { path:'Professional-Details', component: ProfessionalDetailsComponent},
-  { path:'Family-Details', component: FamilyDetailsComponent},
-  { path:'Contact-Details', component: ContactDetailsComponent},
-  { path:'Dashboard', component: DashboardComponent},
+  {path:'', component: LoginComponent},
+  {path:'Basic-Details', component: BasicDetailsComponent},
+  {path:'Personal-Details', component: PersonalDetailsComponent},
+  {path:'More-Personal-Details', component: MorePersonalDetailsComponent},
+  {path:'Residential-Details', component: ResidentialDetailsComponent},
+  {path:'Professional-Details', component: ProfessionalDetailsComponent},
+  {path:'Family-Details', component: FamilyDetailsComponent},
+  {path:'Contact-Details', component: ContactDetailsComponent},
+  {path:'Dashboard', component: DashboardComponent},
   {path: 'Profile', component: ProfileComponent},
   {path: 'Subscribe', component: SubscribePackageComponent},
   {path: 'Gallery', component: GalleryComponent},
@@ -39,13 +42,15 @@ const routes: Routes = [
   {path: 'Filter-Interest', component: FilterInterestComponent},
   {path: 'otp-verification', component: OtpVerificationComponent},
   {path: 'verify/:id', component: VerificationpageComponent},
-   {path: 'Edit-Profile', component: EditprofileComponent},
+  {path: 'Edit-Profile', component: EditprofileComponent},
   {path: 'Edit-Email', component: ChangeemailComponent},
   {path: 'Edit-Username', component: ChangeusernameComponent},
   {path: 'Edit-Password', component: ChangepasswordComponent},
   {path: 'Edit-Phone', component: ChangephoneComponent},
   {path: 'Edit-Photos', component: ChangephotosComponent},
-
+  {path: "Contact-Us", component: ContactUsComponent },
+  {path: "favourites", component: FavouritesComponent},
+  {path: "loginwithemail", component: LoginwithemailComponent},
 
 
 ];

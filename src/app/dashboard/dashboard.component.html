@@ -35,9 +35,13 @@
                             </button>
                         </div>
                         <div class="p-2">
-                            <button type="button" class="btnLive">
+                            <!-- <button type="button" class="btnLive">
                                 Live
-                            </button>
+                            </button> -->
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" style="background-color: #ED7E9E; border-color: #E33365; ;" type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Show Online</label>
+                            </div>
                         </div>
                     </div>
                     <div class="text-center">
@@ -109,8 +113,10 @@
                             <div class="row">
                                 <div *ngFor="let option of options" style="
                         background: linear-gradient(#ED7E9E, #E33365)" class="col-md-5 mt-3 ms-3 text-center cardRqt">
+                                    <div (click)="option.route()">
                                     <i class="{{option.icon}} iconStyle pt-3"></i>
                                     <p class="iconTextStyle">{{option.text}}</p>
+                                    </div>
                                 </div>
                                 <div class="mt-3">
                                     <img src="https://bit.ly/3QMEJqX" alt="Girl in a jacket" width="100%"
@@ -118,8 +124,10 @@
                                 </div>
                                 <div *ngFor="let optCard of optionCard " style="
                         background: linear-gradient(#ED7E9E, #E33365)" class="col-md-5 mt-3 ms-3 text-center cardRqt">
+                                    <div (click)="optCard.route()">
                                     <i class="{{optCard.icon}} iconStyle pt-3"></i>
                                     <p class="iconTextStyle">{{optCard.text}}</p>
+                                </div>
                                 </div>
 
                             </div>

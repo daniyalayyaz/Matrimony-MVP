@@ -188,6 +188,10 @@
   padding: 5px;
   border-radius: 5px;
 }
+.switch-color{
+  background-color: #ED7E9E;
+}
+
 
 .cardbg {
   background-color: white;
