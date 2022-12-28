@@ -32,6 +32,10 @@
     flex-direction: column;
     justify-content: center;
 }
+.icon-color{
+    color: white;
+    margin-right: 20px;
+}
 
 @media (max-width:992px) {
     .loginimg {
@@ -76,16 +80,31 @@
     color: transparent;
     -webkit-text-fill-color: transparent;
     margin-right: 20px;
-  }
-  .facebook-btn:hover{
+}
+.facebook-btn:hover{
     transform: scale(1.1);
     transition: all 0.55s;
     background-color: #3B5998;
     color: white;
-  }
-  .google-btn:hover{
+}
+.google-btn:hover{
     transform: scale(1.1);
     transition: all 0.55s;
     background-color: white;
 
-  }
+}
+.email-btn{
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+    margin-top: 20px;
+    width: 100%;
+    font-weight: 500;
+    background-color:black;
+    color: white;
+}
+.email-btn:hover{
+    transform: scale(1.1);
+    transition: all 0.55s;
+    background-color:black;
+    color: white;
+
+}

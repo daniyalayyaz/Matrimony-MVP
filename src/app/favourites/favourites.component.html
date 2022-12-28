@@ -1,0 +1,157 @@
+<div>
+    <!--  NAVBAR-->
+    <nav class="navbar navbar-expand-lg" style="background-color: #E75480;font-family: georgia ;  ">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light ps-5" href="#">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                <form class="d-flex " role="search">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item text-end">
+                            <a class="nav-link text-light" href="#"><span><i class="fa-solid fa-user"></i></span>
+                                Interset</a>
+                        </li>
+                    </ul>
+
+                    <button class="btn text-bg-light text-dark" type="submit">
+                        <span><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        LOG OUT
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="about">
+        <div class="main-card">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">I Like</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Likes Me</button>
+                <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Matches</button> -->
+                <!-- <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Visitors</button> -->
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    <div class="row responsivelist">
+                        <ng-container *ngIf="personList.length > 0">
+                            <div class="col-md-6 mt-3" *ngFor="let person of personList">
+                                <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;">
+                                    <div class="row g-0 styleCard">
+                                        <div class="col-md-4 cardImageRes">
+                                            <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage" alt="..." />
+                                        </div>
+                                        <div class="col-md-8 cardbg cardbgRes">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="me-auto">
+                                                        <h5 class="card-title">{{person.name}}</h5>
+                                                    </div>
+                                                    <div class="">
+                                                        <img src="https://bit.ly/3BJ3wIg" class="imgSize"
+                                                            alt="..." />
+                                                    </div>
+                                                </div>
+
+                                                <p class="card-text text-muted">
+                                                    {{person.gender? person.gender: "undefined"}} | {{person.age}} | {{person.caste}}
+                                                </p>
+                                                <p class="card-text text-muted">
+                                                    {{person.professional? person.professional: "undefined"}} | {{person.city? person.city: "undefined"}}
+                                                </p>
+                                                <p class="card-text text-muted">
+                                                    {{person.appearance? person.appearance: "undefined"}} | {{person.color? person.color: "undefined"}} | {{person.height ? person.height: "undefined"}}
+                                                </p>
+                                                <div class="d-flex mt-2">
+                                                    <div class="me-auto">
+                                                        <img src={{pathmessage}} class="imgCard1" alt="..." />
+                                                    </div>
+                                                    <div>
+                                                        <img src={{pathheart}}  class="imgCard2" alt="..." />
+                                                    </div>
+                                                    <div class="ms-auto">
+                                                        <button type="submit"  class="insterest">
+                                                            Send Interest
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="personList.length == 0">
+                                <h5>No Users Found</h5>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                        <div class="row responsivelist">
+                            <ng-container *ngIf="personList2.length > 0">
+                                <div class="col-md-6 mt-3" *ngFor="let person of personList2">
+                                    <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;">
+                                        <div class="row g-0 styleCard">
+                                            <div class="col-md-4 cardImageRes">
+                                                <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage" alt="..." />
+                                            </div>
+                                            <div class="col-md-8 cardbg cardbgRes">
+                                                <div class="card-body">
+                                                    <div class="d-flex">
+                                                        <div class="me-auto">
+                                                            <h5 class="card-title">{{person.name}}</h5>
+                                                        </div>
+                                                        <div class="">
+                                                            <img src="https://bit.ly/3BJ3wIg" class="imgSize"
+                                                                alt="..." />
+                                                        </div>
+                                                    </div>
+    
+                                                    <p class="card-text text-muted">
+                                                        {{person.gender? person.gender: "undefined"}} | {{person.age}} | {{person.caste}}
+                                                    </p>
+                                                    <p class="card-text text-muted">
+                                                        {{person.professional? person.professional: "undefined"}} | {{person.city? person.city: "undefined"}}
+                                                    </p>
+                                                    <p class="card-text text-muted">
+                                                        {{person.appearance? person.appearance: "undefined"}} | {{person.color? person.color: "undefined"}} | {{person.height ? person.height: "undefined"}}
+                                                    </p>
+                                                    <div class="d-flex mt-2">
+                                                        <div class="me-auto">
+                                                            <img src={{pathmessage}} class="imgCard1" alt="..." />
+                                                        </div>
+                                                        <div>
+                                                            <img src={{pathheart}}  class="imgCard2" alt="..." />
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <button type="submit"  class="insterest">
+                                                                Send Interest
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="personList.length == 0">
+                                    <h5>No Users Found</h5>
+                            </ng-container>
+                        </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</div>

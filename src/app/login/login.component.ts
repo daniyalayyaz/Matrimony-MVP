@@ -13,6 +13,9 @@ export class LoginComponent {
   gotoSignupFirstPage(){
     this.router.navigate(['Basic-Details']);
 }
+gotologinwithemail(){
+  this.router.navigate(['loginwithemail']);
+}
 gotoDashboard(){
   this.router.navigate(['Dashboard']);
 }

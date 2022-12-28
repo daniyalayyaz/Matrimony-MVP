@@ -17,7 +17,7 @@ import { User } from '../models/user.modal';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
-
+status=1;
   personList: Array<User> = [];
   messagesList: Array<Message>;
   pathfemale: string = "../../assets/female.png";
@@ -29,9 +29,10 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
               private toasterservice: ToastrService, 
               private appService: AppService) {
                 super()
-               }
+}
 
   ngOnInit(): void {
+    this.status==1?'red':'yellow';
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if(loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
@@ -107,27 +108,33 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   options = [
     {
       icon: 'fa-solid fa-list',
-      text: "Matching Request",
+      text: "Favourites",
       color1: "#ED7E9E",
       color2: "#E33365",
+      route: ()=>{
+        this.router.navigate(['favourites']);
+      }
     },
     {
       icon: 'fa-solid fa-tags',
       text: "Packages Screen",
       color1: "#4DADC4",
       color2: "#1A6679",
+      route: ()=>{}
     },
     {
       icon: 'fa-solid fa-message',
       text: "Chats",
       color1: "#4DC489",
       color2: "#1A7929",
+      route: ()=>{}
     },
     {
       icon: 'fa-solid fa-user',
       text: "Profile",
       color1: "#4D6DC4",
       color2: "#1A2579",
+      route: ()=>{}
     },
   ];
 
@@ -137,24 +144,33 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       text: "Support",
       color1: "#4DC489",
       color2: "#1A7929",
+      route: ()=>{}
+
     },
     {
       icon: 'fa-solid fa-file-contract',
       text: "Privacy Policy",
       color1: "#4D6DC4",
       color2: "#1A2579",
+      route: ()=>{}
     },
     {
       icon: 'fa-solid fa-phone',
-      text: "Contact us",
+      text: "Contact Us",
       color1: "#A94DC4",
       color2: "#6B0F86",
+      route: ()=>{
+        this.router.navigate(['Contact-Us']);
+
+      }
     },
     {
       icon: 'fa-solid fa-file',
       text: "Terms & Conditions",
       color1: "#E54848",
       color2: "#7C0E0E ",
+      route: ()=>{}
+
     },
   ];
   

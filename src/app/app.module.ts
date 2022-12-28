@@ -36,6 +36,9 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
 import { NgOtpInputModule } from  'ng-otp-input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FavouritesComponent } from './favourites/favourites.component';
+import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { ToastrModule } from 'ngx-toastr';
     ChangepasswordComponent,
     ChangeusernameComponent,
     ChangephotosComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    ContactUsComponent,
+    FavouritesComponent,
+    LoginwithemailComponent,
   ],
   imports: [
     BrowserModule,
