@@ -25,6 +25,9 @@ import { EditprofileComponent } from './Edit-Profile/editprofile/editprofile.com
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { PreferencesComponent } from './preferences/preferences.component';
+import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
 const routes: Routes = [
   {path:'', component: LoginComponent},
   {path:'Basic-Details', component: BasicDetailsComponent},
@@ -51,6 +54,11 @@ const routes: Routes = [
   {path: "Contact-Us", component: ContactUsComponent },
   {path: "favourites", component: FavouritesComponent},
   {path: "loginwithemail", component: LoginwithemailComponent},
+  {path: 'Notifications', component: NotificationsComponent},
+  {path: 'Preferences', component: PreferencesComponent},
+  {path: 'Terms-And-Conditions', component: TermsNconditionsComponent},
+
+
 
 
 ];

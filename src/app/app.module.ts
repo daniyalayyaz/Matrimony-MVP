@@ -40,6 +40,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
 import { ChatComponent } from './chat/chat.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { PreferencesComponent } from './preferences/preferences.component';
+import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,9 @@ import { ChatComponent } from './chat/chat.component';
     FavouritesComponent,
     LoginwithemailComponent,
     ChatComponent,
+    NotificationsComponent,
+    PreferencesComponent,
+    TermsNconditionsComponent,
   ],
   imports: [
     BrowserModule,
