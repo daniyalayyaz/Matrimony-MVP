@@ -39,6 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { LoginwithemailComponent } from './loginwithemail/loginwithemail.compone
     ContactUsComponent,
     FavouritesComponent,
     LoginwithemailComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

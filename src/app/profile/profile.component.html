@@ -69,12 +69,12 @@
                             <h1 class="text-start resfont">{{profileDetails.name}}</h1>
                         </div>
                         <div class="col-6">
-                            <p class="text-end">Pakistan</p>
+                            <p class="text-end">{{profileDetails.country}}</p>
                         </div>
                     </div>
                     <div class="row ms-3 me-3">
                         <div class="col-6">
-                            <h3 class="text-start">Art Director</h3>
+                            <h3 class="text-start">{{profileDetails.professional}}</h3>
                         </div>
                         <div class="col-6 text-end">
                             <img class="text-end" src="https://bit.ly/3BbFu7p" alt="pakistan" width="80" height="40" />
@@ -83,14 +83,14 @@
                 </div>
 
 
-                <div class="text-start bg-white mt-2 p-3" *ngFor="let info of profileInfo">
+                <!-- <div class="text-start bg-white mt-2 p-3" *ngFor="let info of profileInfo">
                     <p style="color: #ED7E9E">{{info.title}}</p>
                     <hr class="underLine" />
                     <p>{{info.information}}</p>
-                </div>
-                <div class="row mt-3 text-start">
-                    <div class="col-md-5 ms-3 mb-3 bg-white rescol">
-                        <p style="color: #ED7E9E" class="ps-4 mt-4">Personal Information</p>
+                </div> -->
+                <div class="row mt-3 ms-3 me-3 text-start">
+                    <div class="col-md-12 bg-white rescol">
+                        <p style="color: #ED7E9E" class="ps-4 mt-4">Basic Information</p>
                         <hr class="underLine" />
                         <div class="row">
                             <div class="col-md-6 rescard">
@@ -101,14 +101,13 @@
                                     <li class="pt-3">Gender</li>
                                     <li class="pt-3">Age</li>
                                     <li class="pt-3">Status</li>
-                                    <li class="pt-3">Relegion</li>
-                                    <li class="pt-3">Other Relegion</li>
+                                    <li class="pt-3">Religion</li>
                                     <li class="pt-3">Other Qualification</li>
                                     <li class="pt-3">Job Status</li>
                                     <li class="pt-3">Work Place</li>
                                     <li class="pt-3">Nationality</li>
                                     <li class="pt-3">Future Plans</li>
-                                    <li class="pt-3">Professional</li>
+                                    <li class="pt-3">Profession</li>
                                 </ul>
                             </div>
                             <div class="col-md-6 rescard">
@@ -120,7 +119,6 @@
                                     <li class="pt-3">{{profileDetails.age}}</li>
                                     <li class="pt-3">{{profileDetails.status}}</li>
                                     <li class="pt-3">{{profileDetails.religious}}</li>
-                                    <li class="pt-3">{{profileDetails.otherreligion}}</li>
                                     <li class="pt-3">{{profileDetails.anotherqualification}}</li>
                                     <li class="pt-3">{{profileDetails.jobStatus}}</li>
                                     <li class="pt-3">{{profileDetails.workplace}}</li>
@@ -132,7 +130,10 @@
 
                         </div>
                     </div>
-                    <div class="col-md-6 ms-5 mb-3 bg-white rescol">
+                 
+                </div>
+                <div class="row mt-3 ms-3 me-3 mb-5 text-start">
+                    <div class="col-md-12 bg-white rescol">
                         <p style="color: #ED7E9E" class="ps-4 mt-4">Personal Information</p>
                         <hr class="underLine" />
                         <div class="row">
@@ -140,7 +141,7 @@
                                 <ul class="pointOfInformation">
                                     <li class="pt-3">My Sect</li>
                                     <li class="pt-3">Caste</li>
-                                    <li class="pt-3">Relegious Status</li>
+                                    <li class="pt-3">Religious Status</li>
                                     <li class="pt-3">Clan</li>
                                     <li class="pt-3">Mother Tongue</li>
                                     <li class="pt-3">Looks</li>
