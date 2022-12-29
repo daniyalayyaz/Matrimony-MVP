@@ -70,6 +70,18 @@ status=1;
         msg: "That was wonderful. Thanks..",
         time: "01.02.21",
       },
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
     ];
   }
 

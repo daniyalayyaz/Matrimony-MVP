@@ -54,8 +54,15 @@
   padding: 5px;
   width: 90px;
 }
-
+.body::-webkit-scrollbar{
+  display: none !important;
+}
+.bgProfile::-webkit-scrollbar{
+  display: none;
+}
 .bgProfile {
+  height: 70vh;
+  overflow-y: scroll;
   background-color: white;
   padding-left: 0;
   padding-right: 0;
