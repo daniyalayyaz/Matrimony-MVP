@@ -28,6 +28,7 @@ import { LoginwithemailComponent } from './loginwithemail/loginwithemail.compone
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
+import { ChatComponent } from './chat/chat.component';
 const routes: Routes = [
   {path:'', component: LoginComponent},
   {path:'Basic-Details', component: BasicDetailsComponent},
@@ -57,6 +58,8 @@ const routes: Routes = [
   {path: 'Notifications', component: NotificationsComponent},
   {path: 'Preferences', component: PreferencesComponent},
   {path: 'Terms-And-Conditions', component: TermsNconditionsComponent},
+  {path: 'Chat', component: ChatComponent},
+
 
 
 

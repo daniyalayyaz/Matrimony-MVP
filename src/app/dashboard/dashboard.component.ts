@@ -209,6 +209,9 @@ status=1;
   gotoPhotos() {
     this.router.navigate(['Edit-Photos']);
   }
+  gotoChat() {
+    this.router.navigate(['Chat']);
+  }
   onSendInterestClick(person: User) {   
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {

@@ -71,7 +71,7 @@
                 <div class="col-md-7 bgProfile margin-left">
                     <h6 class="bgMsg">Messages</h6>
                     <div *ngFor="let message of messagesList">
-                        <div class="d-flex mb-3">
+                        <div class="d-flex mb-3" (click)="gotoChat()" style="cursor: pointer;">
                             <div class="p-2 statusIcon">
                                 <img class="msgImg" src={{message.image}} alt="Girl in a jacket" />
                                 <span class="onlineShow"></span>
