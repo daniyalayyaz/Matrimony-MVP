@@ -107,7 +107,7 @@ status=1;
 
   options = [
     {
-      icon: 'fa-solid fa-list',
+      icon: 'fa-solid fa-heart',
       text: "Favourites",
       color1: "#ED7E9E",
       color2: "#E33365",
@@ -120,7 +120,10 @@ status=1;
       text: "Packages Screen",
       color1: "#4DADC4",
       color2: "#1A6679",
-      route: ()=>{}
+      route: ()=>{
+        this.router.navigate(['Subscribe']);
+
+      }
     },
     {
       icon: 'fa-solid fa-message',
@@ -134,17 +137,23 @@ status=1;
       text: "Profile",
       color1: "#4D6DC4",
       color2: "#1A2579",
-      route: ()=>{}
+      route: ()=>{
+        this.router.navigate(['Profile']);
+
+      }
     },
   ];
 
   optionCard = [
     {
-      icon: 'fa-solid fa-headset',
-      text: "Support",
+      icon: 'fa-solid fa-search',
+      text: "Find Match",
       color1: "#4DC489",
       color2: "#1A7929",
-      route: ()=>{}
+      route: ()=>{
+        this.router.navigate(['Filter-Interest']);
+
+      }
 
     },
     {
@@ -169,7 +178,10 @@ status=1;
       text: "Terms & Conditions",
       color1: "#E54848",
       color2: "#7C0E0E ",
-      route: ()=>{}
+      route: ()=>{
+        this.router.navigate(['Terms-And-Conditions']);
+
+      }
 
     },
   ];
@@ -188,7 +200,15 @@ status=1;
   gotoEditProfile() {
     this.router.navigate(['Edit-Profile']);
   }
-  
+  gotoNotifications() {
+    this.router.navigate(['Notifications']);
+  }
+  gotoPreferences() {
+    this.router.navigate(['Preferences']);
+  }
+  gotoPhotos() {
+    this.router.navigate(['Edit-Photos']);
+  }
   onSendInterestClick(person: User) {   
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
