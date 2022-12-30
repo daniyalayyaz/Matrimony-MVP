@@ -76,6 +76,18 @@ checkbox:boolean;
         msg: "That was wonderful. Thanks..",
         time: "01.02.21",
       },
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
+      {
+        image: "https://bit.ly/3RzZK9J",
+        name: "Cristina Rohmer",
+        msg: "That was wonderful. Thanks..",
+        time: "01.02.21",
+      },
     ];
   }
   
@@ -226,6 +238,9 @@ checkbox:boolean;
   }
   gotoPhotos() {
     this.router.navigate(['Edit-Photos']);
+  }
+  gotoChat() {
+    this.router.navigate(['Chat']);
   }
   onSendInterestClick(person: User) {   
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)

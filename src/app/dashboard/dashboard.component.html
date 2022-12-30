@@ -1,4 +1,4 @@
-<div style="font-family: 'Poppins';">
+<div style="font-family: 'Poppins';" class="body">
     <nav class="navbar navbar-expand-lg bgColor p-4">
         <div class="container">
             <a class="navbar-brand text-white fs-4">LOGO</a>
@@ -74,7 +74,7 @@
                 <div class="col-md-7 bgProfile margin-left">
                     <h6 class="bgMsg">Messages</h6>
                     <div *ngFor="let message of messagesList">
-                        <div class="d-flex mb-3">
+                        <div class="d-flex mb-3" (click)="gotoChat()" style="cursor: pointer;">
                             <div class="p-2 statusIcon">
                                 <img class="msgImg" src={{message.image}} alt="Girl in a jacket" />
                                 <span class="onlineShow"></span>
@@ -185,7 +185,7 @@
                                                         </p>
                                                         <div class="d-flex mt-2">
                                                             <div class="me-auto">
-                                                                <img src={{pathmessage}} class="imgCard1" alt="..." />
+                                                                <img src={{pathmessage}} (click)="gotoChat()" class="imgCard1" alt="..." />
                                                             </div>
                                                             <div>
                                                                 <img src={{pathheart}} (click)="AddtoFavClick(person); $event.stopPropagation();" class="imgCard2" alt="..." />
