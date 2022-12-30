@@ -47,6 +47,13 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
     })
   }
 
+  blockuser() {
+    this.appService.AddRemoveFavourite(this.CurrentUser._id, this.profileDetails._id)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      this.toasterservice.success("Add to Favourite Successfully");
+    })
+  }
+
   OnMessageClick() {
 
   }
@@ -105,4 +112,5 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
   gotoSubscribe(){
     this.router.navigate(['Subscribe']);
   }
+ 
 }

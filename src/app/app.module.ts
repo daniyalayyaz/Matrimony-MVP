@@ -43,6 +43,7 @@ import { ChatComponent } from './chat/chat.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions
     NotificationsComponent,
     PreferencesComponent,
     TermsNconditionsComponent,
+    MatchmakingComponent,
   ],
   imports: [
     BrowserModule,

@@ -59,6 +59,7 @@ export interface User {
     image?: string;
     training?: string;
     appearance?: string;
+    LoginStatus?: boolean;
     color?: string;
     distance?: string;
 
