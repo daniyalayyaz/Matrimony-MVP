@@ -156,11 +156,14 @@ checkbox:boolean;
       }
     },
     {
-      icon: 'fa-solid fa-message',
-      text: "Chats",
+      icon: 'fa-brands fa-searchengin',
+      text: "Match-Making",
       color1: "#4DC489",
       color2: "#1A7929",
-      route: ()=>{}
+      route: ()=>{
+        this.router.navigate(['Matchmaking']);
+
+      }
     },
     {
       icon: 'fa-solid fa-user',
@@ -177,7 +180,7 @@ checkbox:boolean;
   optionCard = [
     {
       icon: 'fa-solid fa-search',
-      text: "Find Match",
+      text: "Search Profiles",
       color1: "#4DC489",
       color2: "#1A7929",
       route: ()=>{
@@ -268,7 +271,7 @@ checkbox:boolean;
         console.warn(res.user)
         if (res.user) {
           localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
-          this.toasterservice.success("update status");
+          this.toasterservice.success("Status Updated Successfully!");
           
         }
        })

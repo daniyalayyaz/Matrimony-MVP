@@ -141,10 +141,10 @@ super()
                  console.warn(this.personList)
                  if(this.personList.length>0)
                  {
-                  this.toasterservice.success(`Record found successfullt`);
+                  this.toasterservice.success(`Record Found Successfully!`);
                  }
                  else{
-                   this.toasterservice.error("no record foound");
+                   this.toasterservice.error("NO RECORD FOUND!");
 
                  }
                }  
