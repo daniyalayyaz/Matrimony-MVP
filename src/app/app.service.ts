@@ -70,4 +70,26 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;
     return this.http.post<any>(url,{userId: userId,LoginStatus:status});
   }
+
+
+  getfav(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/viewFav`;
+    return this.http.post<any>(url,{id: userId});
+  }
+  
+
+  Blockuser(id:any,buser:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/blockUser`;
+    return this.http.post<any>(url,{loginId:id,userId:buser});
+  }
+  getblockuser(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/showBlockedUsers`;
+    return this.http.post<any>(url,{id: userId});
+  }
+  
+
+  unblock(id:any,buser:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/unblockUser`;
+    return this.http.post<any>(url,{userId:id,blockedUserId:buser});
+  }
 }

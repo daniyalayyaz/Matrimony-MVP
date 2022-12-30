@@ -49,11 +49,23 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
     })
   }
 
-  blockuser() {
-    this.appService.AddRemoveFavourite(this.CurrentUser._id, this.profileDetails._id)
-    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+  blockuser(id:any) {
+
+   
+    
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    if(loggedUser) {
+      this.CurrentUser = JSON.parse(loggedUser);
+    // var body={
+    //   'loginId':this.CurrentUser._id,
+    //   'userId':id
+    // }
+  // console.warn(body)
+    this.appService.Blockuser(this.CurrentUser._id,id).pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      
       this.toasterservice.success("User Blocked Successfully!");
     })
+    }
   }
 
   OnMessageClick() {
