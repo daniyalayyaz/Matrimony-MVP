@@ -18,6 +18,7 @@ import { User } from '../models/user.modal';
 })
 export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 status=1;
+chatList=[{messages:[{message:"",name:""}],_id:""}];
 checkbox:boolean;
   personList: Array<User> = [];
   messagesList: Array<Message>;
@@ -52,6 +53,7 @@ checkbox:boolean;
       }
 
       this.checkstatus()
+      this.getAllChat();
 
     }
   
@@ -129,6 +131,15 @@ checkbox:boolean;
       })
   }
 
+  public getAllChat() {
+    this.appService.getchat(this.CurrentUser._id).pipe(
+      takeUntil(this.Unsubscribe$))
+      .subscribe((users) => {
+   
+        this.chatList= users;
+        console.log(users);
+      })
+  }
   public onOnlineClick() {
     switch(this.CurrentUser.gender) {
       case Gender.FEMALE:
@@ -250,8 +261,14 @@ checkbox:boolean;
   gotoPhotos() {
     this.router.navigate(['Edit-Photos']);
   }
-  gotoChat() {
-    this.router.navigate(['Chat']);
+  letschat(id:any){
+    this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
+     console.log(persons);
+      this.router.navigate(['Chat/'+persons._id]);    })
+      localStorage.setItem("id",id);
+  }
+  gotoChat(id:any) {
+    this.router.navigate(['Chat/'+id]);
   }
   onSendInterestClick(person: User) {   
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
@@ -266,6 +283,7 @@ checkbox:boolean;
       this.toasterservice.success("Person has been added to Favourites Successfully!");
     })
   }
+
   statuschange() {   
     this.appService.Loginstatusupdate(this.CurrentUser._id, this.saveUsername)
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {

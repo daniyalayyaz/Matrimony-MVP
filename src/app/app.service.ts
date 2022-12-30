@@ -70,4 +70,23 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;
     return this.http.post<any>(url,{userId: userId,LoginStatus:status});
   }
+  getchat(senderId?: string,name?:String): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/getAlluserChat`;
+    return this.http.post<any>(url,{senderId,name});
+  }
+  getAllChat(id?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/getAllChat`;
+    return this.http.post<any>(url,{id});
+  }
+
+  postChat(id?: string,name?: string,senderId?:string,receiverId?:string, message?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/postchat`;
+    return this.http.post<any>(url,{id, name,senderId, receiverId, message });
+  }
+  letschat( senderId?:string,receiverId?:string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/getChatGroup`;
+    return this.http.post<any>(url,{senderId, receiverId});
+  }
+  
 }
+
