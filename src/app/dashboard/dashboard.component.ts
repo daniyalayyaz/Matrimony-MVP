@@ -35,6 +35,8 @@ checkbox:boolean;
 }
 
   ngOnInit(): void {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     this.status==1?'red':'yellow';
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if(loggedUser) {
@@ -91,7 +93,10 @@ checkbox:boolean;
     ];
   }
   
-
+   public topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   public GetOnlineUsers(gender: Gender) {
     this.appService.onlineUser(gender).pipe(
       takeUntil(this.Unsubscribe$))

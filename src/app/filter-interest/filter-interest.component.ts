@@ -31,7 +31,8 @@ super()
      }
 
   ngOnInit(): void {
-
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
   pathfemale: string = "../../assets/female.png";
   pathmessage: string = "../../assets/message.png";

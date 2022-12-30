@@ -26,7 +26,8 @@ export class InterestsComponent extends UnsubscribeHandelr implements OnInit {
               }
   
   ngOnInit(): void {
-
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if(loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);

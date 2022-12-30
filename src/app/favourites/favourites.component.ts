@@ -11,6 +11,8 @@ export class FavouritesComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
