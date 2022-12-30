@@ -10,6 +10,14 @@
 .bgcolor {
     background-color: #0F4D5C;
 }
+.headerbackground{
+    background: linear-gradient(0deg, rgba(241, 88, 126, 1) 0%, rgba(249, 117, 112, 1) 100%);
+    color: white;
+
+}
+.modal{
+    background-color: rgba(229, 203, 203, 0.7);;
+ }
 .btnPrivate {
     color: black;
     border: none;

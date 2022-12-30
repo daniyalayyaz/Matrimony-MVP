@@ -44,8 +44,10 @@
                     <div class="card-overlay">
                         <p class="card-text cardDetalis text-dark cardBtnBg">
                             <img src={{pathleft}} alt="Girl in a jacket" width="50" height="60" />
-                            <img src={{pathmessage}} (click)="OnMessageClick()" alt="Girl in a jacket" width="50" height="60" />
-                            <img src={{pathheart}} (click)="OnFavClick()" alt="Girl in a jacket" width="50" height="50" />
+                            <img src={{pathmessage}} (click)="OnMessageClick()" alt="Girl in a jacket" width="50"
+                                height="60" />
+                            <img src={{pathheart}} (click)="OnFavClick()" alt="Girl in a jacket" width="50"
+                                height="50" />
                             <img src={{pathright}} alt="Girl in a jacket" width="50" height="60" />
                         </p>
                     </div>
@@ -63,11 +65,29 @@
                 <button type="button" class="btnRqt mb-3" (click)="blockuser()">
                     BLOCK
                 </button>
-                <button type="button" class="btnRqt">
+                <button type="button" class="btnRqt" (click)="openModal()">
                     REPORT PROFILE
                 </button>
             </div>
-
+            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header headerbackground">
+                            <h4 class="modal-title">Report User</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control rounded-pill" aria-label="Name" name="name"
+                                aria-describedby="addon-wrapping" placeholder="Enter Reason" required="true" /> <br>
+                            <button type="button" class="btnRqt mb-3">
+                                SUBMIT
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-9 padding-zero">
                 <div class="bgRow pt-4">
                     <div class="row ms-3 me-3">
@@ -136,7 +156,7 @@
 
                         </div>
                     </div>
-                 
+
                 </div>
                 <div class="row mt-3 ms-3 me-3 mb-5 text-start">
                     <div class="col-md-12 bg-white rescol">
@@ -183,6 +203,26 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

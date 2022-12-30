@@ -26,7 +26,13 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
               private appService: AppService) {
                 super()
               }
-  
+              display = "none";
+              openModal() {
+                this.display = "block";
+              }
+              onCloseHandled() {
+                this.display = "none";
+              }
   ngOnInit(): void {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
