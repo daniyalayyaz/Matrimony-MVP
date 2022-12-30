@@ -190,11 +190,14 @@ checkbox:boolean;
 
     },
     {
-      icon: 'fa-solid fa-file-contract',
-      text: "Privacy Policy",
+      icon: 'fa-solid fa-ban',
+      text: "Blocked Users",
       color1: "#4D6DC4",
       color2: "#1A2579",
-      route: ()=>{}
+      route: ()=>{
+        this.router.navigate(['BlockedUsers']);
+
+      }
     },
     {
       icon: 'fa-solid fa-phone',

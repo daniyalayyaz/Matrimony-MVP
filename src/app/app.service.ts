@@ -64,7 +64,7 @@ export class AppService {
 
   filter(user: User): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/search`;
-    return this.http.post<any>(url,{id: user });
+    return this.http.post<any>(url,{ user });
   }
   Loginstatusupdate(userId?: string,status?:boolean): Observable<any> {
     const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;

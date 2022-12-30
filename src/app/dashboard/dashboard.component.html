@@ -115,7 +115,7 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div *ngFor="let option of options" style="
-                        background: linear-gradient(#ED7E9E, #E33365)" class="col-md-5 mt-3 ms-3 text-center cardRqt">
+                        background: linear-gradient(#ED7E9E, #E33365); cursor: pointer;" class="col-md-5 mt-3 ms-3 text-center cardRqt">
                                     <div (click)="option.route()">
                                     <i class="{{option.icon}} iconStyle pt-3"></i>
                                     <p class="iconTextStyle">{{option.text}}</p>
@@ -126,7 +126,7 @@
                                         height="250px" />
                                 </div>
                                 <div *ngFor="let optCard of optionCard " style="
-                        background: linear-gradient(#ED7E9E, #E33365)" class="col-md-5 mt-3 ms-3 text-center cardRqt">
+                        background: linear-gradient(#ED7E9E, #E33365); cursor: pointer;" class="col-md-5 mt-3 ms-3 text-center cardRqt">
                                     <div (click)="optCard.route()">
                                     <i class="{{optCard.icon}} iconStyle pt-3"></i>
                                     <p class="iconTextStyle">{{optCard.text}}</p>

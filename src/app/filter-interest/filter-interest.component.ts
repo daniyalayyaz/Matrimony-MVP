@@ -126,10 +126,11 @@ super()
       userId:  this.CurrentUser ._id,
       max_age:this.MAx,
       min_age:this.Min,
-      country:this.country,
-      gender:  this.CurrentUser .gender
+      country:"Afghanistan",
+      gender:  this.CurrentUser.gender
       
           }
+          console.warn(body)
           this.CurrentUser = JSON.parse(loggedUser);
           console.warn(this.CurrentUser)
            this.appService.filter(body).pipe(

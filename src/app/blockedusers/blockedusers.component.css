@@ -33,18 +33,17 @@
     height: 100%;
     width: 100%;
   }
+  .NoDataMessage{
+    text-align: center; padding-top: 15%; font-weight: bold;
+  }
   .insterest {
     background-color: #0F4D5C;
     color: white;
     width: 100%;
     border: none;
-    font-size: 14px;
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
-  }
-  .NoDataMessage{
-    text-align: center; padding-top: 15%; font-weight: bold;
   }
   @media (max-width: 576px){
     .responsivelist {
@@ -53,9 +52,6 @@
       .cardbgRes {
         width: 70%;
       }
-      .NoDataMessage{
-       padding-top: 60%; 
-      }
   .responsivelist {
     height: 90vh;
     overflow: auto;
@@ -63,7 +59,7 @@
       .cardImageRes {
         width: 30%;
       }
-      .insterest{
-        font-size: 12px;
-      }
+      .NoDataMessage{
+        padding-top: 60%; 
+       }
   }

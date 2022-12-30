@@ -45,6 +45,7 @@ import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
+import { BlockedusersComponent } from './blockedusers/blockedusers.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { ChatComponent } from './chat/chat.component';
     TermsNconditionsComponent,
     MatchmakingComponent,
     ChatComponent,
+    BlockedusersComponent,
     
   ],
   imports: [

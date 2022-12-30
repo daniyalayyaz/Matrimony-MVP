@@ -30,6 +30,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { ChatComponent } from './chat/chat.component';
+import { BlockedusersComponent } from './blockedusers/blockedusers.component';
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
@@ -62,6 +63,8 @@ const routes: Routes = [
   {path: 'Terms-And-Conditions', component: TermsNconditionsComponent},
   {path: 'Matchmaking', component: MatchmakingComponent},
   {path: 'Chat', component: ChatComponent},
+  {path: 'BlockedUsers', component: BlockedusersComponent},
+
 
 
 
