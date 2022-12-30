@@ -42,10 +42,25 @@ chatList={members:[],messages:[{message:"",name:"",sender:""}],_id:""};
     this.appService.postChat(this.chatList._id||"56cb91bdc3464f14678934ca",this.CurrentUser.name,this.CurrentUser._id,this.chatList.members[1]||localStorage.getItem("id"),this.chat).pipe(
       takeUntil(this.Unsubscribe$))
       .subscribe((users) => {
-    
-        this.router.navigate(['Chat/'+users._id]);  
+    if(users._id){
+      this.route.paramMap.subscribe((params: any) => {
+        this.id = params?.get("id") || "";
+        console.log(this.id)
+        this.appService.getAllChat(this.id).pipe(
+          takeUntil(this.Unsubscribe$))
+          .subscribe((users) => {
+       
+            this.chatList= users;
+            this.chat="";
+          })
       })
+    }
+    else{
+        this.router.navigate(['Chat/'+users._id]);  
+        this.chat="";
+      
+    }
 
     
-  }
-}
+      })
+}}
