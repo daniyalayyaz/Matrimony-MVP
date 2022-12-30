@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
+import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
+import { LocalStorageItem } from '../helpers/localStorageItem.enum';
+import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
+import { Message } from '../models/message.modal';
 import { User } from '../models/user.modal';
 
 @Component({
@@ -8,12 +14,21 @@ import { User } from '../models/user.modal';
   templateUrl: './filter-interest.component.html',
   styleUrls: ['./filter-interest.component.css']
 })
-export class FilterInterestComponent implements OnInit{
+export class FilterInterestComponent  extends UnsubscribeHandelr  implements OnInit{
 
+  personList: Array<User> = [];
+  messagesList: Array<Message>;
   personsList: Array<User>  = [];
+  MAx:string;
+ Min:string;
+ country:string;
+ gender:string;
   
   constructor(private router: Router,
-    private appService: AppService) { }
+    private appService: AppService, private toasterservice: ToastrService, ) {
+super()
+
+     }
 
   ngOnInit(): void {
 
@@ -102,4 +117,40 @@ export class FilterInterestComponent implements OnInit{
       height: "5'5 Tall",
     },
   ];
+  filter(){
+
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    if(loggedUser) {
+      this.CurrentUser = JSON.parse(loggedUser);
+    var body={
+      userId:  this.CurrentUser ._id,
+      max_age:this.MAx,
+      min_age:this.Min,
+      country:this.country,
+      gender:  this.CurrentUser .gender
+      
+          }
+          this.CurrentUser = JSON.parse(loggedUser);
+          console.warn(this.CurrentUser)
+           this.appService.filter(body).pipe(
+             takeUntil(this.Unsubscribe$))
+             .subscribe((persons: Array<User>) => 
+               {
+                 this.personList = [];
+                 this.personList = persons;
+                 console.warn(this.personList)
+                 if(this.personList.length>0)
+                 {
+                  this.toasterservice.success(`Record found successfullt`);
+                 }
+                 else{
+                   this.toasterservice.error("no record foound");
+
+                 }
+               }  
+             );
+          
+        }
+   
+}
 }

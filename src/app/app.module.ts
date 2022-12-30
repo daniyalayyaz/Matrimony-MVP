@@ -42,6 +42,7 @@ import { LoginwithemailComponent } from './loginwithemail/loginwithemail.compone
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 
@@ -78,6 +79,7 @@ import { ChatComponent } from './chat/chat.component';
     NotificationsComponent,
     PreferencesComponent,
     TermsNconditionsComponent,
+    MatchmakingComponent,
     ChatComponent,
     
   ],

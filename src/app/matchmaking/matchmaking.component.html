@@ -1,0 +1,233 @@
+<div style="font-family: 'Poppins';">
+
+    <nav class="navbar navbar-expand-lg bgColor p-4">
+        <div class="container">
+            <a class="navbar-brand text-white fs-4">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="nav resnav">
+                    <li class="nav-item">
+                        <button class="btnEdit" type="button">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            LOG OUT
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+          <!-- <div
+            style="background-color: #0F4D5C; color: white"
+            class="mt-5"
+          >
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <label class="form-label mt-3">Age</label>
+                  <br/>
+                  <select
+                    style="background-color: rgba(255, 255, 255, 0.5); width: 100%;"
+                    class="selectOption"
+                    aria-label="Default select example"
+                  >
+                    <option class="optStyle" selected>
+                      Minimum Age
+                    </option>
+                    <option class="optStyle" value="1">
+                      18
+                    </option>
+                    <option class="optStyle" value="2">
+                      19
+                    </option>
+                    <option class="optStyle" value="3">
+                      20
+                    </option>
+                    <option class="optStyle" value="4">
+                      21
+                    </option>
+                    <option class="optStyle" value="5">
+                      22
+                    </option>
+                    <option class="optStyle" value="6">
+                      23
+                    </option>
+                    <option class="optStyle" value="7">
+                      24
+                    </option>
+                    <option class="optStyle" value="8">
+                      25
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <select
+                    style="background-color: rgba(255, 255, 255, 0.5); width: 100%;"
+                    class="selectOption mt-5"
+                    aria-label="Default select example"
+                  >
+                    <option class="optStyle" selected>
+                      Maximum Age
+                    </option>
+                    <option class="optStyle" value="1">
+                      18
+                    </option>
+                    <option class="optStyle" value="2">
+                      19
+                    </option>
+                    <option class="optStyle" value="3">
+                      20
+                    </option>
+                    <option class="optStyle" value="4">
+                      21
+                    </option>
+                    <option class="optStyle" value="5">
+                      22
+                    </option>
+                    <option class="optStyle" value="6">
+                      23
+                    </option>
+                    <option class="optStyle" value="7">
+                      24
+                    </option>
+                    <option class="optStyle" value="8">
+                      25
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label mt-3">From</label>
+                  <br/>
+                  <select
+                    style="background-color: rgba(255, 255, 255, 0.5); width: 100%;"
+                    class="selectOption wdOption"
+                    aria-label="Default select example"
+                  >
+                    <option class="optStyle" value="1" selected>
+                      Pakistan
+                    </option>
+                    <option class="optStyle" value="2">
+                      United Arab Emirates
+                    </option>
+                    <option class="optStyle" value="3">
+                      Vietnam
+                    </option>
+                    <option class="optStyle" value="4">
+                      Austria
+                    </option>
+                    <option class="optStyle" value="5">
+                      Hungary
+                    </option>
+                    <option class="optStyle" value="6">
+                      Turkey
+                    </option>
+                    <option class="optStyle" value="7">
+                      Switzerland
+                    </option>
+                    <option class="optStyle" value="8">
+                      Germany
+                    </option>
+                    <option class="optStyle" value="9">
+                      Iran
+                    </option>
+                    <option class="optStyle" value="10">
+                      United Kingdom
+                    </option>
+                    <option class="optStyle" value="11">
+                      France
+                    </option>
+                    <option class="optStyle" value="12">
+                      Kyrgyzstan
+                    </option>
+                    <option class="optStyle" value="13">
+                      Lebanon
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3 mt-2">
+                  <label class="form-label lblGender ml-5">Gender:</label>
+                  <img src={{pathmale}} alt="..." width="80" height="90" />
+                  <img src={{pathfemale}} alt="..." width="80" height="90" />
+                </div>
+              </div>
+            </div>
+          </div> -->
+    
+          <div class="bgCardColor">
+            <div class="container">
+              <div class="row">
+                    <div class="col-md-6 mt-5" *ngFor="let person of personList">
+                      <div class="card mb-3 styleCard">
+                        <div class="row g-0 styleCard">
+                          <!-- <div class="col-md-4">
+                            <img
+                              src={{person.image}}
+                              class="rounded-start cardImage"
+                              alt="..."
+                            />
+                          </div> -->
+                          <div class="col-md-8 cardbg">
+                            <div class="card-body">
+                              <div class="d-flex">
+                                <div class="me-auto">
+                                  <h5 class="card-title">{{person.name}}</h5>
+                                </div>
+                                <div class="">
+                                  <img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAMAAABmmnOVAAAAMFBMVEXk5ueutLe+wsTn6eqrsbSorrLZ3N3h4+Syt7rQ09W4vcDW2dvq7OzIzM7d4OG7wMNVLcDiAAADHElEQVR4nO2ayXLDIAxAwcKYnf//23pJ2ziJbYkgkgNvppde/EYgEFKE6HQ6nU6n0+l0Op0OAgD47PcDiJS0TiKEz5gE4aNT44bMUbePCKQolZJ/KKWMnZpqQMr3BjdGGdtFAyCOzwpbPGxo5KDla4VVI4sWwQB7rLBYmMRvEeJ45rCguS1CPI3DFgxmi4u1+LVIrA7pci1WDKfEhInDEorMtyCQkRJSWS4L8FiH2YLJQQS0wiwx8IQCrk+Ie4uJRUIYgoNUkSMU4CmBYEpTfGrcQsGRIBNJYZZwDLc6IT9vFvUdwkCW8NXXI5ByY5VgyA9qIDgukESWkKa2BOXe+KO6BKqa2VM9PYokal8fgKgt+SUKIjF+g0T9PVGSHbUlvuKcQBfa/zCcmF9xdwRiTcNyi9LTg6PUTUQHaRgqK3DEQHDUmGCJ1TbPw4P27uB5gtHusJGpRwEECa63KCkU1W/Qfwt0gvC8RDewt5hyjK0zdJryds5Q77CRuYeIeQ2ObA2rX65jwdc0u7O46hrVv8FfEOzBoGENg2k0eQGRD4KhVGw071g0vHsx+VEqNx1AgfBuvyhKqYF9xvBEmOwgl2ng+mcG+5n56PzVSXtrrU/TZ0a080dhR+NRMYQgtI0xO7NshRlpXB6i9VMILbIDYFoHw+unH3JDzf920SbgFJnDraOTT59/cJFm8BPT0gDowZyclfcio8y+fjxgmY2TSv712KgZjvloyidT4UMNZ+uNi0G/OqQxjKbSERa0oz299hqyQnUBaXhDYUGZd68UsPS98KwxvLM1QLyzEncWUhfna0nb8Eij9DFU0sQ9tnBF9Q68uyMfLIqKT1cxDpsG/ScmprZDgUX1OKwWpBWhDmLRELoWVfNiB352XfF8eATdRYKpam7uQb/YiV1TGrhfHjEuxiqBG0BwKiwWHhEItsz4BdF4B8ZduTFedlGYd8TKZX8RyFMmOpfTmIKhH13iosLh35YLF+tBHe8Ucn5gUX9CVMbFUVEyjC6QON0ULRJ0kchn51WbfTkXvecSQxtO0wMacboxO51Op/Pd/ADgoCQ35HRZWgAAAABJRU5ErkJggg=="
+                                    class="imgSize"
+                                    alt="..."
+                                  />
+                                </div>
+                              </div>
+    
+                              <p class="card-text text-muted">
+                                {{person.gender}} | {{person.age}} | 
+                             {{person.caste}} 
+                              </p>
+                              <p class="card-text text-muted">
+                                {{person.training}} 
+                                
+                            | {{person.professional}} | 
+                            
+                                {{person.city}}
+                              </p>
+                              <p class="card-text text-muted">
+                                {{person.appearance}} | {{person.color}} | {{person.height}}
+                              </p>
+                              <div class="d-flex">
+                                <div class="me-auto">
+                                  <img
+                                    src={{pathmessage}}
+                                    class="imgCard1"
+                                    alt="..."
+                                  />
+                                </div>
+                                <div>
+                                    <!-- <button type="submit"  (click)="AddtoFavClick(person);" class="insterest">
+                                        Send Interest
+                                    </button> -->
+                                  <img
+                                  (click)="AddtoFavClick(person);"
+                                    src={{pathheart}}
+                                   
+                                    class="imgCard2"
+                                    alt="..."
+                                  />
+                                </div>
+                                <div class="ms-auto">
+                                  <button type="submit" (click)="AddtoFavClick(person)" class="insterest">
+                                      Send Interest
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div></div>

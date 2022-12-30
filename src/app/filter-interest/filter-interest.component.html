@@ -19,6 +19,7 @@
         </div>
     </div>
 </nav>
+
       <div
         style="background-color: #0F4D5C; color: white"
         class="mt-5"
@@ -32,32 +33,38 @@
                 style="background-color: rgba(255, 255, 255, 0.5); width: 100%;"
                 class="selectOption"
                 aria-label="Default select example"
+               
+
+                [(ngModel)]="Min"
               >
+              <option selected>
+                Select Min Age
+              </option>
                 <option class="optStyle" selected>
                   Minimum Age
                 </option>
-                <option class="optStyle" value="1">
+                <option class="optStyle" value="18">
                   18
                 </option>
-                <option class="optStyle" value="2">
+                <option class="optStyle" value="19">
                   19
                 </option>
-                <option class="optStyle" value="3">
+                <option class="optStyle" value="20">
                   20
                 </option>
-                <option class="optStyle" value="4">
+                <option class="optStyle" value="21">
                   21
                 </option>
-                <option class="optStyle" value="5">
+                <option class="optStyle" value="22">
                   22
                 </option>
-                <option class="optStyle" value="6">
+                <option class="optStyle" value="23">
                   23
                 </option>
-                <option class="optStyle" value="7">
+                <option class="optStyle" value="24">
                   24
                 </option>
-                <option class="optStyle" value="8">
+                <option class="optStyle" value="25">
                   25
                 </option>
               </select>
@@ -67,32 +74,36 @@
                 style="background-color: rgba(255, 255, 255, 0.5); width: 100%;"
                 class="selectOption mt-5"
                 aria-label="Default select example"
+                [(ngModel)]="MAx"
               >
-                <option class="optStyle" selected>
+              <option selected>
+                Select Maximum Age
+              </option>
+                <option class="optStyle" selected ngModel="{{MAx}}">
                   Maximum Age
                 </option>
-                <option class="optStyle" value="1">
+                <option class="optStyle" value="18">
                   18
                 </option>
-                <option class="optStyle" value="2">
+                <option class="optStyle" value="19">
                   19
                 </option>
-                <option class="optStyle" value="3">
+                <option class="optStyle" value="20">
                   20
                 </option>
-                <option class="optStyle" value="4">
+                <option class="optStyle" value="21">
                   21
                 </option>
-                <option class="optStyle" value="5">
+                <option class="optStyle" value="22">
                   22
                 </option>
-                <option class="optStyle" value="6">
+                <option class="optStyle" value="23">
                   23
                 </option>
-                <option class="optStyle" value="7">
+                <option class="optStyle" value="24">
                   24
                 </option>
-                <option class="optStyle" value="8">
+                <option class="optStyle" value="25">
                   25
                 </option>
               </select>
@@ -104,51 +115,55 @@
                 style="background-color: rgba(255, 255, 255, 0.5); width: 100%;"
                 class="selectOption wdOption"
                 aria-label="Default select example"
+                [(ngModel)]="country"
               >
-                <option class="optStyle" value="1" selected>
+              <option selected>
+                Select Country
+              </option>
+                <option class="optStyle" value="Pakistan" selected>
                   Pakistan
                 </option>
-                <option class="optStyle" value="2">
+                <option class="optStyle" value="United Arab Emirates">
                   United Arab Emirates
                 </option>
-                <option class="optStyle" value="3">
+                <option class="optStyle" value="Vietnam">
                   Vietnam
                 </option>
-                <option class="optStyle" value="4">
+                <option class="optStyle" value="Austria">
                   Austria
                 </option>
-                <option class="optStyle" value="5">
+                <option class="optStyle" value="Hungary">
                   Hungary
                 </option>
-                <option class="optStyle" value="6">
+                <option class="optStyle" value="Turkey">
                   Turkey
                 </option>
-                <option class="optStyle" value="7">
+                <option class="optStyle" value="Switzerland">
                   Switzerland
                 </option>
-                <option class="optStyle" value="8">
+                <option class="optStyle" value="Germany">
                   Germany
                 </option>
-                <option class="optStyle" value="9">
+                <option class="optStyle" value="Iran">
                   Iran
                 </option>
-                <option class="optStyle" value="10">
+                <option class="optStyle" value=" United Kingdom">
                   United Kingdom
                 </option>
-                <option class="optStyle" value="11">
+                <option class="optStyle" value="France">
                   France
                 </option>
-                <option class="optStyle" value="12">
+                <option class="optStyle" value="Kyrgyzstan">
                   Kyrgyzstan
                 </option>
-                <option class="optStyle" value="13">
+                <option class="optStyle" value="Lebanon">
                   Lebanon
                 </option>
               </select>
             </div>
             <div class="col-md-3 mt-2">
               <label class="form-label lblGender ml-5">Gender:</label>
-              <img src={{pathmale}} alt="..." width="80" height="90" />
+              <img     (click)="filter();" src={{pathmale}} alt="..." width="80" height="90" />
               <img src={{pathfemale}} alt="..." width="80" height="90" />
             </div>
           </div>
@@ -157,6 +172,7 @@
 
       <div class="bgCardColor">
         <div class="container">
+          <ng-container *ngIf="personList.length > 0">
           <div class="row">
                 <div class="col-md-6 mt-5" *ngFor="let person of persons">
                   <div class="card mb-3 styleCard">
@@ -219,5 +235,10 @@
                   </div>
                 </div>
           </div>
+        </ng-container>
+        <ng-container *ngIf="personList.length == 0">
+                <h5> No Users Found</h5>
+        </ng-container>
         </div>
       </div></div>
+      

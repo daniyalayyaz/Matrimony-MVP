@@ -18,6 +18,11 @@ export class AppService {
     return this.http.post<UserResponse>(url,user);
   }
 
+  Login(user: User): Observable<UserResponse> {
+    const url = `${environment.apiBaseUrl}/user/Profilelogin`;
+    return this.http.post<UserResponse>(url,user);
+  }
+
   onlineUser(gender: Gender): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/Onlineuser`;
     return this.http.post<any>(url, gender);
@@ -25,7 +30,7 @@ export class AppService {
 
   AddRemoveFavourite(userId?: string, FavUserId?: string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/addToFav`;
-    return this.http.post<any>(url,{id: userId, uid: FavUserId});
+    return this.http.post<any>(url,{id: userId, uid: FavUserId});   
   }
 
   HandleRequest(userId?: string, personId?: string, request?: RequestType): Observable<any> {
@@ -51,5 +56,18 @@ export class AppService {
   updateUser(userId?: string, user?: any): Observable<any> {
     const url = `${environment.apiBaseUrl}/user/userUpdate`;
     return this.http.post<any>(url,{id: userId, ...user});
+  }
+  Matchmaking(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/findMatch`;
+    return this.http.post<any>(url,{id: userId, });
+  }
+
+  filter(user: User): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/search`;
+    return this.http.post<any>(url,{id: user });
+  }
+  Loginstatusupdate(userId?: string,status?:boolean): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;
+    return this.http.post<any>(url,{userId: userId,LoginStatus:status});
   }
 }

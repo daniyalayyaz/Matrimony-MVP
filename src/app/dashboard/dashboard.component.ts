@@ -18,13 +18,16 @@ import { User } from '../models/user.modal';
 })
 export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 status=1;
+checkbox:boolean;
   personList: Array<User> = [];
   messagesList: Array<Message>;
-  pathfemale: string = "../../assets/female.png";
-  pathmessage: string = "../../assets/message.png";
-  pathheart: string = "../../assets/pinkheart.png";
-  pathmale: string = "../../assets/male.png"
-  
+    pathfemale: string = "../../assets/female.png";
+    pathmessage: string = "../../assets/message.png";
+    pathheart: string = "../../assets/pinkheart.png";
+    pathmale: string = "../../assets/male.png"
+    public saveUsername?:boolean;
+
+
   constructor(private router: Router,
               private toasterservice: ToastrService, 
               private appService: AppService) {
@@ -36,7 +39,7 @@ status=1;
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if(loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
-
+ 
       switch(this.CurrentUser.gender) {
         case Gender.FEMALE:
           this.GetOnlineUsers(Gender.MALE);
@@ -46,7 +49,10 @@ status=1;
           break
       }
 
+      this.checkstatus()
+
     }
+  
 
 
 
@@ -84,6 +90,7 @@ status=1;
       },
     ];
   }
+  
 
   public GetOnlineUsers(gender: Gender) {
     this.appService.onlineUser(gender).pipe(
@@ -95,6 +102,17 @@ status=1;
         }  
       );
   }
+  checkstatus(){
+
+  this.saveUsername=this.CurrentUser.LoginStatus
+  
+  }
+  public onSaveUsernameChanged(value:boolean){
+    this.saveUsername = value;
+ 
+  this.statuschange()
+}
+
 
   public onNearByClick() {
     this.appService.nearBy(this.CurrentUser.city).pipe(
@@ -237,6 +255,31 @@ status=1;
       this.toasterservice.success("Person has been added to Favourites Successfully!");
     })
   }
+  statuschange() {   
+    this.appService.Loginstatusupdate(this.CurrentUser._id, this.saveUsername)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+     console.log(response)
+      
+      const body = {
+        email: this.CurrentUser.email,
+        password: "2233"
+      };
+      this.appService.Login(body).pipe(takeUntil(this.Unsubscribe$)).subscribe(res => {
+        console.warn(res.user)
+        if (res.user) {
+          localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
+          this.toasterservice.success("update status");
+          
+        }
+       })
 
+
+
+
+
+      
+    })
+    
+  }
 
 }

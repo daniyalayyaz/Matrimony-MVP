@@ -32,14 +32,17 @@
                         <div class="me-auto p-2">
                             <button type="button" class="btnLogOut">
                                 Logout
+                              
                             </button>
                         </div>
                         <div class="p-2">
                             <!-- <button type="button" class="btnLive">
                                 Live
+                                
                             </button> -->
+
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                <input class="form-check-input" #saveUserNameCheckBox type="checkbox"  role="switch" [checked]="saveUsername"    (change)="onSaveUsernameChanged(saveUserNameCheckBox.checked)" id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Show Online</label>
                             </div>
                         </div>
