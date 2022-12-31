@@ -73,26 +73,28 @@
 
                 <div class="col-md-7 bgProfile margin-left">
                     <h6 class="bgMsg">Messages</h6>
-                    <div *ngFor="let message of messagesList">
-                        <div class="d-flex mb-3" (click)="gotoChat()" style="cursor: pointer;">
+                    <div *ngFor="let message of chatList">
+                        <div class="d-flex mb-3" (click)="gotoChat(message._id)" style="cursor: pointer;">
                             <div class="p-2 statusIcon">
-                                <img class="msgImg" src={{message.image}} alt="Girl in a jacket" />
+                                <img class="msgImg"
+                                src="https://images.unsplash.com/photo-1489673446964-e1f989187ddc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=510&q=80"
+                                alt="Girl in a jacket" />
                                 <span class="onlineShow"></span>
                             </div>
                             <div class="p-2 ms-5">
-                                <p style="color: #7B8793">{{message.name}}</p>
+                                <p style="color: #7B8793">{{message.messages[0].message}}</p>
                                 <p class="msgText" style="color: #AFBBC6">
-                                    {{message.msg}}
+                                    {{message.messages[0].name||"hello"}}
                                 </p>
                             </div>
                             <div class="ms-auto p-2">
-                                <span style="color: #7B8793">{{message.time}}</span>
+                                <!-- <span style="color: #7B8793">{{message.time}}</span> -->
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="d-flex mb-3">
+                    <!-- <div class="d-flex mb-3">
                         <div class="p-2 statusIcon">
                             <img class="msgImg"
                                 src="https://images.unsplash.com/photo-1489673446964-e1f989187ddc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=510&q=80"
@@ -108,7 +110,7 @@
                         <div class="ms-auto p-2">
                             <span style="color:#7B8793">01.02.21</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="container text-center">
                     <div class="row mt-4">
@@ -185,7 +187,7 @@
                                                         </p>
                                                         <div class="d-flex mt-2">
                                                             <div class="me-auto">
-                                                                <img src={{pathmessage}} (click)="gotoChat()" class="imgCard1" alt="..." />
+                                                                <img src={{pathmessage}} (click)="letschat(person._id);$event.stopPropagation();" class="imgCard1" alt="..." />
                                                             </div>
                                                             <div>
                                                                 <img src={{pathheart}} (click)="AddtoFavClick(person); $event.stopPropagation();" class="imgCard2" alt="..." />

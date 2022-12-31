@@ -62,7 +62,7 @@ const routes: Routes = [
   {path: 'Preferences', component: PreferencesComponent},
   {path: 'Terms-And-Conditions', component: TermsNconditionsComponent},
   {path: 'Matchmaking', component: MatchmakingComponent},
-  {path: 'Chat', component: ChatComponent},
+  {path: 'Chat/:id', component: ChatComponent},
   {path: 'BlockedUsers', component: BlockedusersComponent},
 
 

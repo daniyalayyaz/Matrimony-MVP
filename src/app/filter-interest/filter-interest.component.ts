@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
+import { RequestType } from '../enums/request.enum';
 import { LocalStorageItem } from '../helpers/localStorageItem.enum';
 import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { Message } from '../models/message.modal';
@@ -117,7 +118,27 @@ super()
       color: "White",
       height: "5'5 Tall",
     },
+
   ];
+  letschat(id:any){
+    this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
+     console.log(persons);
+      this.router.navigate(['Chat/'+persons._id]);    })
+      localStorage.setItem("id",id);
+  }
+  onSendInterestClick(person: User) {   
+    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      this.toasterservice.success("Interest Sent Successfully!");
+    })
+  }
+
+  AddtoFavClick(person: User) {
+    this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
+    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+      this.toasterservice.success("Person has been added to Favourites Successfully!");
+    })
+  }
   filter(){
 
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
@@ -131,10 +152,11 @@ super()
       gender:  this.CurrentUser.gender
       
           }
-          console.warn(body)
+
+          
           this.CurrentUser = JSON.parse(loggedUser);
           console.warn(this.CurrentUser)
-           this.appService.filter(body).pipe(
+           this.appService.filter(this.CurrentUser ._id,this.MAx,this.Min,this.country,this.CurrentUser.gender).pipe(
              takeUntil(this.Unsubscribe$))
              .subscribe((persons: Array<User>) => 
                {

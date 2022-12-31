@@ -62,14 +62,15 @@ export class AppService {
     return this.http.post<any>(url,{id: userId, });
   }
 
-  filter(user: User): Observable<any> {
+  filter(userid:any,max_age:any,min_age:any,country:any,gender:any): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/search`;
-    return this.http.post<any>(url,{ user });
+    return this.http.post<any>(url,{ userId:userid,max_age:max_age,min_age:min_age,country:country,gender:gender });
   }
   Loginstatusupdate(userId?: string,status?:boolean): Observable<any> {
     const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;
     return this.http.post<any>(url,{userId: userId,LoginStatus:status});
   }
+
 
 
   getfav(userId?: string): Observable<any> {
@@ -92,4 +93,24 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/user/unblockUser`;
     return this.http.post<any>(url,{userId:id,blockedUserId:buser});
   }
+  getchat(senderId?: string,name?:String): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/getAlluserChat`;
+    return this.http.post<any>(url,{senderId,name});
+  }
+  getAllChat(id?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/getAllChat`;
+    return this.http.post<any>(url,{id});
+  }
+
+  postChat(id?: string,name?: string,senderId?:string,receiverId?:string, message?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/postchat`;
+    return this.http.post<any>(url,{id, name,senderId, receiverId, message });
+  }
+  letschat( senderId?:string,receiverId?:string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/getChatGroup`;
+    return this.http.post<any>(url,{senderId, receiverId});
+  }
+  
+
 }
+
