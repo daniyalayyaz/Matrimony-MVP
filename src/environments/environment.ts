@@ -7,12 +7,13 @@ export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:5000/api',
   firebase: {
-    projectId: 'matrimony-e3819',
-    appId: '1:180744314389:web:55e81ae908e81070f9f81c',
-    storageBucket: 'matrimony-e3819.appspot.com',
-    apiKey: 'AIzaSyD2kuWKeU24zNtatobz51E1xPXA7dR3bP8',
-    authDomain: 'matrimony-e3819.firebaseapp.com',
-    messagingSenderId: '180744314389',
+    apiKey: "AIzaSyCeh8CsSH2euc7iA9lfVXR9sv2TQLiWiYA",
+  authDomain: "mvprojecr.firebaseapp.com",
+  projectId: "mvprojecr",
+  storageBucket: "mvprojecr.appspot.com",
+  messagingSenderId: "18861569424",
+  appId: "1:18861569424:web:f32a7a6a347adad03b6f15",
+  measurementId: "G-ZF8TBDDTKZ"
   }
 };
 

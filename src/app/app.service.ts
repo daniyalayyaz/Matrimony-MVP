@@ -5,13 +5,16 @@ import { environment } from 'src/environments/environment';
 import { Gender } from './enums/genders.enum';
 import { RequestType } from './enums/request.enum';
 import { User, UserResponse } from './models/user.modal';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { AngularFireAuth  } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auths :AngularFirestore,private angulrfire:AngularFireAuth) { }
 
   createProfile(user: User): Observable<UserResponse> {
     const url = `${environment.apiBaseUrl}/user/createprofile`;
@@ -110,7 +113,11 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/users/getChatGroup`;
     return this.http.post<any>(url,{senderId, receiverId});
   }
-  
+  async signwithgmail(){
+const provider=new GoogleAuthProvider();
+const credential=await this.angulrfire.signInWithPopup(provider);
+return credential;
+  }
 
 }
 

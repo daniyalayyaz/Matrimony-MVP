@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { takeUntil } from 'rxjs';
@@ -10,9 +10,21 @@ import { LocalStorageItem } from '../helpers/localStorageItem.enum';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent extends UnsubscribeHandelr implements OnInit {
+export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterViewChecked  {
 id="";
+@ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
+
+
+ngAfterViewChecked() {        
+    this.scrollToBottom();        
+} 
+
+scrollToBottom(): void {
+    try {
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }                 
+}
 chatList={members:[],messages:[{message:"",name:"",sender:""}],_id:""};
 
   constructor(private route: ActivatedRoute,private appService: AppService,private router: Router) { 
@@ -32,6 +44,7 @@ chatList={members:[],messages:[{message:"",name:"",sender:""}],_id:""};
 
   }
   ngOnInit(): void {
+    this.scrollToBottom();
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if(loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
