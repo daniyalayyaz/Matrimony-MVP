@@ -41,27 +41,29 @@
         <div class="main-card">
             <h1>Change Username</h1>
             <hr>
-            <form>
+           
                 <label>New Username</label>
-                <input type="text">
+                <input [(ngModel)]="name" type="text">
                 <br>
 
                 <label>Confirm New Username</label>
-                <input type="text">
+                <input [(ngModel)]="confirmname" type="text">
                 <br>
 
                 <label>Current Password</label>
-                <input type="text">
+                <input [(ngModel)]="password" type="text">
+                
                 <br>
                 <br>
-                <button class="btn btn-primary buttn">Update</button>
+                <button class="btn btn-primary buttn"(click)="changepassword()">Update</button>
                 <br>
                 <br>
                 <a href="" class="text-decoration-none link">"Send me a"
                     <b>one-time Password</b>
                 </a><br>
-            </form>
+           
         </div>
     </div>
 
+   
 </div>

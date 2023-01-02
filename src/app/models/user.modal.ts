@@ -60,6 +60,11 @@ export interface User {
     training?: string;
     appearance?: string;
     LoginStatus?: boolean;
+    Activenotification?: boolean;
+    latestnews?: boolean;
+    featurestatus?: boolean;
+    Profilestatus?: boolean;
+    numberstatus?: boolean;
     color?: string;
     distance?: string;
 

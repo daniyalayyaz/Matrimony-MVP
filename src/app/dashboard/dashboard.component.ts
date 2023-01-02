@@ -112,6 +112,7 @@ checkbox:boolean;
   checkstatus(){
 
   this.saveUsername=this.CurrentUser.LoginStatus
+  console.warn(this.saveUsername)
   
   }
   public onSaveUsernameChanged(value:boolean){

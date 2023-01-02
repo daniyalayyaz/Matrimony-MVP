@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
@@ -19,6 +20,8 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
   pathheart: string = "../../assets/pinkheart.png";
   pathright: string="../../assets/right.png"
   
+  checknum?:boolean;
+  profilepic?:boolean;
   profileDetails: User;
 
   constructor(private router: Router,
@@ -34,6 +37,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
                 this.display = "none";
               }
   ngOnInit(): void {
+  
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     
@@ -45,7 +49,10 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
    let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
    if (profileDetail) {
     this.profileDetails = JSON.parse(profileDetail);
+
    }
+   this.checknum=this.CurrentUser.numberstatus;
+   this.profilepic=this.CurrentUser.Profilestatus;
   }
 
   OnFavClick() {
@@ -53,6 +60,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
     .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
       this.toasterservice.success("Add to Favourite Successfully");
     })
+  
   }
 
   blockuser(id:any) {

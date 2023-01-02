@@ -73,6 +73,15 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;
     return this.http.post<any>(url,{userId: userId,LoginStatus:status});
   }
+  statusupdatenotification(_id:any,latestnews:any,featurestatus:any,numberstatus:any,Profilestatus:any,Activenotification:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/userUpdate`;
+    return this.http.post<any>(url,{id: _id,latestnews:latestnews,featurestatus:featurestatus,numberstatus:numberstatus,Profilestatus:Profilestatus,Activenotification:Activenotification});
+  }
+
+  changename(_id:any,name:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/userUpdate`;
+    return this.http.post<any>(url,{id: _id,name:name});
+  }
 
 
 
