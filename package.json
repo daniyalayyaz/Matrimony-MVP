@@ -23,6 +23,7 @@
     "firebase": "^9.14.0",
     "ng-chat": "^3.1.0",
     "ng-otp-input": "^1.8.5",
+    "ngx-auth-firebaseui": "^7.1.0",
     "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-toastr": "^13.2.1",
     "rxjs": "^7.5.7",

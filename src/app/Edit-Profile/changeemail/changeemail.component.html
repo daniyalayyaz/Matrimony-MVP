@@ -41,26 +41,26 @@
         <div class="main-card">
             <h1>Change Email</h1>
             <hr>
-            <form>
+            <!-- <form> -->
                 <label>New Email</label>
-                <input type="text">
+                <input [(ngModel)]="email" type="text">
                 <br>
 
                 <label>Confirm New Email</label>
-                <input type="text">
+                <input  [(ngModel)]="confirmemail" type="text">
                 <br>
 
                 <label>Account Password</label>
-                <input type="text">
+                <input   [(ngModel)]="password" type="password">
                 <br>
                 <br>
-                <button class="btn btn-primary buttn">Update</button>
+                <button class="btn btn-primary buttn" (click)="changeemail()">Update</button>
                 <br><br>
-                <a href="" class="text-decoration-none link">Send me a
+                <a href="" class="text-decoration-none  link" >Send me a
                     <b>one-time Password</b>
                 </a>
                 <br>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 

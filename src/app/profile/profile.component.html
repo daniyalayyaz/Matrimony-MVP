@@ -40,7 +40,11 @@
                 <div style="
               border: 1px solid #ffff;
         " class="card text-bg-dark cardEdit OnMobileAvatar">
-                    <img src="https://bit.ly/3S3gTsn" class="OnMobileAvatar" />
+                   
+                   <p *ngIf="profilepic">  <img src="https://bit.ly/3S3gTsn" class="OnMobileAvatar" /></p>
+                   <p *ngIf="!profilepic"><img src="https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" class="OnMobileAvatar" /></p>
+                   
+                 
                     <div class="card-overlay">
                         <p class="card-text cardDetalis text-dark cardBtnBg">
                             <img src={{pathleft}} alt="Girl in a jacket" width="50" height="60" />
@@ -62,7 +66,7 @@
                 <button type="button" class="btnRqt mb-3 mt-3" (click)="gotoSubscribe()">
                     INTEREST REQUEST
                 </button>
-                <button type="button" class="btnRqt mb-3" (click)="blockuser()">
+                <button type="button" class="btnRqt mb-3" (click)="blockuser(profileDetails._id)">
                     BLOCK
                 </button>
                 <button type="button" class="btnRqt" (click)="openModal()">
@@ -103,6 +107,7 @@
                             <h3 class="text-start">{{profileDetails.professional}}</h3>
                         </div>
                         <div class="col-6 text-end">
+               
                             <img class="text-end" src="https://bit.ly/3BbFu7p" alt="pakistan" width="80" height="40" />
                         </div>
                     </div>
@@ -139,8 +144,11 @@
                             <div class="col-md-6 rescard">
                                 <ul class="infoOfPoint">
                                     <li class="pt-3">{{profileDetails.email}}</li>
-                                    <li class="pt-3">{{profileDetails.personalContact}}</li>
-                                    <li class="pt-3">{{profileDetails.parentContact}}</li>
+                                    <p *ngIf="checknum"><li class="pt-3">{{profileDetails.personalContact}}</li></p>
+                                    <p *ngIf="!checknum"><li class="pt-3">************</li></p>
+                                    
+                                    <p *ngIf="checknum">  <li class="pt-3">{{profileDetails.parentContact}}</li></p>
+                                    <p *ngIf="!checknum"><li class="pt-3">************</li></p>
                                     <li class="pt-3">{{profileDetails.gender}}</li>
                                     <li class="pt-3">{{profileDetails.age}}</li>
                                     <li class="pt-3">{{profileDetails.status}}</li>

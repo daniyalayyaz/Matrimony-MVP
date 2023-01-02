@@ -106,6 +106,9 @@
                 <option class="optStyle" value="25">
                   25
                 </option>
+                <option class="optStyle" value="30">
+                30
+                </option>
               </select>
             </div>
             <div class="col-md-2">
@@ -174,12 +177,12 @@
         <div class="container">
           <ng-container *ngIf="personList.length > 0">
           <div class="row">
-                <div class="col-md-6 mt-5" *ngFor="let person of persons">
+                <div class="col-md-6 mt-5" *ngFor="let person of personList">
                   <div class="card mb-3 styleCard">
                     <div class="row g-0 styleCard">
                       <div class="col-md-4">
                         <img
-                          src={{person.image}}
+                          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                           class="rounded-start cardImage"
                           alt="..."
                         />
@@ -200,10 +203,10 @@
                           </div>
 
                           <p class="card-text text-muted">
-                            {{person.gender}} | {{person.age}} | {{person.cast}}
+                            {{person.gender}} | {{person.age}} | {{person.caste}}
                           </p>
                           <p class="card-text text-muted">
-                            {{person.training}} | {{person.profession}} | {{person.city}}
+                            {{person.training}} | {{person.professional}} | {{person.city}}
                           </p>
                           <p class="card-text text-muted">
                             {{person.appearance}} | {{person.color}} | {{person.height}}
@@ -213,6 +216,7 @@
                               <img
                                 src={{pathmessage}}
                                 class="imgCard1"
+                                (click)="letschat(person._id);"
                                 alt="..."
                               />
                             </div>
@@ -220,11 +224,12 @@
                               <img
                                 src={{pathheart}}
                                 class="imgCard2"
+                                (click)="AddtoFavClick(person); "
                                 alt="..."
                               />
                             </div>
                             <div class="ms-auto">
-                              <button type="submit" class="insterest">
+                              <button type="submit" class="insterest" (click)="onSendInterestClick(person);">
                                   Send Interest
                               </button>
                             </div>

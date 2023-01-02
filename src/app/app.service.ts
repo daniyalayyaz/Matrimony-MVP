@@ -5,13 +5,16 @@ import { environment } from 'src/environments/environment';
 import { Gender } from './enums/genders.enum';
 import { RequestType } from './enums/request.enum';
 import { User, UserResponse } from './models/user.modal';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { AngularFireAuth  } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auths :AngularFirestore,private angulrfire:AngularFireAuth) { }
 
   createProfile(user: User): Observable<UserResponse> {
     const url = `${environment.apiBaseUrl}/user/createprofile`;
@@ -62,13 +65,45 @@ export class AppService {
     return this.http.post<any>(url,{id: userId, });
   }
 
-  filter(user: User): Observable<any> {
+  filter(userid:any,max_age:any,min_age:any,country:any,gender:any): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/search`;
-    return this.http.post<any>(url,{ user });
+    return this.http.post<any>(url,{ userId:userid,max_age:max_age,min_age:min_age,country:country,gender:gender });
   }
   Loginstatusupdate(userId?: string,status?:boolean): Observable<any> {
     const url = `${environment.apiBaseUrl}/user/changeLoginStatus`;
     return this.http.post<any>(url,{userId: userId,LoginStatus:status});
+  }
+  statusupdatenotification(_id:any,latestnews:any,featurestatus:any,numberstatus:any,Profilestatus:any,Activenotification:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/userUpdate`;
+    return this.http.post<any>(url,{id: _id,latestnews:latestnews,featurestatus:featurestatus,numberstatus:numberstatus,Profilestatus:Profilestatus,Activenotification:Activenotification});
+  }
+
+  changename(_id:any,name:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/userUpdate`;
+    return this.http.post<any>(url,{id: _id,name:name});
+  }
+
+
+
+  getfav(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/viewFav`;
+    return this.http.post<any>(url,{id: userId});
+  }
+  
+
+  Blockuser(id:any,buser:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/blockUser`;
+    return this.http.post<any>(url,{loginId:id,userId:buser});
+  }
+  getblockuser(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/showBlockedUsers`;
+    return this.http.post<any>(url,{id: userId});
+  }
+  
+
+  unblock(id:any,buser:any): Observable<any> {
+    const url = `${environment.apiBaseUrl}/user/unblockUser`;
+    return this.http.post<any>(url,{userId:id,blockedUserId:buser});
   }
   getchat(senderId?: string,name?:String): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/getAlluserChat`;
@@ -87,6 +122,11 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/users/getChatGroup`;
     return this.http.post<any>(url,{senderId, receiverId});
   }
-  
+  async signwithgmail(){
+const provider=new GoogleAuthProvider();
+const credential=await this.angulrfire.signInWithPopup(provider);
+return credential;
+  }
+
 }
 

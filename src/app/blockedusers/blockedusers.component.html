@@ -27,7 +27,7 @@
 <div class="bgDash">
     <div class="row responsivelist">
         <ng-container *ngIf="1 > 0">
-            <div class="col-md-4 mt-3" *ngFor="let person of [1,2,3,4,5]">
+            <div class="col-md-4 mt-3" *ngFor="let person of personList ;let i = index" >
                 <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;">
                     <div class="row g-0 styleCard">
                         <div class="col-md-4 cardImageRes">
@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="me-auto">
-                                        <h5 class="card-title">John Wick</h5>
+                                        <h5 class="card-title">{{person.name}}</h5>
                                     </div>
                                     <div class="">
                                         <img src="https://bit.ly/3BJ3wIg" class="imgSize"
@@ -46,13 +46,13 @@
                                 </div>
 
                                 <p class="card-text text-muted">
-                                    Male | 27 | Doctor
+                                    {{person.gender}} | {{person.age}} | {{person.profession}}
                                 </p>
                                 <p class="card-text text-muted">
-                                    Lahore | Pakistan
+                                    {{person.city}} | {{person.country}}
                                 </p>
                                 <p class="card-text text-muted">
-                                     Rajput | Islam | Urdu
+                                    {{person.caste}} | {{person.religious}} | {{person.montherTonque}}
                                 </p>
                                 <div class="d-flex mt-2">
                                     <div class="ms-auto">
@@ -65,8 +65,9 @@
                                             Report
                                         </button>
                                     </div>
+                                    
                                     <div class="ms-auto">
-                                        <button type="submit" class="insterest">
+                                        <button type="submit" (click)="unblock(person)" class="insterest">
                                             Unblock
                                         </button>
                                     </div>
