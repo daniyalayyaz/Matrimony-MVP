@@ -30,6 +30,21 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/users/Onlineuser`;
     return this.http.post<any>(url, gender);
   }
+  // latest(gender: Gender): Observable<any> {
+  //   const url = `${environment.apiBaseUrl}/users/latest`;
+  //   return this.http.post<any>(url, gender);
+  // }
+  latest(id:any){
+    return this.http.get(`${environment.apiBaseUrl}/users/latest/${id}`);
+  }
+  uploadImage(image:any,userId:any){
+    return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
+    // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
+  }
+  uploadMultipleImage(image:any,userId:any){
+    return this.http.post(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,image);
+    // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
+  }
 
   AddRemoveFavourite(userId?: string, FavUserId?: string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/addToFav`;
@@ -56,10 +71,19 @@ export class AppService {
     return this.http.post<any>(url,{city: city});
   }
 
-  updateUser(userId?: string, user?: any): Observable<any> {
-    const url = `${environment.apiBaseUrl}/user/userUpdate`;
-    return this.http.post<any>(url,{id: userId, ...user});
+  updateUser(id: any,data:any) {
+    return this.http.put(`${environment.apiBaseUrl}/user/updateProfile/${id}`,data);
+  };
+  getSingleUser(id:any){
+    return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`);
   }
+  getProfileImage(id:any){
+    return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`,{ responseType: 'blob' });
+  }
+  // updateUser(userId?: string, user?: any): Observable<any> {
+  //   const url = `${environment.apiBaseUrl}/user/userUpdate`;
+  //   return this.http.post<any>(url,{id: userId, ...user});
+  // }
   Matchmaking(userId?: string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/findMatch`;
     return this.http.post<any>(url,{id: userId, });
