@@ -6,14 +6,16 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:5000/api',
+  url: 'localhost:5000',
+
   firebase: {
-    apiKey: "AIzaSyCeh8CsSH2euc7iA9lfVXR9sv2TQLiWiYA",
+  apiKey: "AIzaSyCeh8CsSH2euc7iA9lfVXR9sv2TQLiWiYA",
   authDomain: "mvprojecr.firebaseapp.com",
   projectId: "mvprojecr",
   storageBucket: "mvprojecr.appspot.com",
   messagingSenderId: "18861569424",
   appId: "1:18861569424:web:f32a7a6a347adad03b6f15",
-  measurementId: "G-ZF8TBDDTKZ"
+  measurementId: "G-ZF8TBDDTKZ",
   }
 };
 

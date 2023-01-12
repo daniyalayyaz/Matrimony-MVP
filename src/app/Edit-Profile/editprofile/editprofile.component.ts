@@ -71,6 +71,8 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
     siblingsCountBrothers: new FormControl('', Validators.required),
     socialEconomic: new FormControl('', Validators.required),
     familyInfo: new FormControl('', Validators.required),
+    hideName: new FormControl('', Validators.required),
+    lockDetails: new FormControl('', Validators.required),
   })
   ngOnInit(): void {
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
@@ -107,20 +109,28 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
     this.router.navigate(['Edit-Photos',this.userId._id]);
     // this.router.navigate(['']);
   }
-
-
   edit() {
     this.appService.getSingleUser(this.id).subscribe((res:any) =>{
       this.userProfile = res;
     })
   }
- 
   async update() {
     this.appService.updateUser(this.userProfile._id, this.form.value).subscribe((res: any) => {
       this.updateitem = res;
       this.router.navigate(['/setting/build-list']);
     }
     )
+  }
+  profilestatus(){
+    // if(value.active == true){
+    //   this.activeUpdate = this.activeTrue
+    // }else {
+    //   this.activeUpdate = this.activeFalse
+    // }
+    // console.log(this.activeUpdate)
+    // this.appService.update(value._id,this.activeUpdate).then((res: any) => {
+    //   this.data = res
+    // });
   }
 
   professions = ["accountant", "actor", "actress", "air traffic controller", "architect", "artist", "attorney", "banker", "barber", "bookkeeper", "builder", "businessperson", "butcher", "carpenter", "cashier", "chef", "coach", "designer", "developer", "economist", "editor", "electrician", "engineer", "farmer", "filmmaker", "fisherman", "flight attendant", "jeweler", "judge", "lawyer", "mechanic", "musician", "painter", "pharmacist", "photographer", "pilot", "plumber", "police officer", "politician", "programmer", "receptionist", "salesperson", "singer", "teacher", "translator", "videographer", "waiter", "writer"]

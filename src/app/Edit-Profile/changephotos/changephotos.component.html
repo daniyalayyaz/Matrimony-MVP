@@ -41,15 +41,17 @@
             <h1>Edit my Photos</h1>
             <hr />
             <div class="row">
-                <h2 class="col-md-4">Primary Photos</h2>
                 <p class="col-md-3" style="padding-top: 12px ">Your main pictures</p>
-                <img [src]='photo' height="200px" width="200px">
+                <div class="col">
+                    <img [src]='imageUrl' alt="You have No Profile" height="100px" width="100px">
+                </div>
                 <label class="btn btn-default">
-                    <input type="file"  name="image"  (change)="selectImage($event) " />
+                    <input type="file" id="img"(change)="selectImage($event)" />
                 </label>
                 <button class="btn btn-success" type="submit" (click)="onSubmit()">Upload</button>
+
             </div>
-<!--           
+<!--            
             <div class="form-group">
                 <form #entryForm="ngForm" (ngSubmit)="entryForm.valid && onSubmit(entryForm)">
                     <label for="formFile" class="form-label">Image</label>
@@ -74,9 +76,11 @@
             <div class="row">
                 <h2 class="col-md-4">Gallary Photos</h2>
                 <p class="col-md-3" style="padding-top: 12px ">Your  pictures</p>
-                <img [src]='photo' height="200px" width="200px">
+                <div class="col" *ngFor='let url of multipleImages' >
+                    <img  [src]='url' alt="You have No Profile" height="100px" width="100px">
+                </div>
                 <label class="btn btn-default">
-                    <input type="file"  name="image" multiple (change)="selectMultipleImage($event) " />
+                    <input type="file" id="img" multiple (change)="selectMultipleImage($event)" />
                 </label>
                 <button class="btn btn-success" type="submit" (click)="onMultipleSubmit()">Upload</button>
             </div>

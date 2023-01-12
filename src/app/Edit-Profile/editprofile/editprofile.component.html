@@ -81,7 +81,10 @@
                     <input type="text" class="form-control rounded-pill" aria-label="Name" name="name"
                       formControlName="name" [(ngModel)]="userProfile.name">
                     <div class="form-check form-switch ms-2 mt-2">
-                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                      value='userProfile.lockDetails' name="hideName"
+                      formControlName="hideName" [(ngModel)]="userProfile.hideName" [value]="false" />
+                      
                       <label class="form-check-label" for="flexSwitchCheckDefault">Show Name on Profile</label>
                     </div>
                   </div>
@@ -257,7 +260,10 @@
                 </div> -->
                 <div class="row mt-4 ps-4">
                   <div class="form-check form-switch ms-5 mt-2">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" 
+                    value='userProfile.lockDetails' checked name="lockDetails" 
+                    formControlName="lockDetails" [(ngModel)]="userProfile.lockDetails" [value]="false"/>
+                   
                     <label class="form-check-label" for="flexSwitchCheckDefault">Lock Contact Details</label>
                   </div>
                 </div>
