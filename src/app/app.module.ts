@@ -26,7 +26,7 @@ import { ChangeusernameComponent } from './Edit-Profile/changeusername/changeuse
 import { EditprofileComponent } from './Edit-Profile/editprofile/editprofile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationpageComponent } from './verificationpage/verificationpage.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from "@angular/fire/compat"
 import { environment } from 'src/environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -93,6 +93,7 @@ import { BlockedusersComponent } from './blockedusers/blockedusers.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
         timeOut: 3000,
         positionClass: 'toast-top-right',

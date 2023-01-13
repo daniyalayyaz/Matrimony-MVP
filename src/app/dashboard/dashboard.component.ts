@@ -17,33 +17,35 @@ import { User } from '../models/user.modal';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
-status=1;
-chatList=[{messages:[{message:"",name:""}],_id:""}];
-checkbox:boolean;
+  status = 1;
+  chatList = [{ messages: [{ message: "", name: "" }], _id: "" }];
+  checkbox: boolean;
   personList: Array<User> = [];
   messagesList: Array<Message>;
-    pathfemale: string = "../../assets/female.png";
-    pathmessage: string = "../../assets/message.png";
-    pathheart: string = "../../assets/pinkheart.png";
-    pathmale: string = "../../assets/male.png"
-    public saveUsername?:boolean;
+  pathfemale: string = "../../assets/female.png";
+  pathmessage: string = "../../assets/message.png";
+  pathheart: string = "../../assets/pinkheart.png";
+  pathmale: string = "../../assets/male.png"
+  public saveUsername?: boolean;
+  public userId:any;
+  userProfile: any;
 
 
   constructor(private router: Router,
-              private toasterservice: ToastrService, 
-              private appService: AppService) {
-                super()
-}
+    private toasterservice: ToastrService,
+    private appService: AppService) {
+    super()
+  }
 
   ngOnInit(): void {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    this.status==1?'red':'yellow';
+    this.status == 1 ? 'red' : 'yellow';
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
-    if(loggedUser) {
+    if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
- 
-      switch(this.CurrentUser.gender) {
+
+      switch (this.CurrentUser.gender) {
         case Gender.FEMALE:
           this.GetOnlineUsers(Gender.MALE);
           break;
@@ -56,7 +58,7 @@ checkbox:boolean;
       this.getAllChat();
 
     }
-  
+
 
 
 
@@ -94,32 +96,40 @@ checkbox:boolean;
       },
     ];
   }
-  
-   public topFunction() {
+
+  public topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
   public GetOnlineUsers(gender: Gender) {
     this.appService.onlineUser(gender).pipe(
       takeUntil(this.Unsubscribe$))
-      .subscribe((persons: Array<User>) => 
-        {
-          this.personList = [];
-          this.personList = persons;
-        }  
+      .subscribe((persons: Array<User>) => {
+        this.personList = [];
+        this.personList = persons;
+      }
       );
   }
-  checkstatus(){
+  // public GetLatestUsers(gender: Gender) {
+  //   this.appService.latest(gender).pipe(
+  //     takeUntil(this.Unsubscribe$))
+  //     .subscribe((persons: Array<User>) => {
+  //       this.personList = [];
+  //       this.personList = persons;
+  //     }
+  //     );
+  // }
+  checkstatus() {
 
-  this.saveUsername=this.CurrentUser.LoginStatus
-  console.warn(this.saveUsername)
-  
+    this.saveUsername = this.CurrentUser.LoginStatus
+    console.warn(this.saveUsername)
+
   }
-  public onSaveUsernameChanged(value:boolean){
+  public onSaveUsernameChanged(value: boolean) {
     this.saveUsername = value;
- 
-  this.statuschange()
-}
+
+    this.statuschange()
+  }
 
 
   public onNearByClick() {
@@ -131,18 +141,43 @@ checkbox:boolean;
         this.personList = users;
       })
   }
+  // public () {
+  //   this.appService.().pipe(
+  //     takeUntil(this.Unsubscribe$))
+  //     .subscribe((users: Array<User>) => {
+  //       // this.toasterservice.success(`Users of ${this.CurrentUser.city} Loaded successfully`);
+  //       this.personList = [];
+  //       this.personList = users;
+  //     })
+  // }
+  public latestByClick() {
+      // switch (this.CurrentUser.gender) {
+      //   case Gender.FEMALE:
+      //     this.GetLatestUsers(Gender.MALE);
+      //     break;
+      //   case Gender.MALE:
+      //     this.GetLatestUsers(Gender.FEMALE);
+      //     break
+      // }
+      console.log(this.CurrentUser);
+      
+      this.appService.latest(this.CurrentUser._id).subscribe((res:any) =>{
+        this.personList = [];
+        this.personList = res;
+      })
+  }
 
   public getAllChat() {
     this.appService.getchat(this.CurrentUser._id).pipe(
       takeUntil(this.Unsubscribe$))
       .subscribe((users) => {
-   
-        this.chatList= users;
+
+        this.chatList = users;
         console.log(users);
       })
   }
   public onOnlineClick() {
-    switch(this.CurrentUser.gender) {
+    switch (this.CurrentUser.gender) {
       case Gender.FEMALE:
         this.GetOnlineUsers(Gender.MALE);
         break;
@@ -158,7 +193,7 @@ checkbox:boolean;
       text: "Favourites",
       color1: "#ED7E9E",
       color2: "#E33365",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['favourites']);
       }
     },
@@ -167,7 +202,7 @@ checkbox:boolean;
       text: "Packages Screen",
       color1: "#4DADC4",
       color2: "#1A6679",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['Subscribe']);
 
       }
@@ -177,7 +212,7 @@ checkbox:boolean;
       text: "Match-Making",
       color1: "#4DC489",
       color2: "#1A7929",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['Matchmaking']);
 
       }
@@ -187,7 +222,7 @@ checkbox:boolean;
       text: "Profile",
       color1: "#4D6DC4",
       color2: "#1A2579",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['Profile']);
 
       }
@@ -200,7 +235,7 @@ checkbox:boolean;
       text: "Search Profiles",
       color1: "#4DC489",
       color2: "#1A7929",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['Filter-Interest']);
 
       }
@@ -211,7 +246,7 @@ checkbox:boolean;
       text: "Blocked Users",
       color1: "#4D6DC4",
       color2: "#1A2579",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['BlockedUsers']);
 
       }
@@ -221,7 +256,7 @@ checkbox:boolean;
       text: "Contact Us",
       color1: "#A94DC4",
       color2: "#6B0F86",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['Contact-Us']);
 
       }
@@ -231,16 +266,16 @@ checkbox:boolean;
       text: "Terms & Conditions",
       color1: "#E54848",
       color2: "#7C0E0E ",
-      route: ()=>{
+      route: () => {
         this.router.navigate(['Terms-And-Conditions']);
 
       }
 
     },
   ];
-  
+
   gotoProfile(person: User) {
-    localStorage.setItem(LocalStorageItem.SELECTED_PROFILE,JSON.stringify(person));
+    localStorage.setItem(LocalStorageItem.SELECTED_PROFILE, JSON.stringify(person));
     this.router.navigate(['Profile']);
   }
 
@@ -251,7 +286,12 @@ checkbox:boolean;
     this.router.navigate(['Interests']);
   }
   gotoEditProfile() {
-    this.router.navigate(['Edit-Profile']);
+     this.userId = localStorage.getItem('LoggedInUser');
+
+    this.userId = JSON.parse(this.userId);
+    this.router.navigate(['Edit-Profile',this.userId._id]);
+    // this.router.navigate(['/setting/build-edit', id._id]);
+
   }
   gotoNotifications() {
     this.router.navigate(['Notifications']);
@@ -262,54 +302,47 @@ checkbox:boolean;
   gotoPhotos() {
     this.router.navigate(['Edit-Photos']);
   }
-  letschat(id:any){
+  letschat(id: any) {
     this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
-     console.log(persons);
-      this.router.navigate(['Chat/'+persons._id]);    })
-      localStorage.setItem("id",id);
-  }
-  gotoChat(id:any) {
-    this.router.navigate(['Chat/'+id]);
-  }
-  onSendInterestClick(person: User) {   
-    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
-    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      this.toasterservice.success("Interest Sent Successfully!");
+      console.log(persons);
+      this.router.navigate(['Chat/' + persons._id]);
     })
+    localStorage.setItem("id", id);
+  }
+  gotoChat(id: any) {
+    this.router.navigate(['Chat/' + id]);
+  }
+  onSendInterestClick(person: User) {
+    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
+      .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+        this.toasterservice.success("Interest Sent Successfully!");
+      })
   }
 
   AddtoFavClick(person: User) {
     this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
-    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      this.toasterservice.success("Person has been added to Favourites Successfully!");
-    })
+      .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+        this.toasterservice.success("Person has been added to Favourites Successfully!");
+      })
   }
 
-  statuschange() {   
+  statuschange() {
     this.appService.Loginstatusupdate(this.CurrentUser._id, this.saveUsername)
-    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-     console.log(response)
-      
-      const body = {
-        email: this.CurrentUser.email,
-        password: "2233"
-      };
-      this.appService.Login(body).pipe(takeUntil(this.Unsubscribe$)).subscribe(res => {
-        console.warn(res.user)
-        if (res.user) {
-          localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
-          this.toasterservice.success("Status Updated Successfully!");
-          
-        }
-       })
+      .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+        console.log(response)
 
+        const body = {
+          email: this.CurrentUser.email,
+          password: "2233"
+        };
+        this.appService.Login(body).pipe(takeUntil(this.Unsubscribe$)).subscribe(res => {
+          console.warn(res.user)
+          if (res.user) {
+            localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
+            this.toasterservice.success("Status Updated Successfully!");
 
-
-
-
-      
-    })
-    
+          }
+        })
+      })
   }
-
 }
