@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
 import { Gender } from '../enums/genders.enum';
@@ -29,6 +31,8 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   public saveUsername?: boolean;
   public userId:any;
   userProfile: any;
+  imageUrl: string;
+  url = environment.url;
 
 
   constructor(private router: Router,
@@ -41,7 +45,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.status == 1 ? 'red' : 'yellow';
-    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);   
     if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
 
@@ -58,11 +62,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       this.getAllChat();
 
     }
-
-
-
-
-
+    this.getImage();
     this.messagesList = [
       {
         image: "https://bit.ly/3RzZK9J",
@@ -292,6 +292,17 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.router.navigate(['Edit-Profile',this.userId._id]);
     // this.router.navigate(['/setting/build-edit', id._id]);
 
+  }
+  getImage() {
+    this.appService.getSingleUser(this.CurrentUser._id)
+      .subscribe((data: any) => {
+            const fullUrl = `${this.url}/${data.image}`
+            this.imageUrl = fullUrl;
+          }
+      );
+  }
+  id(id: any) {
+    throw new Error('Method not implemented.');
   }
   gotoNotifications() {
     this.router.navigate(['Notifications']);

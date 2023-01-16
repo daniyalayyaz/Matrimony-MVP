@@ -52,7 +52,10 @@ chatList={members:[],messages:[{message:"",name:"",sender:""}],_id:""};
   }
   chat:string;
   postChat(){
-    this.appService.postChat(this.chatList._id||"56cb91bdc3464f14678934ca",this.CurrentUser.name,this.CurrentUser._id,this.chatList.members[1]||localStorage.getItem("id"),this.chat).pipe(
+    this.appService.postChat(this.chatList._id||"56cb91bdc3464f14678934ca",
+    this.CurrentUser.name,
+    this.CurrentUser._id,
+    this.chatList.members[1]||localStorage.getItem("id"),this.chat).pipe(
       takeUntil(this.Unsubscribe$))
       .subscribe((users) => {
     if(users._id){
@@ -71,9 +74,6 @@ chatList={members:[],messages:[{message:"",name:"",sender:""}],_id:""};
     else{
         this.router.navigate(['Chat/'+users._id]);  
         this.chat="";
-      
     }
-
-    
       })
 }}

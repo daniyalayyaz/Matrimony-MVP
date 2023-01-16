@@ -51,8 +51,11 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <i class="fa-solid fa-image iconImage"></i>
+                        <!-- <i class="fa-solid fa-image iconImage"></i> -->
+                        <img [src]='imageUrl' alt="You have No Profile" height="100px" width="100px">
+
                         <h3 style="color: #0F4D5C; font-weight: bold;">Profile Image</h3>
+
                     </div>
                     <div class="d-flex justify-content-around iconsOfEdit text-center mt-5">
                         <div (click)="gotoEditProfile()" style="cursor: pointer">

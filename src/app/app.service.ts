@@ -41,8 +41,8 @@ export class AppService {
     return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
     // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
   }
-  uploadMultipleImage(image:any,userId:any){
-    return this.http.post(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,image);
+  uploadMultipleImage(images:any,userId:any){
+    return this.http.post(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,images);
     // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
   }
 
@@ -79,6 +79,9 @@ export class AppService {
   }
   getProfileImage(id:any){
     return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`,{ responseType: 'blob' });
+  }
+  getGallaryImage(id:any){
+    return this.http.get(`${environment.apiBaseUrl}/user/showImages/${id}`);
   }
   // updateUser(userId?: string, user?: any): Observable<any> {
   //   const url = `${environment.apiBaseUrl}/user/userUpdate`;
