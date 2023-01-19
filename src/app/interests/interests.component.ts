@@ -39,6 +39,8 @@ export class InterestsComponent extends UnsubscribeHandelr implements OnInit {
   ViewAllRequests(userId?: string) {
     this.appService.viewAllRequests(userId).pipe(takeUntil(this.Unsubscribe$))
     .subscribe((requestedPersons: Array<User>) => {
+      console.log(requestedPersons);
+      
         if (requestedPersons.length > 0) {
           this.requestedPersonsList = requestedPersons;
         } else {

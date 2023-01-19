@@ -117,7 +117,7 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
   async update() {
     this.appService.updateUser(this.userProfile._id, this.form.value).subscribe((res: any) => {
       this.updateitem = res;
-      this.router.navigate(['/setting/build-list']);
+      this.router.navigate(['Dashboard']);
     }
     )
   }

@@ -13,7 +13,6 @@ body{margin-top:20px;}
 										Search Box
 	************************************************
 ************************************************/
-
 .chat-search-box {
     -webkit-border-radius: 3px 0 0 0;
     -moz-border-radius: 3px 0 0 0;
@@ -373,10 +372,29 @@ body{margin-top:20px;}
     background: linear-gradient(0deg, rgba(241, 88, 126, 1) 0%, rgba(249, 117, 112, 1) 100%);
     color: white;
     font-weight: bold;
+    width: 5%;
     border: none;
     border-radius: 10px;
-    margin-left: 10px;
-  
+    margin-left: 10px; 
+}
+.camera-btn{
+    background: linear-gradient(0deg, rgba(241, 88, 126, 1) 0%, rgba(249, 117, 112, 1) 100%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 4%;
+    border-radius: 10px;
+    margin-left: 10px; 
+}
+.cross-btn{
+    background: linear-gradient(0deg, rgb(236, 11, 11) 0%, rgb(226, 130, 127) 100%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    /* width: 10px; */
+    height: 25px;
+    margin-top: -10px;
+    border-radius: 20px;
 }
 .textbox-controller{
     bottom: 0;

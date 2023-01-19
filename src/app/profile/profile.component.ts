@@ -8,77 +8,82 @@ import { LocalStorageItem } from '../helpers/localStorageItem.enum';
 import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { ProfileDetail } from '../models/profile-detail.modal';
 import { User } from '../models/user.modal';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
+export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
   pathleft: string = "../../assets/left.png";
   pathmessage: string = "../../assets/message.png";
   pathheart: string = "../../assets/pinkheart.png";
-  pathright: string="../../assets/right.png"
-  
-  checknum?:boolean;
-  profilepic?:boolean;
-  profileDetails: User;
+  pathright: string = "../../assets/right.png"
 
+  checknum?: boolean;
+  profilepic?: boolean;
+  profileDetails: User;
+  imageUrl: any;
+  url = environment.url;
   constructor(private router: Router,
-              private toasterservice: ToastrService,
-              private appService: AppService) {
-                super()
-              }
-              display = "none";
-              openModal() {
-                this.display = "block";
-              }
-              onCloseHandled() {
-                this.display = "none";
-              }
+    private toasterservice: ToastrService,
+    private appService: AppService) {
+    super()
+  }
+  display = "none";
+  openModal() {
+    this.display = "block";
+  }
+  onCloseHandled() {
+    this.display = "none";
+  }
+
+
   ngOnInit(): void {
-  
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    
+    this.getImage();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
-    if(loggedUser) {
+    if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
     }
 
-   let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
-   if (profileDetail) {
-    this.profileDetails = JSON.parse(profileDetail);
+    let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
+    if (profileDetail) {
+      this.profileDetails = JSON.parse(profileDetail);
 
-   }
-   this.checknum=this.CurrentUser.numberstatus;
-   this.profilepic=this.CurrentUser.Profilestatus;
+    }
+    this.checknum = this.CurrentUser.numberstatus;
+    this.profilepic = this.CurrentUser.Profilestatus;
   }
 
   OnFavClick() {
     this.appService.AddRemoveFavourite(this.CurrentUser._id, this.profileDetails._id)
-    .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      this.toasterservice.success("Add to Favourite Successfully");
-    })
-  
+      .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+        this.toasterservice.success("Add to Favourite Successfully");
+      })
+      
   }
 
-  blockuser(id:any) {
+  blockuser(id: any) {
 
-   
-    
+
+
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
-    if(loggedUser) {
+    if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
-    // var body={
-    //   'loginId':this.CurrentUser._id,
-    //   'userId':id
-    // }
-  // console.warn(body)
-    this.appService.Blockuser(this.CurrentUser._id,id).pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-      
-      this.toasterservice.success("User Blocked Successfully!");
-    })
+      // var body={
+      //   'loginId':this.CurrentUser._id,
+      //   'userId':id
+      // }
+      // console.warn(body)
+      this.appService.Blockuser(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+
+        this.toasterservice.success("User Blocked Successfully!");
+      })
     }
   }
 
@@ -86,7 +91,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
 
   }
 
-   profileInfo = [
+  profileInfo = [
     {
       title: "Personal Information",
       information:
@@ -99,46 +104,54 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit{
     },
   ];
 
-   details = [
+  details = [
     {
-        sect: "Sunni",
-        religiousness: "Religious",
-        profession: "Pharmacist",
-        status: "Single",
-        state: "London",
-        country: "United Kingdom",
-        registration: "To Find Partner",
+      sect: "Sunni",
+      religiousness: "Religious",
+      profession: "Pharmacist",
+      status: "Single",
+      state: "London",
+      country: "United Kingdom",
+      registration: "To Find Partner",
     },
     {
-        sect: "Sunni",
-        religiousness: "Religious",
-        profession: "Pharmacist",
-        status: "Single",
-        state: "London",
-        country: "United Kingdom",
-        registration: "To Find Partner",
+      sect: "Sunni",
+      religiousness: "Religious",
+      profession: "Pharmacist",
+      status: "Single",
+      state: "London",
+      country: "United Kingdom",
+      registration: "To Find Partner",
     },
     {
-        sect: "Sunni",
-        religiousness: "Religious",
-        profession: "Pharmacist",
-        status: "Single",
-        state: "London",
-        country: "United Kingdom",
-        registration: "To Find Partner",
+      sect: "Sunni",
+      religiousness: "Religious",
+      profession: "Pharmacist",
+      status: "Single",
+      state: "London",
+      country: "United Kingdom",
+      registration: "To Find Partner",
     },
     {
-        sect: "Sunni",
-        religiousness: "Religious",
-        profession: "Pharmacist",
-        status: "Single",
-        state: "London",
-        country: "United Kingdom",
-        registration: "To Find Partner",
+      sect: "Sunni",
+      religiousness: "Religious",
+      profession: "Pharmacist",
+      status: "Single",
+      state: "London",
+      country: "United Kingdom",
+      registration: "To Find Partner",
     },
   ]
-  gotoSubscribe(){
+  gotoSubscribe() {
     this.router.navigate(['Subscribe']);
   }
- 
+  getImage() {
+    this.appService.getGallaryImage(this.CurrentUser._id)
+      .subscribe((data: any) => {
+        const fullUrl = `${this.url}/${data.image}`
+        this.imageUrl = fullUrl;
+        console.log(this.imageUrl);
+      }
+      );
+  }
 }
