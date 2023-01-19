@@ -166,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="row responsivelist">
-                                <ng-container *ngIf="personList.length > 0">
+                                <ng-container *ngIf="personList.length;else noContent">
                                     <div class="col-md-6 mt-3" *ngFor="let person of personList">
                                         <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;"
                                             (click)="gotoProfile(person)">
@@ -186,12 +186,13 @@
                                                                     alt="..." />
                                                             </div>
                                                         </div>
-
+                                                       
                                                         <p class="card-text text-muted">
                                                             {{person.gender? person.gender: "undefined"}} |
                                                             {{person.age}} | {{person.professional ?
                                                             person.professional: "undefined"}}
                                                         </p>
+
                                                         <p class="card-text text-muted">
                                                             {{person.city}} | {{person.country}}
                                                         </p>
@@ -199,6 +200,10 @@
                                                             {{person.caste}} | {{person.religious}} |
                                                             {{person.montherTonque}}
                                                         </p>
+                                                        <!-- <p class="card-text text-muted">
+                                                            {{person.connect}}                                                        {{person.montherTonque}}
+                                                        </p> -->
+                                                       
                                                         <div class="d-flex mt-2">
                                                             <div class="me-auto">
                                                                 <img src={{pathmessage}}
@@ -224,9 +229,11 @@
                                         </div>
                                     </div>
                                 </ng-container>
-                                <ng-container *ngIf="personList.length == 0">
+                                <ng-template #noContent>No matching result...</ng-template>
+
+                                <!-- <ng-container *ngIf="personList.length == 0">
                                     <h5>No Users Found</h5>
-                                </ng-container>
+                                </ng-container> -->
                             </div>
                         </div>
                     </div>

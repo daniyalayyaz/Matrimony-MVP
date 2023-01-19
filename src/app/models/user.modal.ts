@@ -67,6 +67,7 @@ export interface User {
     numberstatus?: boolean;
     color?: string;
     distance?: string;
+    connect?:Number;
 
   }
   

@@ -151,7 +151,6 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
         const fullUrl = `${this.url}/${data.image}`
         this.imageUrl = fullUrl;
         console.log(this.imageUrl);
-        
       }
       );
   }

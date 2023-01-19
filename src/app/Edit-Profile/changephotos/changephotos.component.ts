@@ -16,8 +16,9 @@ export class ChangephotosComponent implements OnInit {
   images: '';
   img: any;
   id: any;
-  photo: any;
+  photo: any=[];
   multipleImages: any = [];
+  gallary :any=[];
   // public projects: Project[]=[];
   displaySingleImage!: Boolean;
   displaySingleImageArray: any = [];
@@ -40,7 +41,7 @@ export class ChangephotosComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activateRoute.snapshot.params['id'];
     this.getImage();
-    // this.getgallary();
+    this.getgallary();
   }
   selectImage(event: any) {
     if (event.target.files[0]) {
@@ -59,6 +60,7 @@ export class ChangephotosComponent implements OnInit {
         reader.readAsDataURL(event.target.files[i]);
         reader.onload = (event: any) => {
           this.multipleImages.push(event.target.result);
+          // this.multipleImages = this.photo
         }
       }
       this.img = event.target.files;
@@ -77,14 +79,15 @@ export class ChangephotosComponent implements OnInit {
     })
   }
   onMultipleSubmit() {
-    const formData = new FormData();
-    for (let img of this.img) {
-      formData.append('images', img)
-    }
-    this.appService.uploadMultipleImage(formData, this.id).subscribe((res: any) => {
+    // const formData = new FormData();
+    console.log(this.multipleImages);
+    // for (let img of this.img) {
+    //   formData.append('images', img)
+    // }
+    this.appService.uploadMultipleImage(this.multipleImages, this.id).subscribe((res: any) => {
       console.log(res);
       this.getgallary();
-      // this.router.navigate(['Profile']);
+      this.router.navigate(['Profile']);
     })
   }
 
@@ -97,20 +100,27 @@ export class ChangephotosComponent implements OnInit {
       );
   }
   getgallary() {
-    this.appService.getGallaryImage(this.id)
-      .subscribe((data: any) => {
-        console.log(data);
+    this.appService.getGallaryImage(this.id).subscribe((res: any) => {
+      // this.base64TrimmedURL = base64Data;
+      // this.createBlobImageFileAndShow();
+      console.log(res[0].image);
+      this.gallary = res[0].image;
+      
+    });
+  // }
+      // .subscribe((data: any) => {
+      //   console.log(data);
         // data.image.forEach((_image:any) => {
         //   console.log(_image);
         // });
-        for (let img of data[0].image) {
-          console.log(img);
-          this.multipleImages = this.sanitizer.bypassSecurityTrustResourceUrl(this.multipleImages)
-          console.log(this.multipleImages);
+        // for (let img of data[0].image) {
+        //   console.log(img);
+        //   this.multipleImages = this.sanitizer.bypassSecurityTrustResourceUrl(this.multipleImages)
+        //   console.log(this.multipleImages);
           // this.convertImages.push(this.sanitizer.bypassSecurityTrustUrl(img))
-        }
-      }
-      );
+      //   }
+      // }
+      // );
   }
 
 

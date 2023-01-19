@@ -58,12 +58,15 @@
                 <!-- <img [src]='multipleImages' alt="You have No Profile" height="100px" width="100px"> -->
 
                 <div class="col"  >
+                    <img *ngFor='let url of gallary' [src]='url' alt="You have No Profile" height="100px" width="100px">
                     <img *ngFor='let url of multipleImages' [src]='url' alt="You have No Profile" height="100px" width="100px">
+
                 </div>
                 <label class="btn btn-default">
                     <input type="file" id="img" multiple (change)="selectMultipleImage($event)" />
                 </label>
                 <button class="btn btn-success" type="submit" (click)="onMultipleSubmit()">Upload</button>
+
             </div>
             
             <br />

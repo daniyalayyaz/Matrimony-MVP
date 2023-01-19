@@ -80,7 +80,7 @@ export class AppService {
   getProfileImage(id:any){
     return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`,{ responseType: 'blob' });
   }
-  getGallaryImage(id:any){
+  getGallaryImage(id:any):Observable<any>{
     return this.http.get(`${environment.apiBaseUrl}/user/showImages/${id}`);
   }
   // updateUser(userId?: string, user?: any): Observable<any> {
@@ -154,6 +154,15 @@ const provider=new GoogleAuthProvider();
 const credential=await this.angulrfire.signInWithPopup(provider);
 return credential;
   }
-
+  getPackage() {
+    return this.http.get(environment.apiBaseUrl + '/user/getPackage');
+  };
+  decrimentsInConnects(id:any,body:any){
+    // return this.http.put(environment.apiBaseUrl + '/user/connectsDecriment',id)
+    return this.http.post(`${environment.apiBaseUrl}/user/connectsDecrement/${id}`,body)
+  };
+  // whatsappchat(b:any,){
+  //   return this.http.post(environment.apiBaseUrl + '/user/whatsapp',b);
+  // }
 }
 

@@ -33,7 +33,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   userProfile: any;
   imageUrl: string;
   url = environment.url;
-
+  connect:any;
 
   constructor(private router: Router,
     private toasterservice: ToastrService,
@@ -41,13 +41,15 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     super()
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {        
+
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.status == 1 ? 'red' : 'yellow';
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);   
     if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
+      this.SingleUser(JSON.parse(loggedUser));
 
       switch (this.CurrentUser.gender) {
         case Gender.FEMALE:
@@ -94,7 +96,10 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         msg: "That was wonderful. Thanks..",
         time: "01.02.21",
       },
+      
     ];
+    
+
   }
 
   public topFunction() {
@@ -107,6 +112,9 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       .subscribe((persons: Array<User>) => {
         this.personList = [];
         this.personList = persons;
+        console.log(this.personList);
+        
+   
       }
       );
   }
@@ -122,7 +130,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   checkstatus() {
 
     this.saveUsername = this.CurrentUser.LoginStatus
-    console.warn(this.saveUsername)
+    // console.warn(this.saveUsername)
 
   }
   public onSaveUsernameChanged(value: boolean) {
@@ -151,16 +159,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   //     })
   // }
   public latestByClick() {
-      // switch (this.CurrentUser.gender) {
-      //   case Gender.FEMALE:
-      //     this.GetLatestUsers(Gender.MALE);
-      //     break;
-      //   case Gender.MALE:
-      //     this.GetLatestUsers(Gender.FEMALE);
-      //     break
-      // }
-      console.log(this.CurrentUser);
-      
       this.appService.latest(this.CurrentUser._id).subscribe((res:any) =>{
         this.personList = [];
         this.personList = res;
@@ -173,7 +171,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       .subscribe((users) => {
 
         this.chatList = users;
-        console.log(users);
+        // console.log(users);
       })
   }
   public onOnlineClick() {
@@ -315,20 +313,41 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   }
   letschat(id: any) {
     this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
-      console.log(persons);
+      // console.log(persons);
       this.router.navigate(['Chat/' + persons._id]);
     })
     localStorage.setItem("id", id);
   }
   gotoChat(id: any) {
     this.router.navigate(['Chat/' + id]);
-  }
+  } 
   onSendInterestClick(person: User) {
-    this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
+    console.log(this.connect);
+    if(this.connect >= 4){
+      this.connectsdecriment(this.CurrentUser);
+      this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
       .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+
         this.toasterservice.success("Interest Sent Successfully!");
+        this.connect = this.connect-4;
+        console.log(this.connect);
       })
+    }else{
+      this.toasterservice.error("You have No Connects");
+    }
+  };
+  connectsdecriment(data:any){
+    this.appService.decrimentsInConnects(this.CurrentUser._id,data).subscribe((res:any)=>{
+        console.log(res);
+    })
+  };
+  SingleUser(id:any){
+    this.appService.getSingleUser(id._id).subscribe((res:any)=>{
+      console.log(res.connect);
+      this.connect = res.connect;
+  })
   }
+  
 
   AddtoFavClick(person: User) {
     this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
@@ -340,14 +359,15 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   statuschange() {
     this.appService.Loginstatusupdate(this.CurrentUser._id, this.saveUsername)
       .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-        console.log(response)
+        // console.log(response)
 
         const body = {
           email: this.CurrentUser.email,
           password: "2233"
         };
         this.appService.Login(body).pipe(takeUntil(this.Unsubscribe$)).subscribe(res => {
-          console.warn(res.user)
+          // console.warn(res.user)
+
           if (res.user) {
             localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
             this.toasterservice.success("Status Updated Successfully!");
