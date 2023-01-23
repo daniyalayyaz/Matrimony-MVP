@@ -13,7 +13,10 @@ body {
     padding: 10px;
     width: 120px;
 }
-
+.cardImage {
+    height: 100%;
+    width: 100%;
+  }
 .loginText{
     color: #0F4D5C;
     text-decoration: none;

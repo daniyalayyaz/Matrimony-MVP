@@ -39,13 +39,13 @@
             <div class="col-md-3 padding-zero">
                 <div style="
               border: 1px solid #ffff;
-        " class="card text-bg-dark cardEdit OnMobileAvatar">
+        " class="card text-bg-dark cardEdit OnMobileAvatar card-overlay1">
 
                     <!-- <p *ngIf="profilepic"> <img [src]="imageUrl" class="OnMobileAvatar" /></p>
                     <p *ngIf="!profilepic"><img [src]="imageUrl"class="OnMobileAvatar" /></p> -->
-                    <div class="card-overlay">
+                    <div class="" *ngIf="imageUrl;else img">
                         <p class="card-text cardDetalis text-dark cardBtnBg">
-                            <img [src]='imageUrl' alt="Girl in a jacket" width="50" height="60" />
+                            <img [src]='imageUrl'  width="302px" height="150px" />
                             <!-- <img src={{pathmessage}} (click)="OnMessageClick()" alt="Girl in a jacket" width="50" -->
                                 <!-- height="60" /> -->
                             <!-- <img src={{pathheart}} (click)="OnFavClick()" alt="Girl in a jacket" width="50" -->
@@ -53,14 +53,27 @@
                             <!-- <img src={{pathright}} alt="Girl in a jacket" width="50" height="60" /> -->
                         </p>
                     </div>
+                    <ng-template #img>
+                       <img  src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg"
+                       width="302px" height="150px">
+                    </ng-template>
                 </div>
 
-                <div class="row mt-2 resImgHide">
-                    <div class="col-4 boxBtn"></div>
-                    <div class="col-4 boxBtn"></div>
-                    <div class="col-4 boxBtn "></div>
-                </div>
-
+                <!-- <div class="row mt-2 resImgHide">
+                    <div class="col-4 ">
+                        <img *ngFor='let url of gallary' [src]='url' alt="You have No Profile" height="100px" width="100px">
+                    </div>
+                </div> -->
+                <ngb-carousel *ngIf="gallary; else galleryImg">
+                    <ng-template ngbSlide *ngFor="let image of gallary">
+                      <div class="wrapper">
+                        <img [src]="image" alt="Random first slide" width="302px" height="150px">
+                      </div>
+                    </ng-template>
+                  </ngb-carousel>
+                  <ng-template #galleryImg>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEQPp2A-sJfaIat177Mus3XzVsNqsNiu7ysw&usqp=CAU">
+                  </ng-template>
                 <button type="button" class="btnRqt mb-3 mt-3" (click)="gotoSubscribe()">
                     INTEREST REQUEST
                 </button>
@@ -79,8 +92,9 @@
                         </div>
                         <div class="modal-body">
                             <input type="text" class="form-control rounded-pill" aria-label="Name" name="name"
-                                aria-describedby="addon-wrapping" placeholder="Enter Reason" required="true" /> <br>
-                            <button type="button" class="btnRqt mb-3">
+                                aria-describedby="addon-wrapping" placeholder="Enter Reason" required="true" 
+                                [(ngModel)]="reportMessage"/> <br>
+                            <button type="button" class="btnRqt mb-3"(click)="reportUser()" >
                                 SUBMIT
                             </button>
                         </div>

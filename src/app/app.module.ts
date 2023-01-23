@@ -38,7 +38,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FavouritesComponent } from './favourites/favourites.component';
-import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions.component';
@@ -46,6 +45,8 @@ import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 import { BlockedusersComponent } from './blockedusers/blockedusers.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginwithemailComponent } from './loginwithemail/loginwithemail.component';
 
 
 @NgModule({
@@ -76,13 +77,11 @@ import { BlockedusersComponent } from './blockedusers/blockedusers.component';
     EditprofileComponent,
     ContactUsComponent,
     FavouritesComponent,
-    LoginwithemailComponent,
     NotificationsComponent,
     PreferencesComponent,
     TermsNconditionsComponent,
     MatchmakingComponent,
-    ChatComponent,
-    BlockedusersComponent,
+    ChatComponent,LoginwithemailComponent,
     
   ],
   imports: [
@@ -93,6 +92,7 @@ import { BlockedusersComponent } from './blockedusers/blockedusers.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
         timeOut: 3000,

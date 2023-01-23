@@ -30,7 +30,8 @@
             <div class="my-4">
                 <ul class="nav nav-tabs mb-4 " id="myTab" role="tablist">
                     <li class="nav-item ">
-                        <a class="nav-link active backgroundColor" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Notifications</a>
+                        <a class="nav-link active backgroundColor" id="contact-tab" data-toggle="tab" href="#contact"
+                            role="tab" aria-controls="contact" aria-selected="false">Notifications</a>
                     </li>
                 </ul>
                 <h5 class="mb-0 mt-5">Notifications Settings</h5>
@@ -43,11 +44,14 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <strong class="mb-0">Unusual activity notifications</strong>
-                                <p class="text-muted mb-0">Donec in quam sed urna bibendum tincidunt quis mollis mauris.</p>
+                                <p class="text-muted mb-0">Donec in quam sed urna bibendum tincidunt quis mollis mauris.
+                                </p>
                             </div>
                             <div class="col-auto">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input"  [checked]="Activenotification" #Activenotificationbox type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" [checked]="Activenotification"
+                                        #Activenotificationbox type="checkbox" role="switch"
+                                        id="flexSwitchCheckDefault">
                                 </div>
                             </div>
                         </div>
@@ -56,11 +60,29 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <strong class="mb-0">Number status Hide/Show</strong>
-                                <p class="text-muted mb-0">Fusce lacinia elementum eros, sed vulputate urna eleifend nec.</p>
+                                <p class="text-muted mb-0">Fusce lacinia elementum eros, sed vulputate urna eleifend
+                                    nec.</p>
                             </div>
                             <div class="col-auto">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input"  #numberstatusbox (change)="savenumber(numberstatusbox.checked)" [checked]="numberstatus"  type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" #numberstatusbox
+                                        (change)="savenumber(numberstatusbox.checked)" [checked]="numberstatus"
+                                        type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="mb-0">Lock Profile</strong>
+                                <p class="text-muted mb-0">This will allow the other users to show your gallery pictures.</p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" #isGalleryLock
+                                        (change)="lockMyGallery(isGalleryLock.checked)" [checked]="lockGallery"
+                                        type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +100,9 @@
                             </div>
                             <div class="col-auto">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input"  [checked]="featurestatus" (change)="savefeature(featurestatusbox.checked)" #featurestatusbox  type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" [checked]="featurestatus"
+                                        (change)="savefeature(featurestatusbox.checked)" #featurestatusbox
+                                        type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                 </div>
                             </div>
                         </div>
@@ -87,11 +111,14 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <strong class="mb-0">Notify me by email for latest news</strong>
-                                <p class="text-muted mb-0">Nulla et tincidunt sapien. Sed eleifend volutpat elementum.</p>
+                                <p class="text-muted mb-0">Nulla et tincidunt sapien. Sed eleifend volutpat elementum.
+                                </p>
                             </div>
                             <div class="col-auto">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input"[checked]="latestnews" (change)="latestnewss(latestnewsbox.checked)" #latestnewsbox type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" [checked]="latestnews"
+                                        (change)="latestnewss(latestnewsbox.checked)" #latestnewsbox type="checkbox"
+                                        role="switch" id="flexSwitchCheckDefault">
                                 </div>
                             </div>
                         </div>
@@ -100,11 +127,14 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <strong class="mb-0">Notify me about tips on using account</strong>
-                                <p class="text-muted mb-0">Donec in quam sed urna bibendum tincidunt quis mollis mauris.</p>
+                                <p class="text-muted mb-0">Donec in quam sed urna bibendum tincidunt quis mollis mauris.
+                                </p>
                             </div>
                             <div class="col-auto">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input"   [checked]="Profilestatus" #Profilestatusbox  (change)="Profilestatuss(Profilestatusbox.checked)"  type="checkbox" role="switch"  id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" [checked]="Profilestatus" #Profilestatusbox
+                                        (change)="Profilestatuss(Profilestatusbox.checked)" type="checkbox"
+                                        role="switch" id="flexSwitchCheckDefault">
                                 </div>
                             </div>
                         </div>
@@ -113,5 +143,15 @@
             </div>
         </div>
     </div>
-    
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+        <form #entryForm="ngForm" (ngSubmit)="entryForm.valid && onSubmit(entryForm)">
+            <div class="custom-control form-control custom-switch">
+                <button type="submit" class="btn btn-danger" 
+                #active="ngModel" [(ngModel)]="package.active" name="active" 
+                (click)="onSaveUsernameChanged($event)">Delete Account</button>
+              </div>
+        </form>
+        </div>
     </div>
+</div>

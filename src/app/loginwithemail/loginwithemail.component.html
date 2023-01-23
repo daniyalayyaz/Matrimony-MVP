@@ -1,13 +1,27 @@
+<ng-template #mymodal let-modal >
+  <div *ngFor="let obj of data">
+  <div class="modal-header bgColor">
+    <h4 class="modal-title" id="modal-basic-title">{{obj.name}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <!-- <span aria-hidden="true">×</span> -->
+    </button>
+  </div>
+  <div class="modal-body bgColor ">
+    {{obj.description}}
+  </div>
+  <div class="modal-footer ">
+    <button type="button" class="btn " (click)="modal.close('Save click')">Ok</button>
+  </div>
+</div>
+</ng-template>
 <div style="font-family: 'georgia'">
   <div class="row justify-content-center bg-danger gx-0">
     <div class="col-md-10 section-responsive">
       <div class="row my-5 gx-0">
         <div class="col-md-4">
           <div class="black-bg">
-            <img
-              class="loginimg"
-              src="https://yuliamoiseeva.com.au/wp-content/uploads/2021/03/wu-jianxiong-4TET084JWaA-unsplash-1024x1017.jpg"
-            />
+            <img class="loginimg"
+              src="https://yuliamoiseeva.com.au/wp-content/uploads/2021/03/wu-jianxiong-4TET084JWaA-unsplash-1024x1017.jpg" />
           </div>
         </div>
         <div class="col-md-8 px-4" style="background-color: #faedf1">
@@ -21,22 +35,13 @@
               </p>
               <div class="row justify-content-center">
                 <div class="col-md-12">
-                  <input
-                    class="form-control rounded-pill"
-                    type="text"
-                    placeholder="Username"
-                    [(ngModel)]="email"
-                  />
+                  <input class="form-control rounded-pill" type="text" placeholder="Username" [(ngModel)]="email" />
                 </div>
               </div>
               <div class="row justify-content-center">
                 <div class="col-md-12 mt-2">
-                  <input
-                    class="form-control rounded-pill"
-                    type="password"
-                    placeholder="Password"
-                    [(ngModel)]="password"
-                  />
+                  <input class="form-control rounded-pill" type="password" placeholder="Password"
+                    [(ngModel)]="password" />
                 </div>
               </div>
               <div class="row justify-content-center">
@@ -48,16 +53,12 @@
               </div>
               <p class="text-center mt-5" style="color: #0f4d5c">
                 Don't have an social account?
-                <a
-                  (click)="gotoSignupFirstPage()"
-                  style="
+                <a (click)="gotoSignupFirstPage()" style="
                     cursor: pointer;
                     font-weight: bold;
                     text-decoration: underline;
                     color: #ed7e9e;
-                  "
-                  >Sign up</a
-                >
+                  ">Sign up</a>
               </p>
             </div>
           </div>

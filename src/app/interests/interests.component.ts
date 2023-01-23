@@ -16,52 +16,66 @@ import { User } from '../models/user.modal';
 export class InterestsComponent extends UnsubscribeHandelr implements OnInit {
 
   requestedPersonsList: Array<User> = [];
-
+  ViewAcceptedRequest: any = false ;
 
   constructor(private router: Router,
-              private appService: AppService,
-              private toasterservice: ToastrService,
-              ) { 
-                super()
-              }
-  
+    private appService: AppService,
+    private toasterservice: ToastrService,
+  ) {
+    super()
+  }
+
   ngOnInit(): void {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
-    if(loggedUser) {
+    if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
-      this.ViewAllRequests(this.CurrentUser._id);
+      this.ViewAllRequests();
     }
-
   }
+  ViewAllRequests() {
+    this.appService.viewAllRequests(this.CurrentUser._id).pipe(takeUntil(this.Unsubscribe$))
+      .subscribe((requestedPersons: Array<User>) => {
+        console.log(requestedPersons);
 
-  ViewAllRequests(userId?: string) {
-    this.appService.viewAllRequests(userId).pipe(takeUntil(this.Unsubscribe$))
-    .subscribe((requestedPersons: Array<User>) => {
-      console.log(requestedPersons);
-      
         if (requestedPersons.length > 0) {
+          this.ViewAcceptedRequest = false;
           this.requestedPersonsList = requestedPersons;
         } else {
+          this.requestedPersonsList = requestedPersons;
           this.toasterservice.warning("No Requests Found");
         }
-    })
+      })
+  }
+  ViewAcceptedRequests() {
+    this.appService.viewAcceptRequest(this.CurrentUser._id).pipe(takeUntil(this.Unsubscribe$))
+    .subscribe((requestedPersons: Array<User>) => {
+      console.log(requestedPersons);
+
+      if (requestedPersons.length > 0) {
+        this.ViewAcceptedRequest = true;
+        this.requestedPersonsList = requestedPersons;
+      } else {
+        this.requestedPersonsList = requestedPersons;
+        this.toasterservice.warning("No Requests Found");
+      }
+    })    
   }
 
   AcceptRequest(person: User) {
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.ACCEPT).pipe(takeUntil(this.Unsubscribe$))
-    .subscribe(response => {
-      this.toasterservice.success("Request Accepted Successfully");
-      this.gotoFilterInterests();
-    })
+      .subscribe(response => {
+        this.toasterservice.success("Request Accepted Successfully");
+        this.gotoFilterInterests();
+      })
   }
 
   CancelRequest(person: User) {
     this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.CANCEL).pipe(takeUntil(this.Unsubscribe$))
-    .subscribe(response => {
-      this.toasterservice.warning("Request Cancelled Successfully");
-    })
+      .subscribe(response => {
+        this.toasterservice.warning("Request Cancelled Successfully");
+      })
   }
 
   users = [
@@ -95,7 +109,11 @@ export class InterestsComponent extends UnsubscribeHandelr implements OnInit {
     },
   ];
 
-  gotoFilterInterests(){
+  gotoFilterInterests() {
     this.router.navigate(['Filter-Interest']);
+  }
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['loginPage']);
   }
 }

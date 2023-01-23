@@ -32,13 +32,17 @@
                                 <ng-container *ngIf="true">
                                     <ul class="chat-box chatContainerScroll" *ngFor="let message of chatList.messages">
                                         <li class="chat-left" *ngIf="message.sender!=CurrentUser._id ">
-                                            <div class="chat-avatar">
-                                                <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
-                                                    alt="Retail Admin">
+                                            <div class="chat-avatar"*ngIf="message.profile;else img">
+                                                    <img src="http://localhost:5000/{{message.profile}}"/>
+                                                <!-- <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
+                                                    alt="Retail Admin"> -->
                                                 <div class="chat-name"> {{message.name}}</div>
                                             </div>
-                                            <div class="chat-text">
-                                                <div *ngIf="message.message.includes(base64); else elseOther">
+                                            <ng-template #img>
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU">
+                                            </ng-template>
+                                            <div class="chat-text" role="button">
+                                                <div *ngIf="message.message.includes(base64); else elseOther" (click)="viewImage(message.message)">
                                                     <img [src]="message.message"/>
                                                 </div>
                                                 <ng-template #elseOther>
@@ -49,19 +53,23 @@
                                         </li>
                                         <li class="chat-right" *ngIf="message.sender==CurrentUser._id ">
                                             <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
-                                            <div class="chat-text">
-                                                <div *ngIf="message.message.includes(base64); else elseCurrent">
+                                            <div class="chat-text" role="button">
+                                                <div *ngIf="message.message.includes(base64); else elseCurrent" (click)="viewImage(message.message)">
                                                     <img [src]="message.message"/>
                                                 </div>
                                                 <ng-template #elseCurrent>
                                                     {{message.message}}
                                                 </ng-template>
                                             </div>
-                                            <div class="chat-avatar">
-                                                <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
-                                                    alt="Retail Admin">
-                                                <div class="chat-name">{{message.name}}</div>
+                                            <div class="chat-avatar" *ngIf="message.profile; else img">
+                                                <!-- <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
+                                                    alt="Retail Admin"> -->
+                                                    <img src="http://localhost:5000/{{message.profile}}" />
+                                                <p class="chat-name">{{message.name}}</p>
                                             </div>
+                                            <ng-template #img>
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU">
+                                            </ng-template>
                                         </li>
                                     </ul>
                                 </ng-container>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
@@ -9,6 +9,8 @@ import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { ProfileDetail } from '../models/profile-detail.modal';
 import { User } from '../models/user.modal';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -16,6 +18,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
   pathleft: string = "../../assets/left.png";
   pathmessage: string = "../../assets/message.png";
@@ -26,11 +29,21 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
   profilepic?: boolean;
   profileDetails: User;
   imageUrl: any;
+  reportMessage:'';
   url = environment.url;
+
+  picture: SafeResourceUrl;
+  gallary: any;
+  id: any;
   constructor(private router: Router,
-    private toasterservice: ToastrService,
-    private appService: AppService) {
-    super()
+    private toasterservice: ToastrService,private sanitizer: DomSanitizer,    
+    public activateRoute: ActivatedRoute,
+    private appService: AppService,config: NgbCarouselConfig) {
+      super()
+      config.interval = 2000;
+    config.keyboard = true;
+    config.pauseOnHover = true;
+    
   }
   display = "none";
   openModal() {
@@ -42,10 +55,9 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
 
 
   ngOnInit(): void {
-    this.getImage();
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-
+    this.id = this.activateRoute.snapshot.params['id'];
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
@@ -58,6 +70,9 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
     }
     this.checknum = this.CurrentUser.numberstatus;
     this.profilepic = this.CurrentUser.Profilestatus;
+    this.getImage();
+    this.getgallary();
+
   }
 
   OnFavClick() {
@@ -69,9 +84,6 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
   }
 
   blockuser(id: any) {
-
-
-
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
@@ -81,7 +93,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
       // }
       // console.warn(body)
       this.appService.Blockuser(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-
+        this.router.navigate(['Dashboard']);
         this.toasterservice.success("User Blocked Successfully!");
       })
     }
@@ -146,12 +158,52 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
     this.router.navigate(['Subscribe']);
   }
   getImage() {
-    this.appService.getGallaryImage(this.CurrentUser._id)
+    // console.log(user);
+    
+    this.appService.getProfileImage(this.id)
       .subscribe((data: any) => {
-        const fullUrl = `${this.url}/${data.image}`
-        this.imageUrl = fullUrl;
-        console.log(this.imageUrl);
+        console.log(data);
+        
+          const fullUrl = `${this.url}/${data.image}`
+          // console.log(fullUrl);
+          this.imageUrl = fullUrl
+        console.log(this.imageUrl = fullUrl);
+        
+        });
+  }
+  reportUser() {
+    console.log(this.CurrentUser._id);
+    console.log(this.profileDetails._id);
+    console.log(this.reportMessage);
+    const report = {
+      complainerId : this.CurrentUser._id,
+      complainedId: this.profileDetails._id,
+      complainerName: this.CurrentUser.name,
+      reportText: this.reportMessage
+    };
+    this.appService.reportUser(report).subscribe((res:any)=>{
+      console.log(res);
+      if(res.message === "Report generated successfully"){
+        this.display = "none";
+        this.toasterservice.success("User Reported Successfully!");
+        this.reportMessage = "";
       }
-      );
+    })
+  }
+  getgallary() {
+    this.appService.getGallaryImage(this.id).subscribe((res: any) => {
+      // this.base64TrimmedURL = base64Data;
+      // this.createBlobImageFileAndShow();
+      // console.log(res[0].image);
+      // this.gallary = res[0].image;
+
+      console.log(res);
+      if(res.private == false){
+        this.gallary
+      }
+      else{
+        this.gallary = res.image;
+      }
+    });
   }
 }

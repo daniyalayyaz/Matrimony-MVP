@@ -69,3 +69,9 @@ input{
 /* .fa-facebook-f{
     color: #3B5998;
 } */
+.bgColor {
+    background: linear-gradient(0deg, rgba(241, 88, 126, 1) 0%, rgba(249, 117, 112, 1) 100%);
+  }
+  .bgColordiv {
+    background: linear-gradient(0deg, rgb(131, 241, 88) 0%, rgb(131, 241, 88) 100%);
+  }
