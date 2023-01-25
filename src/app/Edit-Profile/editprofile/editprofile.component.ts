@@ -117,11 +117,12 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
     })
   }
   async update() {
+    console.log(this.form.value);
+    
     this.appService.updateUser(this.userProfile._id, this.form.value).subscribe((res: any) => {
       this.updateitem = res;
-      // this.router.navigate(['Dashboard']);
-    }
-    )
+      this.router.navigate(['Dashboard']);
+    })
   }
   profilestatus(){
     // if(value.active == true){

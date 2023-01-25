@@ -41,8 +41,8 @@ export class AppService {
     return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
     // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
   }
-  uploadMultipleImage(userId:any,images:any,){
-    return this.http.post(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,images);
+  uploadMultipleImage(images:any,userId:any){
+    return this.http.put(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,images);
     // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
   }
 

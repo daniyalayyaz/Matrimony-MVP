@@ -22,7 +22,7 @@ import { User } from '../models/user.modal';
 })
 export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   status = 1;
-  chatList = [{ messages: [{ message: "",name: "", profile:"" }], _id: "" }];
+  chatList = [{ messages: [{ message: "", name: "", profile: "" }], _id: "" }];
   // chatList = { members: [],messages: [{ message: "", name: "", sender: "",senderUser:"",profile:"" }] , _id: "" };
 
   checkbox: boolean;
@@ -76,9 +76,9 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
       this.checkstatus()
       this.getAllChat();
+      this.getImage();
 
     }
-    this.getImage();
     this.messagesList = [
       {
         image: "https://bit.ly/3RzZK9J",
@@ -127,33 +127,34 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         // this.personList = [];
         this.personList = persons;
         console.log(this.personList);
-        console.log(this.CurrentUser);
 
         let filtered = this.personList.filter((user: any) => {
           if (!user._id?.includes(this.CurrentUser._id)) {
             return user;
           }
         });
-        console.log(filtered);
-        console.log(this.blockedUsers);
-
-        // this.personList = filtered;
-        let filteredBlock = filtered.filter((user: any) => {
-          if (!this.blockedUsers.includes(user._id)) {
-            return user;
-          }
-        });
-
-        let filteredGender = filteredBlock.filter((user: any) => {
+        let filteredGender = filtered.filter((user: any) => {
           if (!this.GenderFilteer.includes(user.gender)) {
             return user;
           }
         });
-        
-        console.log(filteredGender);
-        this.personList = filteredGender
-        console.log(this.personList);
-        
+        // this.personList = filteredGender;
+        let filteredBlock = filteredGender.filter((user: any) => {
+          if (!this.blockedUsers.includes(user._id)) {
+            return user;
+          }
+        });
+        let filteredBlokOtherSecondUser = filteredBlock.filter((user: any) => {
+          if (user._id?.includes(user.Block)) {
+            return user;
+          }
+        });
+
+        this.personList = filteredBlokOtherSecondUser
+
+
+        // this.personList = filteredGender
+
       }
       );
   }
@@ -196,25 +197,25 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
             return user;
           }
         });
-        console.log(filtered);
-        console.log(this.blockedUsers);
-
         // this.personList = filtered;
         let filteredBlock = filtered.filter((user: any) => {
           if (!this.blockedUsers.includes(user._id)) {
             return user;
           }
         });
-        // console.log(filteredBlock);
-        // this.personList = filteredBlock
-        let filteredGender = filteredBlock.filter((user: any) => {
+        let filteredBlokOtherSecondUser = filteredBlock.filter((user: any) => {
+          if (user._id?.includes(user.Block)) {
+            return user;
+          }
+        });
+        let filteredGender = filteredBlokOtherSecondUser.filter((user: any) => {
           if (!this.GenderFilteer.includes(user.gender)) {
             return user;
           }
         });
         console.log(filteredGender);
         this.personList = filteredGender
-        
+
       });
   }
   // public () {
@@ -240,14 +241,17 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       console.log(filtered);
       console.log(this.blockedUsers);
 
-      // this.personList = filtered;
       let filteredBlock = filtered.filter((user: any) => {
         if (!this.blockedUsers.includes(user._id)) {
           return user;
         }
       });
-      // console.log(filteredBlock);
-      this.personList = filteredBlock
+      let filteredBlokOtherSecondUser = filteredBlock.filter((user: any) => {
+        if (user._id?.includes(user.Block)) {
+          return user;
+        }
+      });
+      this.personList = filteredBlokOtherSecondUser
 
     })
   }
@@ -308,7 +312,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       color1: "#4D6DC4",
       color2: "#1A2579",
       route: () => {
-        this.router.navigate(['Profile']);
+        this.router.navigate(['Profile',this.CurrentUser._id]);
 
       }
     },
@@ -361,7 +365,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
   gotoProfile(person: User) {
     localStorage.setItem(LocalStorageItem.SELECTED_PROFILE, JSON.stringify(person));
-    this.router.navigate(['Profile',person._id]);
+    this.router.navigate(['Profile', person._id]);
   }
 
   gotoGallery() {
@@ -383,7 +387,9 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
         this.imageUrl = fullUrl;
-        // console.log(this.imageUrl);
+        console.log(data);
+        
+        console.log(this.imageUrl);
       }
       );
   }
@@ -401,8 +407,10 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   }
   letschat(id: any) {
     if (this.connect >= 4) {
+      this.connectsdecriment(this.CurrentUser);
       this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
         // console.log(persons);
+        this.connect = this.connect - 4;
         this.router.navigate(['Chat/' + persons._id]);
       })
     } else {
@@ -414,7 +422,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   }
   gotoChat(id: any) {
     this.router.navigate(['Chat/' + id]);
-  } 
+  }
   onSendInterestClick(person: User) {
     if (this.connect >= 4) {
       this.connectsdecriment(this.CurrentUser);

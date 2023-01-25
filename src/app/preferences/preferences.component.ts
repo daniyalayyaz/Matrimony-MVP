@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
+ 
 import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs';
 import { AppService } from '../app.service';
@@ -116,18 +116,21 @@ export class PreferencesComponent extends UnsubscribeHandelr implements OnInit {
     console.warn(this.numberstatus)
   }
   onSubmit(form: NgForm) {
+    console.log(form.value);
+    
     this.appService.updateUser(this.CurrentUser._id,form.value).subscribe(res => {
           localStorage.clear();
           this.toasterservice.info("Your Account Deleted.");
           this.router.navigate(['loginPage']);
         },
-  )}
+  )
+} 
   onSaveUsernameChanged(event:any){
-    console.log(event.target.checked);
+    console.log(event.target.value);
     if(event.target.value = true){
-      this.package.active = this.activeFalse;
+      this.package.requestToDelete = this.activeFalse;
     }else
-    this.package.active = this.activeTrue;
+    this.package.requestToDelete = this.activeTrue;
   }
   // deleteUser(){
   //   this.package.active = this.activeTrue;

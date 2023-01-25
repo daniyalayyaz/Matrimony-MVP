@@ -59,17 +59,19 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
     document.documentElement.scrollTop = 0;
     this.id = this.activateRoute.snapshot.params['id'];
     let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+    console.log(loggedUser);
+    
     if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
     }
 
-    let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
-    if (profileDetail) {
-      this.profileDetails = JSON.parse(profileDetail);
+    // let profileDetail = localStorage.getItem(LocalStorageItem.SELECTED_PROFILE);
+    // if (profileDetail) {
+    //   this.profileDetails = JSON.parse(profileDetail);
 
-    }
-    this.checknum = this.CurrentUser.numberstatus;
-    this.profilepic = this.CurrentUser.Profilestatus;
+    // }
+    // this.checknum = this.CurrentUser.numberstatus;
+    // this.profilepic = this.CurrentUser.Profilestatus;
     this.getImage();
     this.getgallary();
 
@@ -163,7 +165,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
     this.appService.getProfileImage(this.id)
       .subscribe((data: any) => {
         console.log(data);
-        
+        this.profileDetails = data;
           const fullUrl = `${this.url}/${data.image}`
           // console.log(fullUrl);
           this.imageUrl = fullUrl

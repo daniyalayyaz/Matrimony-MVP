@@ -54,13 +54,15 @@ export class LoginwithemailComponent extends UnsubscribeHandelr implements OnIni
       if (res.user) {
         localStorage.setItem(LocalStorageItem.LOGGED_USER, JSON.stringify(res.user));
         this.toasterservice.success("User Saved Successfully");
-        if (this.data.promotionShow = true) {
+        if (this.data.requestToDelete = true) {
           this.open(this.mymodal);
         }
         this.router.navigateByUrl(`Dashboard`);
       }
     },err=>{
-      this.toasterservice.error("Your Account Have Error Please Contact With Admin");
+      console.log(err.error.error);
+      
+      this.toasterservice.error(err.error.error);
       
     }
     )

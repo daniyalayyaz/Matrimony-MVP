@@ -83,7 +83,7 @@ export class ChangephotosComponent implements OnInit {
 
     })
   }
-  onMultipleSubmit() {
+   onMultipleSubmit() {
     console.log(this.multipleImages);
     this.multipleImages.forEach((image : any)=> {
       this.appService.uploadMultipleImage({image}, this.id).subscribe((res: any) => {

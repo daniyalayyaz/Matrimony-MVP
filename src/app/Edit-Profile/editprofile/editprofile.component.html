@@ -74,18 +74,18 @@
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
-                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
+                    <label  for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Name
                     </label>
-                    <input type="text" class="form-control rounded-pill" aria-label="Name" name="name"
+                    <input  type="text" class="form-control rounded-pill" aria-label="Name" name="name"
                       formControlName="name" [(ngModel)]="userProfile.name">
-                    <!-- <div class="form-check form-switch ms-2 mt-2">
-                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                    <div class="form-check form-switch ms-2 mt-2">
+                      <input  hidden class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
                       value='userProfile.lockDetails' name="hideName"
                       formControlName="hideName" [(ngModel)]="userProfile.hideName" [value]="false" />
                       
-                      <label class="form-check-label" for="flexSwitchCheckDefault">Show Name on Profile</label>
-                    </div> -->
+                      <label  hidden class="form-check-label" for="flexSwitchCheckDefault">Show Name on Profile</label>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
@@ -258,13 +258,13 @@
                   </div>
                 </div> -->
                 <div class="row mt-4 ps-4">
-                  <!-- <div class="form-check form-switch ms-5 mt-2">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" 
+                  <div class="form-check form-switch ms-5 mt-2">
+                    <input  hidden class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" 
                     value='userProfile.lockDetails' checked name="lockDetails" 
                     formControlName="lockDetails" [(ngModel)]="userProfile.lockDetails" [value]="false"/>
                    
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Lock Contact Details</label>
-                  </div> -->
+                    <label  hidden class="form-check-label" for="flexSwitchCheckDefault">Lock Contact Details</label>
+                  </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
@@ -346,14 +346,14 @@
                       <option>Athletic</option>
                     </select>
                   </div>
-                  <!-- <div class="col-md-6">
+                  <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Any other family info
                     </label>
                     <input type="text" class="form-control rounded-pill" aria-label="Religious"
                       aria-describedby="addon-wrapping" placeholder="ex: Joint Family" name="OtherFamilyInfo"
                       formControlName="socialEconomic" [(ngModel)]="userProfile.socialEconomic" />
-                  </div> -->
+                  </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
@@ -386,19 +386,19 @@
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                  
-                  <!-- <div class="col-md-6"> -->
-                    <!-- <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
+                  <div class="col-md-6">
+                    <label  hidden for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Height </label><br />
-                    <input type="range" id="temp" name="height" list="tickmarks" formControlName="height"
-                      [(ngModel)]="userProfile.height" /> -->
-                    <!-- <datalist id="tickmarks">
+                    <input  hidden type="range" id="temp" name="height" list="tickmarks" formControlName="height"
+                      [(ngModel)]="userProfile.height" />
+                    <datalist id="tickmarks">
                       <option value="91.44" label="3ft"></option>
                       <option value="121.92" label="4ft"></option>
                       <option value="152.4" label="5ft"></option>
                       <option value="182.88" label="6ft"></option>
                       <option value="213.36" label="7ft"></option>
                     </datalist>
-                  </div> -->
+                  </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
@@ -542,7 +542,7 @@
                     </select>
                   </div>
                 </div>
-                <!-- <div class="row mt-4 ps-4 pe-4">
+                <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-12">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Any other professional info
@@ -551,7 +551,7 @@
                       aria-describedby="addon-wrapping" placeholder="ex: I have side businesses" name="AnyotherInfo"
                       formControlName="institution" [(ngModel)]="userProfile.institution" />
                   </div>
-                </div> -->
+                </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
@@ -615,14 +615,14 @@
   
                 <div class="row mt-4 ps-4 pe-4">
                  
-                  <!-- <div class="col-md-6">
+                  <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Future Plans to live in
                     </label>
                     <input type="text" class="form-control rounded-pill" aria-label="Age"
                       aria-describedby="addon-wrapping" placeholder="ex: UAE" name="FuturePlanstoLiveIn"
                       formControlName="province" [(ngModel)]="userProfile.province" />
-                  </div> -->
+                  </div>
                 </div>
                 <br>
                 <div class="row mt-4 ps-4 pe-4 ">

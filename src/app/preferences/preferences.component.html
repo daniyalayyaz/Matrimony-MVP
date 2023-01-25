@@ -148,7 +148,7 @@
         <form #entryForm="ngForm" (ngSubmit)="entryForm.valid && onSubmit(entryForm)">
             <div class="custom-control form-control custom-switch">
                 <button type="submit" class="btn btn-danger" 
-                #active="ngModel" [(ngModel)]="package.active" name="active" 
+                #requestToDelete="ngModel" [(ngModel)]="package.requestToDelete" name="requestToDelete" 
                 (click)="onSaveUsernameChanged($event)">Delete Account</button>
               </div>
         </form>
