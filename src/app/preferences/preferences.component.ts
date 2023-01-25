@@ -120,7 +120,7 @@ export class PreferencesComponent extends UnsubscribeHandelr implements OnInit {
     
     this.appService.updateUser(this.CurrentUser._id,form.value).subscribe(res => {
           localStorage.clear();
-          this.toasterservice.info("Your Account Deleted.");
+          this.toasterservice.info("Your Account Delete Request Sent To Admin");
           this.router.navigate(['loginPage']);
         },
   )

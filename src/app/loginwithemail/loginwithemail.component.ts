@@ -57,7 +57,10 @@ export class LoginwithemailComponent extends UnsubscribeHandelr implements OnIni
         if (this.data.requestToDelete = true) {
           this.open(this.mymodal);
         }
+
         this.router.navigateByUrl(`Dashboard`);
+        this.packageshownotification()
+        
       }
     },err=>{
       console.log(err.error.error);
@@ -66,7 +69,7 @@ export class LoginwithemailComponent extends UnsubscribeHandelr implements OnIni
       
     }
     )
-
+    
     // Integrating Profilelogin API
     // this.http.post('http://localhost:5000/api/user/Profilelogin', body).subscribe(response => {
     //   if (response.hasOwnProperty('id')) {
@@ -80,6 +83,19 @@ export class LoginwithemailComponent extends UnsubscribeHandelr implements OnIni
     //   }
 
     // });
+  }
+  packageshownotification(){
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
+        if (loggedUser) {
+          this.CurrentUser = JSON.parse(loggedUser);
+        }
+        if(this.CurrentUser.connect){
+          this.toasterservice.success("You have Assigned a Package");
+          this.toasterservice.info("You Have" +" "+ this.CurrentUser.connect + " "+"Connects")
+        }else{
+          this.toasterservice.error("You Have No Connect Please Subscribe the Package")
+
+        }
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
