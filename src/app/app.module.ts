@@ -46,6 +46,7 @@ import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 import { BlockedusersComponent } from './blockedusers/blockedusers.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { BlockedusersComponent } from './blockedusers/blockedusers.component';
     MatchmakingComponent,
     ChatComponent,
     BlockedusersComponent,
+    LandingpageComponent,
     
   ],
   imports: [

@@ -31,9 +31,11 @@ import { TermsNconditionsComponent } from './terms-nconditions/terms-nconditions
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { ChatComponent } from './chat/chat.component';
 import { BlockedusersComponent } from './blockedusers/blockedusers.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 const routes: Routes = [
-  {path:'', component: LoginComponent},
+  {path: '', component: LandingpageComponent},
+  {path:'Login', component: LoginComponent},
   {path:'Basic-Details', component: BasicDetailsComponent},
   {path:'Personal-Details', component: PersonalDetailsComponent},
   {path:'More-Personal-Details', component: MorePersonalDetailsComponent},
