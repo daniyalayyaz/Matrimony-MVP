@@ -47,6 +47,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   base64 = "data:image/";
   blockedUsers: any = [];
   GenderFilteer: any = []
+  notificationCounter:any;
   constructor(private router: Router,
     private toasterservice: ToastrService,
     private appService: AppService
@@ -77,6 +78,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       this.checkstatus()
       this.getAllChat();
       this.getImage();
+      this.showNotification();
 
     }
     this.messagesList = [
@@ -125,7 +127,11 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       takeUntil(this.Unsubscribe$))
       .subscribe((persons: Array<User>) => {
         // this.personList = [];
-        this.personList = persons;
+        this.personList = persons.sort((a: any, b: any) => {
+          if (a.package && !b.package) return -1;
+          if (!a.package && b.package) return 1;
+          return 0;
+        });
         console.log(this.personList);
 
         let filtered = this.personList.filter((user: any) => {
@@ -188,7 +194,11 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       .subscribe((users: Array<User>) => {
         this.toasterservice.success(`Users of ${this.CurrentUser.city} Loaded successfully`);
         this.personList = [];
-        this.personList = users;
+        this.personList = users.sort((a: any, b: any) => {
+          if (a.package && !b.package) return -1;
+          if (!a.package && b.package) return 1;
+          return 0;
+        });;
         console.log(users);
 
         let filtered = this.personList.filter((user: any) => {
@@ -229,7 +239,11 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   public latestByClick() {
     this.appService.latest(this.CurrentUser._id).subscribe((res: any) => {
       this.personList = [];
-      this.personList = res;
+      this.personList = res.sort((a: any, b: any) => {
+        if (a.package && !b.package) return -1;
+        if (!a.package && b.package) return 1;
+        return 0;
+      });;
       console.log(res);
 
       let filtered = this.personList.filter((user: any) => {
@@ -385,7 +399,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.appService.getSingleUser(this.CurrentUser._id)
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
-        this.imageUrl = fullUrl;
+        this.imageUrl = data.image;
         console.log(data);
         
         console.log(this.imageUrl);
@@ -396,6 +410,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     throw new Error('Method not implemented.');
   }
   gotoNotifications() {
+    this.notificationCounter = 0;
     this.router.navigate(['Notifications']);
   }
   gotoPreferences() {
@@ -404,9 +419,13 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   gotoPhotos() {
     this.router.navigate(['Edit-Photos']);
   }
-  letschat(id: any) {
+  letschat(person: any) {
+
+    let id = person._id;
+    
     if (this.connect >= 4) {
       this.connectsdecriment(this.CurrentUser);
+
       this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
         // console.log(persons);
         this.connect = this.connect - 4;
@@ -416,14 +435,18 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       this.router.navigate(['Subscribe']);
       this.toasterservice.error("Please Purchase Connects");
     }
-
+    localStorage.setItem('person',JSON.stringify(person));
     localStorage.setItem("id", id);
+    
   }
   gotoChat(id: any) {
     this.router.navigate(['Chat/' + id]);
   }
   onSendInterestClick(person: User) {
+   
     if (this.connect >= 4) {
+      let decscition = "Sent You intrest"
+      this.notification(person,decscition);
       this.connectsdecriment(this.CurrentUser);
       this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
         .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
@@ -438,6 +461,14 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
     }
   };
+  notification(userInfo:any,description:any){
+    console.log(userInfo);
+    let view = true;
+    this.appService.notificationAdd(userInfo._id,this.CurrentUser,view,description).subscribe((res:any)=>{
+      console.log(res);
+      
+    })
+  }
   connectsdecriment(data: any) {
     this.appService.decrimentsInConnects(this.CurrentUser._id, data).subscribe((res: any) => {
       console.log(res);
@@ -482,5 +513,14 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     localStorage.clear();
     this.router.navigate(['loginPage']);
   }
-
+  showNotification(){
+    this.appService.showNotificationById(this.CurrentUser._id).subscribe((res:any)=>{
+      console.log(res.length);
+      this.notificationCounter = res.length;
+      if(res.length >= 1 ){
+        this.toasterservice.info("You Have" +" "+ this.notificationCounter + " "+"Notification")
+      }
+    });
+  }
+ 
 }

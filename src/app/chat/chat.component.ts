@@ -59,13 +59,22 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
   chat: string;
   postChat() {
     console.log(this.CurrentUser.image);
-    
+    let person = localStorage.getItem('person');
+    if(person){
+      var User = JSON.parse(person);
+      console.log(User._id);
+      console.log(User.name);
+      
+    }
+    let description = "Sent You Message";
+    this.notification(User,description);
     this.appService.postChat(this.chatList._id || "56cb91bdc3464f14678934ca", 
     this.CurrentUser.name, this.CurrentUser._id,this.CurrentUser.image, 
-    this.chatList.members[1] || localStorage.getItem("id"), this.chat).pipe(
+    this.chatList.members[1] || User._id, this.chat).pipe(
       takeUntil(this.Unsubscribe$))
       .subscribe((users) => {
         if (users._id) {
+         
           this.route.paramMap.subscribe((params: any) => {
             this.id = params?.get("id") || "";
             console.log(this.id)
@@ -85,6 +94,13 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
           this.chat = "";
         }
       })
+  }
+  notification(userInfo:any,description:any){
+    console.log(userInfo);
+    let view = true;
+    this.appService.notificationAdd(userInfo._id,this.CurrentUser,view,description).subscribe((res:any)=>{
+      console.log(res);
+    })
   }
   clickImage() {
     this.fileInput.nativeElement.click();

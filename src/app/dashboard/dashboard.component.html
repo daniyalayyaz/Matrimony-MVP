@@ -61,7 +61,7 @@
                     </div>
                     <div class="text-center" *ngIf="imageUrl;else profile">
                         <!-- <i class="fa-solid fa-image iconImage"></i> -->
-                        <img src="{{imageUrl}}" alt="You have No Photo" height="282px" width="282px">
+                        <img src="http://localhost:5000\{{imageUrl}}" alt="You have No Photo" height="282px" width="282px">
 
                         <h3 style="color: #0F4D5C; font-weight: bold;">Profile Image</h3>
 
@@ -84,9 +84,7 @@
                             <p>Preferences</p>
                         </div>
                         <diV class="NotiIcon">
-                            <span class="badge rounded-pill  bg-danger" alt="Notifications"
-                                style="color: rgb(255, 255, 255) !important;">
-                                1</span>
+                            <span [ngClass]="{'invisible': notificationCounter <= 0}" class="badge rounded-pill  bg-danger" alt="Notifications" style="color: rgb(255, 255, 255) !important;">{{notificationCounter}}</span>
                             <div (click)="gotoNotifications()" style="cursor: pointer;">
                                 <i class="fa-solid fa-bell sizeOfIcons"></i>
                                 <p>Notifications </p>
@@ -242,7 +240,7 @@
                                                         <div class="d-flex mt-2">
                                                             <div class="me-auto">
                                                                 <img src={{pathmessage}}
-                                                                    (click)="letschat(person._id);$event.stopPropagation();"
+                                                                    (click)="letschat(person);$event.stopPropagation();"
                                                                     class="imgCard1" alt="..." />
                                                             </div>
                                                             <div>

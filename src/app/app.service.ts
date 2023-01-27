@@ -182,6 +182,25 @@ return credential;
     const url = `${environment.apiBaseUrl}/user/lockGallery`;
     return this.http.post(url,data);
   }
+  notificationAdd(reciverId:any,data:any,view:any,description:any){
+    const url = `${environment.apiBaseUrl}/nothicationAdd/${reciverId}`;
+    return this.http.post(url,{data,view,description});
+  }
+  
+  showNotification(id:any) {
+    // return this.http.get(environment.apiBaseUrl + '/nothicationShow/${}');
+    const url = `${environment.apiBaseUrl}/nothicationShow/${id}`;
+    return this.http.get(url);
+  };
+  showNotificationById(id:any){
+    const url = `${environment.apiBaseUrl}/nothicationShowById/${id}`;
+    return this.http.get(url);
+
+  }
+  nothicationUpdateMany(id:any){
+    const url = `${environment.apiBaseUrl}/nothicationUpdateMany/${id}`;
+    return this.http.get(url);
+  }
 
 
   // dropdownServices
