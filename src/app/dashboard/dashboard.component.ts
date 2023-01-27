@@ -149,7 +149,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
             return user;
           }
         });
-
         this.personList = filteredBlokOtherSecondUser
 
 

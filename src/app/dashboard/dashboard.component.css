@@ -1,3 +1,10 @@
+.badge {
+  position: relative;
+  font-size: .6rem;
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+  padding: 0.2em 0.45em;
+}
 .bgMsg {
   background-color: #6496a2;
   color: white;
@@ -110,6 +117,19 @@
 .sizeOfIcons {
   font-size: 24px;
   margin-bottom: 10px;
+}
+.NotiIcon {
+  /* font-size: 12px;
+  background: linear-gradient(0deg, rgb(236, 11, 11) 0%, rgb(226, 130, 127) 100%);
+  color: white;
+  font-weight: bold;
+  border: none; */
+  margin-top: -1.5rem
+  /* width: 10px; */
+  /* height: 25px; */
+  /* margin-top: -10px; */
+  /* border-radius: 20px; */
+  /* margin-bottom: px; */
 }
 .form-check-input:focus{
   box-shadow: none; 

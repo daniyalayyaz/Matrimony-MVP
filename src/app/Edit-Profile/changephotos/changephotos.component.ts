@@ -18,6 +18,7 @@ export class ChangephotosComponent implements OnInit {
   img: any;
   id: any;
   photo: any=[];
+  showDiv: boolean = true;
   multipleImages: any = [];
   gallary :any=[];
   // public projects: Project[]=[];
@@ -25,7 +26,7 @@ export class ChangephotosComponent implements OnInit {
   displaySingleImageArray: any = [];
   convertImages: [];
    myFiles:string [] = [];
-
+   galleryID:any;
   thumbnail: any;
   imageUrl: any;
   constructor(private router: Router,
@@ -82,24 +83,43 @@ export class ChangephotosComponent implements OnInit {
       this.router.navigate(['Dashboard']);
 
     })
-  }
-   onMultipleSubmit() {
+  } 
+  onMultipleSubmit() {
     console.log(this.multipleImages);
+    console.log(this.gallary.length);
+    let index = this.gallary.length;
+    
     this.multipleImages.forEach((image : any)=> {
-      this.appService.uploadMultipleImage({image}, this.id).subscribe((res: any) => {
+      this.appService.uploadMultipleImage({image : image, id : index}, this.id).subscribe((res: any) => {
       console.log(res);
+      this.gallary = res.image;
       this.toasterservice.success("Images Uploaded Successfuly");
     })
+    index = index + 1;
     })
+    this.multipleImages = [];
+  }
+
+  deleteImage(imageId : any){
+    console.log(imageId);
+    this.appService.deleteGalleryImage(this.galleryID, {id: imageId}).subscribe((res : any) => {
+      console.log(res);
+      this.gallary = res.image;
+
+    })
+  }
+  resetImage() {
+    console.log("Reset Function");
+    this.showDiv = true;
+    this.imageUrl = "";
   }
 
   getImage() {
     this.appService.getSingleUser(this.id)
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
-        this.imageUrl = fullUrl;
+        this.imageUrl = data.image;
         console.log(this.imageUrl);
-        
       }
       );
   }
@@ -111,6 +131,7 @@ export class ChangephotosComponent implements OnInit {
       // this.gallary = res[0].image;
       console.log(res);
       this.gallary = res.image;
+      this.galleryID = res._id;
     });
   // }
       // .subscribe((data: any) => {

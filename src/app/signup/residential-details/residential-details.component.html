@@ -5,45 +5,26 @@
         <h3 class="ps-5" style="color: #0f4d5c">RESIDENTIAL DETAILS</h3>
         <div class="row mt-4 ps-5 pe-5">
           <div class="col-md-6">
-            <label
-              for="formGroupExampleInput"
-              class="form-label"
-              style="color: #0f4d5c"
-            >
+            <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
               Country
             </label>
-            <select
-              class="form-select rounded-pill"
-              aria-label="Default select example"
-              name="Country"
-              (change)="eventonKey($event)"
-              [(ngModel)]="CountrySelect"
-              [value]="CountrySelect != null ? CountrySelect : ''"
-            >
+            <select class="form-select rounded-pill" aria-label="Default select example" name="Country"
+              (change)="eventonKey($event)" [(ngModel)]="CountrySelect"
+              [value]="CountrySelect != null ? CountrySelect : ''">
               <option selected>Select Country</option>
-              <option *ngFor="let Country of countries" value="{{ Country }}">
-                {{ Country }}
+              <option *ngFor="let Country of countries" value="{{ Country.name }}">
+                {{ Country.name }}
               </option>
             </select>
           </div>
           <div *ngIf="CountrySelect == 'Pakistan'" class="col-md-6">
-            <label
-              for="formGroupExampleInput"
-              class="form-label"
-              style="color: #0f4d5c"
-            >
+            <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
               Province
             </label>
-            <select
-              class="form-select rounded-pill"
-              aria-label="Default select example"
-              name="Province"
-              (change)="eventonKey($event)"
-              [value]="Province != null ? Province : ''"
-            >
+            <select class="form-select rounded-pill" aria-label="Default select example" name="Province"
+              (change)="eventonKey($event)" [value]="Province != null ? Province : ''">
               <option selected>Select Province</option>
-              <option
-                *ngFor="
+              <option *ngFor="
                   let Province of [
                     'Punjab',
                     'Sindh',
@@ -51,9 +32,7 @@
                     'Khyber Pukhtunkhwah',
                     'Gilgit Baltistan'
                   ]
-                "
-                value="{{ Province }}"
-              >
+                " value="{{ Province }}">
                 {{ Province }}
               </option>
             </select>
@@ -61,41 +40,23 @@
         </div>
         <div class="row mt-4 ps-5 pe-5">
           <div *ngIf="CountrySelect == 'Pakistan'" class="col-md-6">
-            <label
-              for="formGroupExampleInput"
-              class="form-label"
-              style="color: #0f4d5c"
-            >
+            <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
               City
             </label>
-            <select
-              class="form-select rounded-pill"
-              aria-label="Default select example"
-              name="City"
-              (change)="eventonKey($event)"
-              [value]="City != null ? City : ''"
-            >
+            <select class="form-select rounded-pill" aria-label="Default select example" name="City"
+              (change)="eventonKey($event)" [value]="City != null ? City : ''">
               <option selected>Select City</option>
-              <option *ngFor="let city of cities" value="{{ city }}">
+              <option *ngFor="let city of cities" value="{{ city}}">
                 {{ city }}
               </option>
             </select>
           </div>
           <div class="col-md-6">
-            <label
-              for="formGroupExampleInput"
-              class="form-label"
-              style="color: #0f4d5c"
-            >
+            <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
               House
             </label>
-            <select
-              class="form-select rounded-pill"
-              aria-label="Default select example"
-              name="HouseStatus"
-              (change)="eventonKey($event)"
-              [value]="HouseStatus != null ? HouseStatus : ''"
-            >
+            <select class="form-select rounded-pill" aria-label="Default select example" name="HouseStatus"
+              (change)="eventonKey($event)" [value]="HouseStatus != null ? HouseStatus : ''">
               <option selected>Select Status</option>
               <option value="1">Owned</option>
               <option value="2">Rental</option>
@@ -105,62 +66,34 @@
 
         <div class="row mt-4 ps-5 pe-5">
           <div class="col-md-6">
-            <label
-              for="formGroupExampleInput"
-              class="form-label"
-              style="color: #0f4d5c"
-            >
+            <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
               Any Other Nationality
             </label>
-            <select
-              class="form-select rounded-pill"
-              aria-label="Default select example"
-              name="AnyOtherNationality"
-              (change)="eventonKey($event)"
-              [value]="AnyOtherNationality != null ? AnyOtherNationality : ''"
-            >
+            <select class="form-select rounded-pill" aria-label="Default select example" name="AnyOtherNationality"
+              (change)="eventonKey($event)" [value]="AnyOtherNationality != null ? AnyOtherNationality : ''">
               <option selected>Select Country</option>
-              <option *ngFor="let country of countries" value="{{ country }}">
-                {{ country }}
+              <option *ngFor="let country of countries" value="{{ country.name}}">
+                {{ country.name }}
               </option>
             </select>
           </div>
           <div class="col-md-6">
-            <label
-              for="formGroupExampleInput"
-              class="form-label"
-              style="color: #0f4d5c"
-            >
+            <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
               Future Plans to live in
             </label>
-            <input
-              type="text"
-              class="form-control rounded-pill"
-              aria-label="Age"
-              aria-describedby="addon-wrapping"
-              placeholder="ex: UAE"
-              name="FuturePlanstoLiveIn"
-              (keyup)="eventonKey($event)"
-              [value]="FuturePlanstoLiveIn != null ? FuturePlanstoLiveIn : ''"
-            />
+            <input type="text" class="form-control rounded-pill" aria-label="Age" aria-describedby="addon-wrapping"
+              placeholder="ex: UAE" name="FuturePlanstoLiveIn" (keyup)="eventonKey($event)"
+              [value]="FuturePlanstoLiveIn != null ? FuturePlanstoLiveIn : ''" />
           </div>
         </div>
         <div class="row mt-5 ps-5 pe-5">
           <div class="col-md-6">
-            <button
-              type="button"
-              class="btnNext"
-              (click)="gotoSignupThirdPage()"
-            >
+            <button type="button" class="btnNext" (click)="gotoSignupThirdPage()">
               Previous
             </button>
           </div>
           <div class="col-md-6">
-            <button
-              type="button"
-              class="btnNext"
-              (click)="gotoSignupSixthPage()"
-            >
+            <button type="button" class="btnNext" (click)="gotoSignupSixthPage()">
               Next Step
             </button>
           </div>
@@ -169,59 +102,31 @@
       </div>
       <div class="col-md-4 gridFour d-flex flex-column justify-content-evenly">
         <span class="stepNxt"> 1 </span>
-        <button
-          style="background-color: #91a8ad"
-          type="button"
-          class="btnOne ms-5 me-5"
-        >
+        <button style="background-color: #91a8ad" type="button" class="btnOne ms-5 me-5">
           BASIC DETAILS
         </button>
         <span class="stepNxt"> 2 </span>
-        <button
-          style="background-color: #91a8ad"
-          type="button"
-          class="btnTwo ms-5 me-5"
-        >
+        <button style="background-color: #91a8ad" type="button" class="btnTwo ms-5 me-5">
           PERSONAL DETAILS
         </button>
         <span class="stepNxt"> 3 </span>
-        <button
-          style="background-color: #91a8ad"
-          type="button"
-          class="btnThree ms-5 me-5"
-        >
+        <button style="background-color: #91a8ad" type="button" class="btnThree ms-5 me-5">
           MORE PERSONAL DETAILS
         </button>
         <span class="step"> 4 </span>
-        <button
-          style="background-color: #ffffff"
-          type="button"
-          class="btnFour ms-5 me-5"
-        >
+        <button style="background-color: #ffffff" type="button" class="btnFour ms-5 me-5">
           RESIDENTIAL DETAILS
         </button>
         <span class="stepNxt"> 5 </span>
-        <button
-          style="background-color: #91a8ad"
-          type="button"
-          class="btnFive ms-5 me-5"
-        >
+        <button style="background-color: #91a8ad" type="button" class="btnFive ms-5 me-5">
           PROFESSIONAL DETAILS
         </button>
         <span class="stepNxt"> 6 </span>
-        <button
-          style="background-color: #91a8ad"
-          type="button"
-          class="btnSix ms-5 me-5"
-        >
+        <button style="background-color: #91a8ad" type="button" class="btnSix ms-5 me-5">
           FAMILY DETAILS
         </button>
         <span class="stepNxt"> 7 </span>
-        <button
-          style="background-color: #91a8ad"
-          type="button"
-          class="btnSeven ms-5 me-5"
-        >
+        <button style="background-color: #91a8ad" type="button" class="btnSeven ms-5 me-5">
           CONTACT DETAILS
         </button>
       </div>

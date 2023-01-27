@@ -1,5 +1,5 @@
 <div style="font-family: 'Poppins';">
-    <!--  NAVBAR-->
+    <!--  NAVBAR--> 
     <nav class="navbar navbar-expand-lg bgColor p-4">
         <div class="container">
             <a class="navbar-brand text-white fs-4">CONTACT US</a>
@@ -26,6 +26,7 @@
         </div>
     </nav>
 
+       
 
     <div class="about">
         <div class="main-card">
@@ -39,10 +40,10 @@
             <p style="padding: 8px ;">To speak to a member of our team about your profile, or to upgrade your membership, please contact us using one of the numbers below. Please have your <b>Single Muslim username</b> to hand.
                 <br>
                 <br>
-                <b>WhatsApp</b>  <a href="" class="text-decoration-none m-2"> +44 7 74 697 1630</a>
+                <b>WhatsApp</b>  <a href="" class="text-decoration-none m-2">{{ contacts.contact }}</a>
                 <br>
                 <br>
-                <b>Telephone</b>  <a href="" class="text-decoration-none m-2"> +44 (0)844 800 9255</a>
+                <b>Telephone</b>  <a href="" class="text-decoration-none m-2"> {{contacts.Telephone}}</a>
                 <br>
                 (Monday - Friday, 9am - 5pm GMT)
                 <br>
@@ -54,7 +55,7 @@
             <div class="part">
             <h3 class="short-heading">Email</h3>
             <hr>
-            <p style="padding: 8px ;">If you are already registerd on Single Muslim, please ensure you send the email from the email address that is registered to your profile and mention your profile username in your message. 
+            <p style="padding: 8px ;"><span>{{contacts.paragraph}}</span> 
                 <br>
                 <br>
                 <b> Customer Care</b>: <a class="text-decoration-none">customercare@singlemuslim.com</a>

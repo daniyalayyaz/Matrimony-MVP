@@ -267,7 +267,7 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
     this.appService.getSingleUser(this.id)
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
-        this.imageUrl = fullUrl;
+        this.imageUrl = data.image;
         console.log(this.imageUrl);
         
       }

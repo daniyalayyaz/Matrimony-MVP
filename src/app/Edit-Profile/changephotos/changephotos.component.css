@@ -17,6 +17,16 @@
         width: 250px;
         height: 250px;
     }
+    .cross-btn{
+        background: linear-gradient(0deg, rgb(236, 11, 11) 0%, rgb(226, 130, 127) 100%);
+        color: white;
+        font-weight: bold;
+        border: none;
+        /* width: 10px; */
+        height: 25px;
+        margin-top: -10px;
+        border-radius: 20px;
+    }
     .sidenav {
         height: 100%;
         width: 20%;

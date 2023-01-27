@@ -41,7 +41,7 @@
                                 Live
                                 
                             </button> -->
- 
+
                             <div class="form-check form-switch">
                                 <input class="form-check-input" #saveUserNameCheckBox type="checkbox" role="switch"
                                     [checked]="saveUsername"
@@ -51,15 +51,15 @@
                             </div>
 
                             <div *ngIf="connect; else obj" class="connect">
-                                <h6 >Connects:{{connect}}</h6>
+                                <h6>Connects:{{connect}}</h6>
                             </div>
 
-                            <ng-template #obj >
+                            <ng-template #obj>
                                 <h6 class="connect">Connects:0</h6>
                             </ng-template>
                         </div>
                     </div>
-                    <div class="text-center"*ngIf="imageUrl;else profile">
+                    <div class="text-center" *ngIf="imageUrl;else profile">
                         <!-- <i class="fa-solid fa-image iconImage"></i> -->
                         <img src="{{imageUrl}}" alt="You have No Photo" height="282px" width="282px">
 
@@ -68,7 +68,7 @@
                     </div>
                     <ng-template #profile>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
-                                            class="msgImg"  alt="Retail Admin">
+                            class="msgImg" alt="Retail Admin">
                     </ng-template>
                     <div class="d-flex justify-content-around iconsOfEdit text-center mt-5">
                         <div (click)="gotoEditProfile()" style="cursor: pointer">
@@ -83,10 +83,16 @@
                             <i class="fa-solid fa-gear sizeOfIcons"></i>
                             <p>Preferences</p>
                         </div>
-                        <div (click)="gotoNotifications()" style="cursor: pointer;">
-                            <i class="fa-solid fa-bell sizeOfIcons"></i>
-                            <p>Notifications</p>
-                        </div>
+                        <diV class="NotiIcon">
+                            <span class="badge rounded-pill  bg-danger" alt="Notifications"
+                                style="color: rgb(255, 255, 255) !important;">
+                                1</span>
+                            <div (click)="gotoNotifications()" style="cursor: pointer;">
+                                <i class="fa-solid fa-bell sizeOfIcons"></i>
+                                <p>Notifications </p>
+                            </div>
+                        </diV>
+
                     </div>
                 </div>
 
@@ -94,15 +100,14 @@
                     <h6 class="bgMsg">Messages</h6>
                     <div *ngFor="let message of chatList">
                         <div class="d-flex mb-3" (click)="gotoChat(message._id)" style="cursor: pointer;">
-                            <div class="p-2 statusIcon "*ngIf="message.messages[0].profile;else chatProfile">
-                                <img class="msgImg" 
-                                
-                                 src="{{url}}/{{message.messages[0].profile}}" alt="You have No Profile" />
+                            <div class="p-2 statusIcon " *ngIf="message.messages[0].profile;else chatProfile">
+                                <img class="msgImg" src="{{url}}/{{message.messages[0].profile}}"
+                                    alt="You have No Profile" />
                                 <span class="onlineShow"></span>
                             </div>
                             <ng-template #chatProfile>
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
-                                            class="msgImg"  alt="Retail Admin">
+                                    class="msgImg" alt="Retail Admin">
                             </ng-template>
                             <div class="p-2 ms-4">
                                 <p style="color: #7B8793; font-weight: 600;"> {{message.messages[0].name||"hello"}}
@@ -200,10 +205,9 @@
                                                         class="rounded-start cardImage" alt="" />
                                                     <!-- src="https://bit.ly/3RzZK9J"  -->
                                                 </div>
-                                                <ng-template #devImg >
-                                                    <img 
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
-                                                     class="aletrimage cardImage">
+                                                <ng-template #devImg>
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                                                        class="aletrimage cardImage">
                                                 </ng-template>
                                                 <div class="col-md-8 cardbg cardbgRes">
                                                     <div class="card-body">

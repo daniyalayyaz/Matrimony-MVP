@@ -182,5 +182,35 @@ return credential;
     const url = `${environment.apiBaseUrl}/user/lockGallery`;
     return this.http.post(url,data);
   }
+
+
+  // dropdownServices
+  getReligion() {
+    return this.http.get(environment.apiBaseUrl + '/religion');
+  };
+  getSect() {
+    return this.http.get(environment.apiBaseUrl + '/sect');
+  };
+  getMotherLanguage() {
+    return this.http.get(environment.apiBaseUrl + '/motherLanguage');
+  };
+  getCast() {
+    return this.http.get(environment.apiBaseUrl + '/cast');
+  };
+  getLooks() {
+    return this.http.get(environment.apiBaseUrl + '/looks');
+  };
+  getBuild() {
+    return this.http.get(environment.apiBaseUrl + '/build');
+  };
+  getComplexion() {
+    return this.http.get(environment.apiBaseUrl + '/complexion')
+  };
+  getCountry() {
+    return this.http.get(environment.apiBaseUrl + '/country');
+  };
+  deleteGalleryImage(id: any, imageId: any){
+    return this.http.post(`${environment.apiBaseUrl}/user/deleteGalleryImage/${id}`,imageId)
+  }
 }
 

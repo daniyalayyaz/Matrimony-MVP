@@ -26,8 +26,9 @@
         </div>
     </nav>
     <!-- SIDE NAVBAR -->
-    <div class="sidenav"> 
-       <img [src]='imageUrl' alt="You have No Profile" height="250px" width="250px">
+    <div class="sidenav">
+        <img *ngIf="imageUrl;else profileimag" src="http://localhost:5000/{{imageUrl}}" alt="You have No Profile"
+            height="250px" width="250px">
         <a (click)="gotoEditProfile()" style="cursor: pointer;"> Edit My Profile</a>
         <a (click)="gotoEditPhotos()" style="cursor: pointer;"> Edit My Photos</a>
         <!-- <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a> -->
@@ -35,69 +36,54 @@
         <!-- <a (click)="gotoEditPassword()" style="cursor: pointer;"> Change Password</a> -->
         <!-- <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a> -->
     </div>
+    <ng-template #profileimag>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+            height="250px" width="250px" alt="">
+    </ng-template>
     <div class="about">
         <div class="main-card">
             <h1>Edit my Photos</h1>
             <hr />
-            <div class="row">
-                <div class="col">
-                    <img [src]='imageUrl' alt="You have No Profile" height="100px" width="100px">
+            <div>
+                <div class="col" *ngIf="imageUrl;else imgUrl">
+                    <img src="http://localhost:5000/{{imageUrl}}" alt="You have No Profile" height="100px"
+                        width="100px">
                 </div>
-                     <label class="btn btn-default">
-                        <input type="file" id="img"(change)="selectImage($event)" />
-                    </label>
-                  <button class="btn btn-success" type="submit" (click)="onSubmit()">Upload</button>
-
+                <label class="btn btn-default">
+                    <input type="file" id="img" (change)="selectImage($event)" />
+                </label>
+                <button class="btn btn-success" type="submit" (click)="onSubmit()">Upload</button>
             </div>
+            <ng-template #imgUrl>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                    alt="">
+            </ng-template>
             <hr>
             <br />
             <div class="row">
                 <h2 class="col-md-4">Gallary Photos</h2>
-                <!-- <p class="col-md-3" style="padding-top: 12px ">Your  pictures</p> -->
-                <!-- <img [src]='multipleImages' alt="You have No Profile" height="100px" width="100px"> -->
-
-                <div class="col"  >
+                <!-- <div class="col"  >
                     <img *ngFor='let url of gallary' [src]='url' alt="You have No Profile" height="100px" width="100px">
                     <img *ngFor='let url of multipleImages' [src]='url' alt="You have No Profile" height="100px" width="100px">
-
+                </div> -->
+                <div class="col d-flex">
+                    <div *ngFor='let url of gallary' class="d-flex">
+                        <img [src]='url.image' alt="You have No Profile" height="100px" width="100px">
+                        <div>
+                            <button class="cross-btn" (click)="deleteImage(url.id)"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <img *ngFor='let url of multipleImages' [src]='url' alt="You have No Profile" height="100px"
+                        width="100px">
                 </div>
                 <label class="btn btn-default">
-                    <input type="file" id="img" name ="images"multiple (change)="selectMultipleImage($event)" />
+                    <input type="file" id="img" name="images" multiple (change)="selectMultipleImage($event)" />
                 </label>
                 <button class="btn btn-success" type="submit" (click)="onMultipleSubmit()">Upload</button>
-
             </div>
-            
             <br />
-            <!-- <div class="row">
-                <h2 class="col-md-4">Public Gallery</h2>
-                <p class="col-md-5" style="padding-top: 12px ">Everybody can view these pictures</p>
-            </div> -->
             <hr>
             <br />
-            <!-- <div class="image-picker">
-                <span>+
-                    <br />
-                    Drop Photos
-                    <br />
-                    Click here to upload.
-                </span>
-            </div>
-            <br /> -->
-            <!-- <div class="row">
-                <h2 class="col-md-4">Private Gallery</h2>
-                <p class="col-md-5" style="padding-top: 12px">Control who can view these pictures</p>
-            </div>
-            <hr>
-            <br /> -->
-            <!-- <div class="image-picker">
-                <span>+
-                    <br />
-                    Drop Photos
-                    <br />
-                    Click here to upload.
-                </span>
-            </div> -->
         </div>
     </div>
 </div>
