@@ -6,6 +6,7 @@ import { AppService } from 'src/app/app.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { reload } from 'firebase/auth';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-changephotos',
   templateUrl: './changephotos.component.html',
@@ -23,7 +24,7 @@ export class ChangephotosComponent implements OnInit {
   displaySingleImage!: Boolean;
   displaySingleImageArray: any = [];
   convertImages: [];
-
+   myFiles:string [] = [];
 
   thumbnail: any;
   imageUrl: any;
@@ -32,7 +33,8 @@ export class ChangephotosComponent implements OnInit {
     private form: FormBuilder,
     public appService: AppService,
     public activateRoute: ActivatedRoute,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private toasterservice: ToastrService,) {
     this.displaySingleImage = false;
     this.displaySingleImageArray = [];
   }
@@ -55,12 +57,15 @@ export class ChangephotosComponent implements OnInit {
   }
   selectMultipleImage(event: any) {
     if (event.target.files) {
-      for (let i = 0; i < File.length; i++) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        if(event.target.files[i].size > 500000){
+          this.toasterservice.error("Too large Image");
+          return ;
+        }
         let reader = new FileReader();
         reader.readAsDataURL(event.target.files[i]);
         reader.onload = (event: any) => {
           this.multipleImages.push(event.target.result);
-          // this.multipleImages = this.photo
         }
       }
       this.img = event.target.files;
@@ -78,16 +83,13 @@ export class ChangephotosComponent implements OnInit {
 
     })
   }
-  onMultipleSubmit() {
-    // const formData = new FormData();
+   onMultipleSubmit() {
     console.log(this.multipleImages);
-    // for (let img of this.img) {
-    //   formData.append('images', img)
-    // }
-    this.appService.uploadMultipleImage(this.multipleImages, this.id).subscribe((res: any) => {
+    this.multipleImages.forEach((image : any)=> {
+      this.appService.uploadMultipleImage({image}, this.id).subscribe((res: any) => {
       console.log(res);
-      this.getgallary();
-      this.router.navigate(['Profile']);
+      this.toasterservice.success("Images Uploaded Successfuly");
+    })
     })
   }
 
@@ -96,6 +98,8 @@ export class ChangephotosComponent implements OnInit {
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
         this.imageUrl = fullUrl;
+        console.log(this.imageUrl);
+        
       }
       );
   }
@@ -103,9 +107,10 @@ export class ChangephotosComponent implements OnInit {
     this.appService.getGallaryImage(this.id).subscribe((res: any) => {
       // this.base64TrimmedURL = base64Data;
       // this.createBlobImageFileAndShow();
-      console.log(res[0].image);
-      this.gallary = res[0].image;
-      
+      // console.log(res[0].image);
+      // this.gallary = res[0].image;
+      console.log(res);
+      this.gallary = res.image;
     });
   // }
       // .subscribe((data: any) => {
@@ -144,5 +149,9 @@ export class ChangephotosComponent implements OnInit {
   }
   gotoEditPhotos() {
     this.router.navigate(['Edit-Photos']);
+  }
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['loginPage']);
   }
 }

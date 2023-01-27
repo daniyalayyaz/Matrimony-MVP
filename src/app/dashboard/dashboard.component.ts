@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
@@ -13,6 +13,8 @@ import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { Message } from '../models/message.modal';
 import { User } from '../models/user.modal';
 
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,7 +22,9 @@ import { User } from '../models/user.modal';
 })
 export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   status = 1;
-  chatList = [{ messages: [{ message: "", name: "" }], _id: "" }];
+  chatList = [{ messages: [{ message: "", name: "", profile: "" }], _id: "" }];
+  // chatList = { members: [],messages: [{ message: "", name: "", sender: "",senderUser:"",profile:"" }] , _id: "" };
+
   checkbox: boolean;
   personList: Array<User> = [];
   messagesList: Array<Message>;
@@ -29,26 +33,36 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   pathheart: string = "../../assets/pinkheart.png";
   pathmale: string = "../../assets/male.png"
   public saveUsername?: boolean;
-  public userId:any;
+  public userId: any;
   userProfile: any;
   imageUrl: string;
   url = environment.url;
-  connect:any;
-
+  connect: any;
+  content: any;
+  closeResult = '';
+  data: any;
+  imageUrlOnlineUsers: any = [];
+  latestOnlineUser: any = [];
+  fullUrl: any
+  base64 = "data:image/";
+  blockedUsers: any = [];
+  GenderFilteer: any = []
   constructor(private router: Router,
     private toasterservice: ToastrService,
-    private appService: AppService) {
+    private appService: AppService
+  ) {
     super()
   }
 
-  ngOnInit(): void {        
-
+  ngOnInit(): void {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.status == 1 ? 'red' : 'yellow';
-    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);   
+    let loggedUser = localStorage.getItem(LocalStorageItem.LOGGED_USER);
     if (loggedUser) {
       this.CurrentUser = JSON.parse(loggedUser);
+      this.blockedUsers = this.CurrentUser.Block;
+      this.GenderFilteer = this.CurrentUser.gender;
       this.SingleUser(JSON.parse(loggedUser));
 
       switch (this.CurrentUser.gender) {
@@ -62,9 +76,9 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
       this.checkstatus()
       this.getAllChat();
+      this.getImage();
 
     }
-    this.getImage();
     this.messagesList = [
       {
         image: "https://bit.ly/3RzZK9J",
@@ -96,9 +110,9 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         msg: "That was wonderful. Thanks..",
         time: "01.02.21",
       },
-      
+
     ];
-    
+
 
   }
 
@@ -110,13 +124,42 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.appService.onlineUser(gender).pipe(
       takeUntil(this.Unsubscribe$))
       .subscribe((persons: Array<User>) => {
-        this.personList = [];
+        // this.personList = [];
         this.personList = persons;
         console.log(this.personList);
-        
-   
+
+        let filtered = this.personList.filter((user: any) => {
+          if (!user._id?.includes(this.CurrentUser._id)) {
+            return user;
+          }
+        });
+        let filteredGender = filtered.filter((user: any) => {
+          if (!this.GenderFilteer.includes(user.gender)) {
+            return user;
+          }
+        });
+        // this.personList = filteredGender;
+        let filteredBlock = filteredGender.filter((user: any) => {
+          if (!this.blockedUsers.includes(user._id)) {
+            return user;
+          }
+        });
+        let filteredBlokOtherSecondUser = filteredBlock.filter((user: any) => {
+          if (user._id?.includes(user.Block)) {
+            return user;
+          }
+        });
+
+        this.personList = filteredBlokOtherSecondUser
+
+
+        // this.personList = filteredGender
+
       }
       );
+  }
+  searchValue(searchValue: any) {
+    throw new Error('Method not implemented.');
   }
   // public GetLatestUsers(gender: Gender) {
   //   this.appService.latest(gender).pipe(
@@ -147,7 +190,33 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         this.toasterservice.success(`Users of ${this.CurrentUser.city} Loaded successfully`);
         this.personList = [];
         this.personList = users;
-      })
+        console.log(users);
+
+        let filtered = this.personList.filter((user: any) => {
+          if (!user._id?.includes(this.CurrentUser._id)) {
+            return user;
+          }
+        });
+        // this.personList = filtered;
+        let filteredBlock = filtered.filter((user: any) => {
+          if (!this.blockedUsers.includes(user._id)) {
+            return user;
+          }
+        });
+        let filteredBlokOtherSecondUser = filteredBlock.filter((user: any) => {
+          if (user._id?.includes(user.Block)) {
+            return user;
+          }
+        });
+        let filteredGender = filteredBlokOtherSecondUser.filter((user: any) => {
+          if (!this.GenderFilteer.includes(user.gender)) {
+            return user;
+          }
+        });
+        console.log(filteredGender);
+        this.personList = filteredGender
+
+      });
   }
   // public () {
   //   this.appService.().pipe(
@@ -159,10 +228,32 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   //     })
   // }
   public latestByClick() {
-      this.appService.latest(this.CurrentUser._id).subscribe((res:any) =>{
-        this.personList = [];
-        this.personList = res;
-      })
+    this.appService.latest(this.CurrentUser._id).subscribe((res: any) => {
+      this.personList = [];
+      this.personList = res;
+      console.log(res);
+
+      let filtered = this.personList.filter((user: any) => {
+        if (!user._id?.includes(this.CurrentUser._id)) {
+          return user;
+        }
+      });
+      console.log(filtered);
+      console.log(this.blockedUsers);
+
+      let filteredBlock = filtered.filter((user: any) => {
+        if (!this.blockedUsers.includes(user._id)) {
+          return user;
+        }
+      });
+      let filteredBlokOtherSecondUser = filteredBlock.filter((user: any) => {
+        if (user._id?.includes(user.Block)) {
+          return user;
+        }
+      });
+      this.personList = filteredBlokOtherSecondUser
+
+    })
   }
 
   public getAllChat() {
@@ -171,7 +262,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       .subscribe((users) => {
 
         this.chatList = users;
-        // console.log(users);
+        console.log(this.chatList);
       })
   }
   public onOnlineClick() {
@@ -221,7 +312,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       color1: "#4D6DC4",
       color2: "#1A2579",
       route: () => {
-        this.router.navigate(['Profile']);
+        this.router.navigate(['Profile',this.CurrentUser._id]);
 
       }
     },
@@ -274,7 +365,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
 
   gotoProfile(person: User) {
     localStorage.setItem(LocalStorageItem.SELECTED_PROFILE, JSON.stringify(person));
-    this.router.navigate(['Profile']);
+    this.router.navigate(['Profile', person._id]);
   }
 
   gotoGallery() {
@@ -284,19 +375,22 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.router.navigate(['Interests']);
   }
   gotoEditProfile() {
-     this.userId = localStorage.getItem('LoggedInUser');
+    this.userId = localStorage.getItem('LoggedInUser');
 
     this.userId = JSON.parse(this.userId);
-    this.router.navigate(['Edit-Profile',this.userId._id]);
+    this.router.navigate(['Edit-Profile', this.userId._id]);
     // this.router.navigate(['/setting/build-edit', id._id]);
 
   }
   getImage() {
     this.appService.getSingleUser(this.CurrentUser._id)
       .subscribe((data: any) => {
-            const fullUrl = `${this.url}/${data.image}`
-            this.imageUrl = fullUrl;
-          }
+        const fullUrl = `${this.url}/${data.image}`
+        this.imageUrl = fullUrl;
+        console.log(data);
+        
+        console.log(this.imageUrl);
+      }
       );
   }
   id(id: any) {
@@ -312,42 +406,51 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.router.navigate(['Edit-Photos']);
   }
   letschat(id: any) {
-    this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
-      // console.log(persons);
-      this.router.navigate(['Chat/' + persons._id]);
-    })
+    if (this.connect >= 4) {
+      this.connectsdecriment(this.CurrentUser);
+      this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
+        // console.log(persons);
+        this.connect = this.connect - 4;
+        this.router.navigate(['Chat/' + persons._id]);
+      })
+    } else {
+      this.router.navigate(['Subscribe']);
+      this.toasterservice.error("Please Purchase Connects");
+    }
+
     localStorage.setItem("id", id);
   }
   gotoChat(id: any) {
     this.router.navigate(['Chat/' + id]);
-  } 
+  }
   onSendInterestClick(person: User) {
-    console.log(this.connect);
-    if(this.connect >= 4){
+    if (this.connect >= 4) {
       this.connectsdecriment(this.CurrentUser);
       this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
-      .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
+        .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
 
-        this.toasterservice.success("Interest Sent Successfully!");
-        this.connect = this.connect-4;
-        console.log(this.connect);
-      })
-    }else{
-      this.toasterservice.error("You have No Connects");
+          this.toasterservice.success("Interest Sent Successfully!");
+          this.connect = this.connect - 4;
+          console.log(this.connect);
+        })
+    } else {
+      this.router.navigate(['Subscribe']);
+      this.toasterservice.error("Please Purchase Connects");
+
     }
   };
-  connectsdecriment(data:any){
-    this.appService.decrimentsInConnects(this.CurrentUser._id,data).subscribe((res:any)=>{
-        console.log(res);
+  connectsdecriment(data: any) {
+    this.appService.decrimentsInConnects(this.CurrentUser._id, data).subscribe((res: any) => {
+      console.log(res);
     })
   };
-  SingleUser(id:any){
-    this.appService.getSingleUser(id._id).subscribe((res:any)=>{
+  SingleUser(id: any) {
+    this.appService.getSingleUser(id._id).subscribe((res: any) => {
       console.log(res.connect);
       this.connect = res.connect;
-  })
+    })
   }
-  
+
 
   AddtoFavClick(person: User) {
     this.appService.AddRemoveFavourite(this.CurrentUser._id, person._id)
@@ -376,4 +479,9 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         })
       })
   }
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['loginPage']);
+  }
+
 }

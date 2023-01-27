@@ -17,7 +17,7 @@
                     </li>
                     <li class="nav-item">
                         <button class="btnEdit" type="button">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <i class="fa-solid fa-arrow-right-from-bracket" (click)="logOut()"></i>
                             LOG OUT
                         </button>
                     </li>
@@ -26,15 +26,14 @@
         </div>
     </nav>
     <!-- SIDE NAVBAR -->
-    <div class="sidenav">
-        <img class="sidenav-img"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" />
+    <div class="sidenav"> 
+       <img [src]='imageUrl' alt="You have No Profile" height="250px" width="250px">
         <a (click)="gotoEditProfile()" style="cursor: pointer;"> Edit My Profile</a>
         <a (click)="gotoEditPhotos()" style="cursor: pointer;"> Edit My Photos</a>
-        <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a>
-        <a (click)="gotoEditEmail()" style="cursor: pointer;">Change Email</a>
-        <a (click)="gotoEditPassword()" style="cursor: pointer;"> Change Password</a>
-        <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a>
+        <!-- <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a> -->
+        <!-- <a (click)="gotoEditEmail()" style="cursor: pointer;">Change Email</a> -->
+        <!-- <a (click)="gotoEditPassword()" style="cursor: pointer;"> Change Password</a> -->
+        <!-- <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a> -->
     </div>
     <div class="about">
         <div class="main-card">
@@ -63,7 +62,7 @@
 
                 </div>
                 <label class="btn btn-default">
-                    <input type="file" id="img" multiple (change)="selectMultipleImage($event)" />
+                    <input type="file" id="img" name ="images"multiple (change)="selectMultipleImage($event)" />
                 </label>
                 <button class="btn btn-success" type="submit" (click)="onMultipleSubmit()">Upload</button>
 

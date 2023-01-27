@@ -1,3 +1,4 @@
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button> -->
 <div style="font-family: 'Poppins';" class="body">
     <nav class="navbar navbar-expand-lg bgColor p-4">
         <div class="container">
@@ -15,7 +16,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <button class="btnEdit" type="button">
+                        <button class="btnEdit" type="button" (click)="logOut()">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             LOG OUT
                         </button>
@@ -30,7 +31,7 @@
                 <div class="col-md-4 bgProfile">
                     <div class="d-flex mb-3">
                         <div class="me-auto p-2">
-                            <button type="button" class="btnLogOut">
+                            <button type="button" class="btnLogOut" (click)="logOut()">
                                 Logout
 
                             </button>
@@ -40,7 +41,7 @@
                                 Live
                                 
                             </button> -->
-
+ 
                             <div class="form-check form-switch">
                                 <input class="form-check-input" #saveUserNameCheckBox type="checkbox" role="switch"
                                     [checked]="saveUsername"
@@ -48,15 +49,27 @@
                                     id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Show Online</label>
                             </div>
+
+                            <div *ngIf="connect; else obj" class="connect">
+                                <h6 >Connects:{{connect}}</h6>
+                            </div>
+
+                            <ng-template #obj >
+                                <h6 class="connect">Connects:0</h6>
+                            </ng-template>
                         </div>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center"*ngIf="imageUrl;else profile">
                         <!-- <i class="fa-solid fa-image iconImage"></i> -->
-                        <img [src]='imageUrl' alt="You have No Profile" height="100px" width="100px">
+                        <img src="{{imageUrl}}" alt="You have No Photo" height="282px" width="282px">
 
                         <h3 style="color: #0F4D5C; font-weight: bold;">Profile Image</h3>
 
                     </div>
+                    <ng-template #profile>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                                            class="msgImg"  alt="Retail Admin">
+                    </ng-template>
                     <div class="d-flex justify-content-around iconsOfEdit text-center mt-5">
                         <div (click)="gotoEditProfile()" style="cursor: pointer">
                             <i class="fa-solid fa-id-card-clip sizeOfIcons"></i>
@@ -81,18 +94,29 @@
                     <h6 class="bgMsg">Messages</h6>
                     <div *ngFor="let message of chatList">
                         <div class="d-flex mb-3" (click)="gotoChat(message._id)" style="cursor: pointer;">
-                            <div class="p-2 statusIcon">
-                                <img class="msgImg"
-                                    src="https://images.unsplash.com/photo-1489673446964-e1f989187ddc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=510&q=80"
-                                    alt="Girl in a jacket" />
+                            <div class="p-2 statusIcon "*ngIf="message.messages[0].profile;else chatProfile">
+                                <img class="msgImg" 
+                                
+                                 src="{{url}}/{{message.messages[0].profile}}" alt="You have No Profile" />
                                 <span class="onlineShow"></span>
                             </div>
-                            <div class="p-2 ms-5">
+                            <ng-template #chatProfile>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                                            class="msgImg"  alt="Retail Admin">
+                            </ng-template>
+                            <div class="p-2 ms-4">
                                 <p style="color: #7B8793; font-weight: 600;"> {{message.messages[0].name||"hello"}}
                                 </p>
-                                <p class="msgText" style="color: #AFBBC6">
-                                    {{message.messages[message.messages.length-1].message}}
-                                </p>
+                                <div class="msgText" style="color: #AFBBC6">
+                                    <div
+                                        *ngIf="message.messages[message.messages.length-1].message && message.messages[message.messages.length-1].message.startsWith(base64); else elseCurrent">
+                                        <img [src]="message.messages[message.messages.length-1].message" height="48"
+                                            width="48" />
+                                    </div>
+                                    <ng-template #elseCurrent>
+                                        {{message.messages[message.messages.length-1].message}}
+                                    </ng-template>
+                                </div>
                             </div>
                             <div class="ms-auto p-2">
                                 <!-- <span style="color: #7B8793">{{message.time}}</span> -->
@@ -171,22 +195,29 @@
                                         <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;"
                                             (click)="gotoProfile(person)">
                                             <div class="row g-0 styleCard">
-                                                <div class="col-md-4 cardImageRes">
-                                                    <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage"
-                                                        alt="..." />
+                                                <div class="col-md-4 cardImageRes" *ngIf="person.image;else devImg">
+                                                    <img src="http://localhost:5000\{{person.image}}"
+                                                        class="rounded-start cardImage" alt="" />
+                                                    <!-- src="https://bit.ly/3RzZK9J"  -->
                                                 </div>
+                                                <ng-template #devImg >
+                                                    <img 
+                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                                                     class="aletrimage cardImage">
+                                                </ng-template>
                                                 <div class="col-md-8 cardbg cardbgRes">
                                                     <div class="card-body">
                                                         <div class="d-flex">
                                                             <div class="me-auto">
                                                                 <h5 class="card-title">{{person.name}}</h5>
                                                             </div>
+
                                                             <div class="">
                                                                 <img src="https://bit.ly/3BJ3wIg" class="imgSize"
                                                                     alt="..." />
                                                             </div>
                                                         </div>
-                                                       
+
                                                         <p class="card-text text-muted">
                                                             {{person.gender? person.gender: "undefined"}} |
                                                             {{person.age}} | {{person.professional ?
@@ -203,7 +234,7 @@
                                                         <!-- <p class="card-text text-muted">
                                                             {{person.connect}}                                                        {{person.montherTonque}}
                                                         </p> -->
-                                                       
+
                                                         <div class="d-flex mt-2">
                                                             <div class="me-auto">
                                                                 <img src={{pathmessage}}

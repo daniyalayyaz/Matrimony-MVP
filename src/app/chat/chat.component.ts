@@ -4,6 +4,8 @@ import { AppService } from '../app.service';
 import { takeUntil } from 'rxjs';
 import { UnsubscribeHandelr } from '../helpers/unsubscribe-handler';
 import { LocalStorageItem } from '../helpers/localStorageItem.enum';
+import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chat',
@@ -15,8 +17,11 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
   imageUrl = "";
   showDiv: boolean = true;
   base64 = "base64";
+  viewToView = "";
+  url =environment.url
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   @ViewChild('fileInput') private fileInput: ElementRef;
+  senderUrl: string;
 
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -27,7 +32,7 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
     } catch (err) { }
   }
-  chatList = { members: [], messages: [{ message: "", name: "", sender: "" }], _id: "" };
+  chatList = { members: [],messages: [{ message: "", name: "", sender: "",senderUser:"",profile:"" }] , _id: "" };
 
   constructor(private route: ActivatedRoute, private appService: AppService, private router: Router) {
     super();
@@ -37,10 +42,9 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
       this.appService.getAllChat(this.id).pipe(
         takeUntil(this.Unsubscribe$))
         .subscribe((users) => {
-
+          console.log(users);
           this.chatList = users;
           console.log(this.chatList);
-          console.log(users);
         })
     })
 
@@ -54,7 +58,11 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
   }
   chat: string;
   postChat() {
-    this.appService.postChat(this.chatList._id || "56cb91bdc3464f14678934ca", this.CurrentUser.name, this.CurrentUser._id, this.chatList.members[1] || localStorage.getItem("id"), this.chat).pipe(
+    console.log(this.CurrentUser.image);
+    
+    this.appService.postChat(this.chatList._id || "56cb91bdc3464f14678934ca", 
+    this.CurrentUser.name, this.CurrentUser._id,this.CurrentUser.image, 
+    this.chatList.members[1] || localStorage.getItem("id"), this.chat).pipe(
       takeUntil(this.Unsubscribe$))
       .subscribe((users) => {
         if (users._id) {
@@ -72,7 +80,6 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
               })
           })
         }
-        
         else {
           this.router.navigate(['Chat/' + users._id]);
           this.chat = "";
@@ -83,7 +90,7 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
     this.fileInput.nativeElement.click();
   }
   selectImage(event: any) {
-    if (event.target.files[0]) {  
+    if (event.target.files[0]) {
       let reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       // this.chat = event.target.files[0];
@@ -95,10 +102,22 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
       }
     }
   }
-  resetImage(){
+  resetImage() {
     console.log("Reset Function");
     this.showDiv = true;
     this.imageUrl = "";
     this.chat = "";
+  }
+  viewImage(image: any) {
+    console.log(image);
+    Swal.fire({
+      title: 'Image Preview',
+      html:
+        `<img src=${image} height="400" width="400"/>`,
+      showCancelButton: true,
+      showConfirmButton: false,
+      cancelButtonColor: "#e40707"
+    })
+
   }
 }

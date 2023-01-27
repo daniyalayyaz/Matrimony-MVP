@@ -28,7 +28,7 @@ export class AppService {
 
   onlineUser(gender: Gender): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/Onlineuser`;
-    return this.http.post<any>(url, gender);
+    return this.http.post<any>(url, {gender});
   }
   // latest(gender: Gender): Observable<any> {
   //   const url = `${environment.apiBaseUrl}/users/latest`;
@@ -42,7 +42,7 @@ export class AppService {
     // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
   }
   uploadMultipleImage(images:any,userId:any){
-    return this.http.post(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,images);
+    return this.http.put(`${environment.apiBaseUrl}/user/imageUpload/${userId}`,images);
     // return this.http.post(`${environment.apiBaseUrl}/user/ProfileImage/${userId}`,image);
   }
 
@@ -65,6 +65,10 @@ export class AppService {
     const url = `${environment.apiBaseUrl}/users/viewAllRequest`;
     return this.http.post<any>(url,{rid: userId});
   }
+  viewAcceptRequest(userId?: string): Observable<any> {
+    const url = `${environment.apiBaseUrl}/users/viewAcceptRequest`;
+    return this.http.post<any>(url,{rid: userId});
+  }
 
   nearBy(city: string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/nearBy`;
@@ -78,7 +82,7 @@ export class AppService {
     return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`);
   }
   getProfileImage(id:any){
-    return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`,{ responseType: 'blob' });
+    return this.http.get(`${environment.apiBaseUrl}/user/getProfile/${id}`);
   }
   getGallaryImage(id:any):Observable<any>{
     return this.http.get(`${environment.apiBaseUrl}/user/showImages/${id}`);
@@ -141,9 +145,9 @@ export class AppService {
     return this.http.post<any>(url,{id});
   }
 
-  postChat(id?: string,name?: string,senderId?:string,receiverId?:string, message?: string): Observable<any> {
+  postChat(id?: string,name?: string,senderId?:string,profile?:string,receiverId?:string, message?: string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/postchat`;
-    return this.http.post<any>(url,{id, name,senderId, receiverId, message });
+    return this.http.post<any>(url,{id, name,senderId, receiverId, message,profile });
   }
   letschat( senderId?:string,receiverId?:string): Observable<any> {
     const url = `${environment.apiBaseUrl}/users/getChatGroup`;
@@ -164,5 +168,19 @@ return credential;
   // whatsappchat(b:any,){
   //   return this.http.post(environment.apiBaseUrl + '/user/whatsapp',b);
   // }
+  getPromotion() {
+    return this.http.get(environment.apiBaseUrl + '/admin/promotionget');
+  };
+  userSentDeleteAccountrequestToAdmin(id:any,active:any){
+    return this.http.put(`${environment.apiBaseUrl}/user/updateProfile/${id}`,{active})
+  }
+  reportUser(data: any){
+    const url = `${environment.apiBaseUrl}/admin/generateReport`;
+    return this.http.post(url,data);
+  }
+  lockGallery(data:any){
+    const url = `${environment.apiBaseUrl}/user/lockGallery`;
+    return this.http.post(url,data);
+  }
 }
 

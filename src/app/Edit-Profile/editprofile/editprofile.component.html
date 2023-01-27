@@ -17,7 +17,7 @@
           </li>
           <li class="nav-item">
             <button class="btnEdit" type="button">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <i class="fa-solid fa-arrow-right-from-bracket" (click)="logOut()"></i>
               LOG OUT
             </button>
           </li>
@@ -32,15 +32,14 @@
         <div class="col-lg-3 pt-4 ">
           <div class="  sidenav">
             <div class="gridEight">
-              <img class="sidenav-img"
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
-              <input type="image">
+              <img [src]='imageUrl' alt="You have No Profile" height="250px" width="250px">
+              <!-- <input type="image"> -->
               <a (click)="gotoEditProfile()" style="cursor: pointer;"> Edit My Profile</a>
               <a (click)="gotoEditPhotos()" style="cursor: pointer;"> Edit My Photos</a>
-              <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a>
-              <a (click)="gotoEditEmail()" style="cursor: pointer;">Change Email</a>
+              <!-- <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a> -->
+              <!-- <a (click)="gotoEditEmail()" style="cursor: pointer;">Change Email</a>
               <a (click)="gotoEditPassword()" style="cursor: pointer;"> Change Password</a>
-              <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a>
+              <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a> -->
             </div>
           </div>
         </div>
@@ -75,17 +74,17 @@
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
-                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
+                    <label  for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Name
                     </label>
-                    <input type="text" class="form-control rounded-pill" aria-label="Name" name="name"
+                    <input  type="text" class="form-control rounded-pill" aria-label="Name" name="name"
                       formControlName="name" [(ngModel)]="userProfile.name">
                     <div class="form-check form-switch ms-2 mt-2">
-                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                      <input  hidden class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
                       value='userProfile.lockDetails' name="hideName"
                       formControlName="hideName" [(ngModel)]="userProfile.hideName" [value]="false" />
                       
-                      <label class="form-check-label" for="flexSwitchCheckDefault">Show Name on Profile</label>
+                      <label  hidden class="form-check-label" for="flexSwitchCheckDefault">Show Name on Profile</label>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -260,11 +259,11 @@
                 </div> -->
                 <div class="row mt-4 ps-4">
                   <div class="form-check form-switch ms-5 mt-2">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" 
+                    <input  hidden class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" 
                     value='userProfile.lockDetails' checked name="lockDetails" 
                     formControlName="lockDetails" [(ngModel)]="userProfile.lockDetails" [value]="false"/>
                    
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Lock Contact Details</label>
+                    <label  hidden class="form-check-label" for="flexSwitchCheckDefault">Lock Contact Details</label>
                   </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
@@ -335,14 +334,26 @@
                       <option value="3">Upper Middle</option>
                     </select>
                   </div>
-                  <!-- <div class="col-md-6">
+                  <div class="col-md-6">
+                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
+                      Build
+                    </label>
+                    <select class="form-select rounded-pill" aria-label="Default select example" name="build"
+                      formControlName="build" [(ngModel)]="userProfile.build">
+                      <option selected>Select Build</option>
+                      <option>Chubby</option>
+                      <option>Average</option>
+                      <option>Athletic</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Any other family info
                     </label>
                     <input type="text" class="form-control rounded-pill" aria-label="Religious"
                       aria-describedby="addon-wrapping" placeholder="ex: Joint Family" name="OtherFamilyInfo"
                       formControlName="socialEconomic" [(ngModel)]="userProfile.socialEconomic" />
-                  </div> -->
+                  </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
@@ -374,22 +385,11 @@
                   </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
+                 
                   <div class="col-md-6">
-                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
-                      Build
-                    </label>
-                    <select class="form-select rounded-pill" aria-label="Default select example" name="build"
-                      formControlName="build" [(ngModel)]="userProfile.build">
-                      <option selected>Select Build</option>
-                      <option>Chubby</option>
-                      <option>Average</option>
-                      <option>Athletic</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
+                    <label  hidden for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Height </label><br />
-                    <input type="range" id="temp" name="height" list="tickmarks" formControlName="height"
+                    <input  hidden type="range" id="temp" name="height" list="tickmarks" formControlName="height"
                       [(ngModel)]="userProfile.height" />
                     <datalist id="tickmarks">
                       <option value="91.44" label="3ft"></option>
@@ -401,13 +401,26 @@
                   </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Hobbies
                     </label>
                     <input type="text" class="form-control rounded-pill" aria-label="Age"
                       aria-describedby="addon-wrapping" placeholder="ex: Playing Football" name="hobbies"
                       formControlName="hobbies" [(ngModel)]="userProfile.hobbies" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
+                      <!-- Any Other  -->
+                      Nationality
+                    </label>
+                    <select class="form-select rounded-pill" aria-label="Default select example"
+                      name="nationality"formControlName="nationality" [(ngModel)]="userProfile.nationality">
+                      <option selected>{{userProfile.nationality}}</option>
+                      <option *ngFor="let country of countries" value="{{ country }}">
+                        {{ country }}
+                      </option>
+                    </select>
                   </div>
                 </div>
                 <div class="row mt-4 ps-4 pe-4">
@@ -529,7 +542,7 @@
                     </select>
                   </div>
                 </div>
-                <!-- <div class="row mt-4 ps-4 pe-4">
+                <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-12">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Any other professional info
@@ -538,7 +551,7 @@
                       aria-describedby="addon-wrapping" placeholder="ex: I have side businesses" name="AnyotherInfo"
                       formControlName="institution" [(ngModel)]="userProfile.institution" />
                   </div>
-                </div> -->
+                </div>
                 <div class="row mt-4 ps-4 pe-4">
                   <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
@@ -601,27 +614,15 @@
                 </div>
   
                 <div class="row mt-4 ps-4 pe-4">
+                 
                   <div class="col-md-6">
-                    <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
-                      <!-- Any Other  -->
-                      Nationality
-                    </label>
-                    <select class="form-select rounded-pill" aria-label="Default select example"
-                      name="nationality"formControlName="nationality" [(ngModel)]="userProfile.nationality">
-                      <option selected>{{userProfile.nationality}}</option>
-                      <option *ngFor="let country of countries" value="{{ country }}">
-                        {{ country }}
-                      </option>
-                    </select>
-                  </div>
-                  <!-- <div class="col-md-6">
                     <label for="formGroupExampleInput" class="form-label" style="color: #0f4d5c">
                       Future Plans to live in
                     </label>
                     <input type="text" class="form-control rounded-pill" aria-label="Age"
                       aria-describedby="addon-wrapping" placeholder="ex: UAE" name="FuturePlanstoLiveIn"
                       formControlName="province" [(ngModel)]="userProfile.province" />
-                  </div> -->
+                  </div>
                 </div>
                 <br>
                 <div class="row mt-4 ps-4 pe-4 ">

@@ -36,6 +36,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 const routes: Routes = [
   {path: '', component: LandingpageComponent},
   {path:'Login', component: LoginComponent},
+  {path:'loginPage',component: LoginComponent},
   {path:'Basic-Details', component: BasicDetailsComponent},
   {path:'Personal-Details', component: PersonalDetailsComponent},
   {path:'More-Personal-Details', component: MorePersonalDetailsComponent},
@@ -44,7 +45,7 @@ const routes: Routes = [
   {path:'Family-Details', component: FamilyDetailsComponent},
   {path:'Contact-Details', component: ContactDetailsComponent},
   {path:'Dashboard', component: DashboardComponent},
-  {path: 'Profile', component: ProfileComponent},
+  {path: 'Profile/:id', component: ProfileComponent},
   {path: 'Subscribe', component: SubscribePackageComponent},
   {path: 'Gallery', component: GalleryComponent},
   {path: 'Interests', component: InterestsComponent},

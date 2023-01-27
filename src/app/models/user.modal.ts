@@ -4,6 +4,7 @@ export interface UserResponse {
 }
 
 export interface User {
+    
     _id?: string;
     email?: string
     personalContact?: string
@@ -68,7 +69,7 @@ export interface User {
     color?: string;
     distance?: string;
     connect?:Number;
-
+    Block?:[];
   }
   
 
