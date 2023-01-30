@@ -132,7 +132,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
           if (!a.package && b.package) return 1;
           return 0;
         });
-        console.log(this.personList);
 
         let filtered = this.personList.filter((user: any) => {
           if (!user._id?.includes(this.CurrentUser._id)) {
@@ -199,7 +198,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
           if (!a.package && b.package) return 1;
           return 0;
         });;
-        console.log(users);
 
         let filtered = this.personList.filter((user: any) => {
           if (!user._id?.includes(this.CurrentUser._id)) {
@@ -222,7 +220,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
             return user;
           }
         });
-        console.log(filteredGender);
         this.personList = filteredGender
 
       });
@@ -244,15 +241,12 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
         if (!a.package && b.package) return 1;
         return 0;
       });;
-      console.log(res);
 
       let filtered = this.personList.filter((user: any) => {
         if (!user._id?.includes(this.CurrentUser._id)) {
           return user;
         }
       });
-      console.log(filtered);
-      console.log(this.blockedUsers);
 
       let filteredBlock = filtered.filter((user: any) => {
         if (!this.blockedUsers.includes(user._id)) {
@@ -275,7 +269,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
       .subscribe((users) => {
 
         this.chatList = users;
-        console.log(this.chatList);
       })
   }
   public onOnlineClick() {
@@ -399,10 +392,8 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.appService.getSingleUser(this.CurrentUser._id)
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
-        this.imageUrl = data.image;
-        console.log(data);
+        // this.imageUrl = data.image;
         
-        console.log(this.imageUrl);
       }
       );
   }
@@ -424,10 +415,12 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     let id = person._id;
     
     if (this.connect >= 4) {
-      this.connectsdecriment(this.CurrentUser);
-
+      const user = this.chatList.filter((x:any)=>{
+        if(!x.members == id){
+          this.connectsdecriment(this.CurrentUser,id);
+        }}
+        );
       this.appService.letschat(this.CurrentUser._id, id).pipe(takeUntil(this.Unsubscribe$)).subscribe((persons) => {
-        // console.log(persons);
         this.connect = this.connect - 4;
         this.router.navigate(['Chat/' + persons._id]);
       })
@@ -447,13 +440,12 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     if (this.connect >= 4) {
       let decscition = "Sent You intrest"
       this.notification(person,decscition);
-      this.connectsdecriment(this.CurrentUser);
+      this.connectsdecriment(this.CurrentUser,person._id);
       this.appService.HandleRequest(this.CurrentUser._id, person._id, RequestType.SENDING)
         .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
 
           this.toasterservice.success("Interest Sent Successfully!");
           this.connect = this.connect - 4;
-          console.log(this.connect);
         })
     } else {
       this.router.navigate(['Subscribe']);
@@ -462,21 +454,24 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     }
   };
   notification(userInfo:any,description:any){
-    console.log(userInfo);
     let view = true;
     this.appService.notificationAdd(userInfo._id,this.CurrentUser,view,description).subscribe((res:any)=>{
-      console.log(res);
       
     })
   }
-  connectsdecriment(data: any) {
-    this.appService.decrimentsInConnects(this.CurrentUser._id, data).subscribe((res: any) => {
-      console.log(res);
-    })
+  connectsdecriment(data: any,id:any) {
+    
+    
+    // if(this.chatList){
+         
+    // }else{
+      this.appService.decrimentsInConnects(this.CurrentUser._id, data).subscribe((res: any) => {
+      });
+    // }
+    
   };
   SingleUser(id: any) {
     this.appService.getSingleUser(id._id).subscribe((res: any) => {
-      console.log(res.connect);
       this.connect = res.connect;
     })
   }
@@ -492,7 +487,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   statuschange() {
     this.appService.Loginstatusupdate(this.CurrentUser._id, this.saveUsername)
       .pipe(takeUntil(this.Unsubscribe$)).subscribe(response => {
-        // console.log(response)
 
         const body = {
           email: this.CurrentUser.email,
@@ -515,7 +509,6 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   }
   showNotification(){
     this.appService.showNotificationById(this.CurrentUser._id).subscribe((res:any)=>{
-      console.log(res.length);
       this.notificationCounter = res.length;
       if(res.length >= 1 ){
         this.toasterservice.info("You Have" +" "+ this.notificationCounter + " "+"Notification")
