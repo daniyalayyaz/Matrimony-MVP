@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-12 right">
             <div class="box shadow-sm rounded bg-white mb-3">
-                <div class="box-title border-bottom p-3">
+                <!-- <div class="box-title border-bottom p-3">
                     <h6 class="m-0">Recent</h6>
                 </div>
                 <div class="box-body p-0">
@@ -36,7 +36,6 @@
                         <div class="dropdown-list-image mr-3">
                             <img  class="rounded-circle"
                                 src="../../assets/notification.png" alt="" />
-                                <!-- <i class="fas-sharp fas-solid fas-megaphone"></i> -->
                         </div>
                         <div class="font-weight-bold mr-3">
                             <div class="text-truncate">{{show.name}}</div>
@@ -44,22 +43,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="box shadow-sm rounded bg-white mb-3">
                 <div class="box-title border-bottom p-3">
-                    <h6 class="m-0">Earlier</h6>
+                    <h4 class="m-0">Latest</h4>
                 </div>
                 <div class="box-body p-0">
                     <div class="p-3 d-flex align-items-center bg-light border-bottom osahan-post-header"
                         *ngFor="let show of earlier">
                         <div class="dropdown-list-image mr-3">
                             <img  class="rounded-circle"
-                                src="../../assets/notification.png" alt="" />
+                                src="https://img.freepik.com/premium-vector/3d-notification-bell-icon_165488-3330.jpg?w=2000" alt="" />
                                 <!-- <i class="fas-sharp fas-solid fas-megaphone"></i> -->
                         </div>
                         <div class="font-weight-bold mr-3">
-                            <div class="text-truncate">{{show.name}}</div>
-                            <div class="small">{{show.description}}</div>
+                            <!-- <h5 style="font-weight: bold;">{{show.name}}</h5> -->
+                            <h6 style="font-weight: bold; font-family: 'Poppins';">{{show.description}}</h6>
                         </div>
                     </div>
                 </div>
