@@ -65,9 +65,9 @@
                     </div>
                 </div> -->
                 <ngb-carousel *ngIf="gallary; else galleryImg">
-                    <ng-template ngbSlide *ngFor="let image of gallary">
+                    <ng-template ngbSlide *ngFor="let image of gallary;">
                       <div class="wrapper">
-                        <img [src]="image" alt="Random first slide" width="302px" height="150px">
+                        <img [src]='image.image' alt="Random first slide" width="302px" height="150px">
                       </div>
                     </ng-template>
                   </ngb-carousel>
