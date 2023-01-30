@@ -392,7 +392,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.appService.getSingleUser(this.CurrentUser._id)
       .subscribe((data: any) => {
         const fullUrl = `${this.url}/${data.image}`
-        // this.imageUrl = data.image;
+        this.imageUrl = data.image;
         
       }
       );
