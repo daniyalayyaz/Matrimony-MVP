@@ -29,24 +29,7 @@
   <body class="example">
     <div class="container ">
       <div class="row">
-        <div class="col-lg-3 pt-4 ">
-          <div class="  sidenav">
-            <div class="gridEight">
-              <img *ngIf='imageUrl;else profileimag' src="http://localhost:5000/{{imageUrl}}" alt="You have No Profile" height="250px" width="250px">
-              <!-- <input type="image"> -->
-              <a (click)="gotoEditProfile()" style="cursor: pointer;"> Edit My Profile</a>
-              <a (click)="gotoEditPhotos()" style="cursor: pointer;"> Edit My Photos</a>
-              <!-- <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a> -->
-              <!-- <a (click)="gotoEditEmail()" style="cursor: pointer;">Change Email</a>
-              <a (click)="gotoEditPassword()" style="cursor: pointer;"> Change Password</a>
-              <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a> -->
-            </div>
-            <ng-template #profileimag>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU" alt="">
-          </ng-template>
-          </div>
-        </div>
-        <div class="col-lg-9 pt-4 ">
+        <div class="col-md-12 pt-4 ">
           <div class="marginDev">
             <div class="gridEight">
               <form (ngSubmit)="update()" [formGroup]="form">

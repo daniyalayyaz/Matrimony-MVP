@@ -408,7 +408,10 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
     this.router.navigate(['Preferences']);
   }
   gotoPhotos() {
-    this.router.navigate(['Edit-Photos']);
+    this.userId = localStorage.getItem('LoggedInUser');
+
+    this.userId = JSON.parse(this.userId);
+    this.router.navigate(['Edit-Photos',this.userId._id]);
   }
   letschat(person: any) {
 

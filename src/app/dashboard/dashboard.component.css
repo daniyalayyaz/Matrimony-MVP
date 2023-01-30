@@ -6,7 +6,10 @@
   padding: 0.2em 0.45em;
 }
 .profileMarginLeft{
-  margin-left: 5rem;
+  height: 200px;
+  width: 100%;
+  /* border-radius: 5px; */
+  /* margin-left: 5rem; */
 }
 .bgMsg {
   background-color: #6496a2;
@@ -15,9 +18,9 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.connect{
+/* .connect{
   margin-left: 33%;
-}
+} */
 .chatmargin{
   margin-left: 33%s;
 }
@@ -37,6 +40,7 @@
 .msgImg {
   height: 60px;
   width: 60px;
+  margin-left: 20px;
   border-radius: 50%;
 }
 
@@ -59,9 +63,9 @@
   background: #ff000080 0% 0% no-repeat padding-box;
   color: white;
   border: 1px solid #ff0000;
-  border-radius: 20px;
-  padding: 5px;
-  width: 90px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
 }
 
 .btnLive {

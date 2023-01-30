@@ -31,10 +31,17 @@
                 <div class="col-md-4 bgProfile">
                     <div class="d-flex mb-3">
                         <div class="me-auto p-2">
-                            <button type="button" class="btnLogOut" (click)="logOut()">
+                            <!-- <button type="button" class="btnLogOut" (click)="logOut()">
                                 Logout
 
-                            </button>
+                            </button> -->
+                            <div *ngIf="connect; else obj" class="connect btnLogOut">
+                                <h6>Connects:<b>{{connect}}</b></h6>
+                            </div>
+
+                            <ng-template #obj>
+                                <h6 class="connect btnLogOut">Connects:<b>0</b></h6>
+                            </ng-template>
                         </div>
                         <div class="p-2">
                             <!-- <button type="button" class="btnLive">
@@ -50,24 +57,18 @@
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Show Online</label>
                             </div>
 
-                            <div *ngIf="connect; else obj" class="connect">
-                                <h6>Connects:{{connect}}</h6>
-                            </div>
-
-                            <ng-template #obj>
-                                <h6 class="connect">Connects:0</h6>
-                            </ng-template>
+                  
                         </div>
                     </div>
                     <div class="text-center" *ngIf="imageUrl;else profile">
                         <!-- <i class="fa-solid fa-image iconImage"></i> -->
-                        <img src="http://localhost:5000\{{imageUrl}}" alt="You have No Photo" height="282px" width="282px">
+                        <img src="http://localhost:5000\{{imageUrl}}" alt="You have No Photo" class="profileMarginLeft">
 
-                        <h3 style="color: #0F4D5C; font-weight: bold;">Profile Image</h3>
+                        <!-- <h3 style="color: #0F4D5C; font-weight: bold;">Profile Image</h3> -->
 
                     </div>
                     <ng-template #profile>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                        <img src="https://cdn.techjuice.pk/wp-content/uploads/2015/02/wallpaper-for-facebook-profile-photo-1024x645.jpg"
                         class="profileMarginLeft">
                     </ng-template>
                     <div class="d-flex justify-content-around iconsOfEdit text-center mt-5">
@@ -104,10 +105,10 @@
                                 <span class="onlineShow"></span>
                             </div>
                             <ng-template #chatProfile>
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                                <img src="https://i.stack.imgur.com/34AD2.jpg"
                                     class="msgImg" alt="Retail Admin">
                             </ng-template>
-                            <div class="p-2 ms-4">
+                            <div class="p-2 ms-3">
                                 <p style="color: #7B8793; font-weight: 600;"> {{message.messages[0].name||"hello"}}
                                 </p>
                                 <div class="msgText" style="color: #AFBBC6">

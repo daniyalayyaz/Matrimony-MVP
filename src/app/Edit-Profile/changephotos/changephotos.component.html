@@ -26,20 +26,17 @@
         </div>
     </nav>
     <!-- SIDE NAVBAR -->
-    <div class="sidenav">
+    <!-- <div class="sidenav">
         <img *ngIf="imageUrl;else profileimag" src="http://localhost:5000/{{imageUrl}}" alt="You have No Profile"
             height="250px" width="250px">
         <a (click)="gotoEditProfile()" style="cursor: pointer;"> Edit My Profile</a>
         <a (click)="gotoEditPhotos()" style="cursor: pointer;"> Edit My Photos</a>
-        <!-- <a (click)="gotoEditUsername()" style="cursor: pointer;">Change Username</a> -->
-        <!-- <a (click)="gotoEditEmail()" style="cursor: pointer;">Change Email</a> -->
-        <!-- <a (click)="gotoEditPassword()" style="cursor: pointer;"> Change Password</a> -->
-        <!-- <a (click)="gotoEditPhone()" style="cursor: pointer;">Change Phone</a> -->
+       
     </div>
     <ng-template #profileimag>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
             height="250px" width="250px" alt="">
-    </ng-template>
+    </ng-template> -->
     <div class="about">
         <div class="main-card">
             <h1>Edit my Photos</h1>
@@ -52,7 +49,7 @@
                 <label class="btn btn-default">
                     <input type="file" id="img" (change)="selectImage($event)" />
                 </label>
-                <button class="btn btn-success" type="submit" (click)="onSubmit()">Upload</button>
+                <button class="btn UploadBtn" type="submit" (click)="onSubmit()">Upload</button>
             </div>
             <ng-template #imgUrl>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
@@ -79,7 +76,7 @@
                 <label class="btn btn-default">
                     <input type="file" id="img" name="images" multiple (change)="selectMultipleImage($event)" />
                 </label>
-                <button class="btn btn-success" type="submit" (click)="onMultipleSubmit()">Upload</button>
+                <button class="btn UploadBtn" type="submit" (click)="onMultipleSubmit()">Upload</button>
             </div>
             <br />
             <hr>

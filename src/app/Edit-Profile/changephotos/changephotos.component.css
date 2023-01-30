@@ -61,11 +61,19 @@
     
     .about{
         background-color: pink;
-        width: 80%;
+        width: 100%;
         float: right;
         overflow: hidden;
         position: relative;
         
+    }
+    .UploadBtn{
+        background: #0f4d5c 0% 0% no-repeat padding-box;
+        border-radius: 4px;
+        color: white;
+        padding: 10px;
+        border: none;
+        width: 20%;
     }
     .main-card{
         box-shadow: 0 1px 1px 0 rgb(0 0 0 / 15%);
