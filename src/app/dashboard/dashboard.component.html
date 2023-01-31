@@ -62,7 +62,7 @@
                     </div>
                     <div class="text-center" *ngIf="imageUrl;else profile">
                         <!-- <i class="fa-solid fa-image iconImage"></i> -->
-                        <img src="http://localhost:5000\{{imageUrl}}" alt="You have No Photo" class="profileMarginLeft">
+                        <img src="https://mvp.herokuapp.com\{{imageUrl}}" alt="You have No Photo" class="profileMarginLeft">
 
                         <!-- <h3 style="color: #0F4D5C; font-weight: bold;">Profile Image</h3> -->
 
@@ -202,7 +202,7 @@
                                             (click)="gotoProfile(person)">
                                             <div class="row g-0 styleCard">
                                                 <div class="col-md-4 cardImageRes" *ngIf="person.image;else devImg">
-                                                    <img src="http://localhost:5000\{{person.image}}"
+                                                    <img src="https://mvp.herokuapp.com\{{person.image}}"
                                                         class="rounded-start cardImage" alt="" />
                                                     <!-- src="https://bit.ly/3RzZK9J"  -->
                                                 </div>

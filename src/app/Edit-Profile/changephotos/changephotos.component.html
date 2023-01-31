@@ -27,7 +27,7 @@
     </nav>
     <!-- SIDE NAVBAR -->
     <!-- <div class="sidenav">
-        <img *ngIf="imageUrl;else profileimag" src="http://localhost:5000/{{imageUrl}}" alt="You have No Profile"
+        <img *ngIf="imageUrl;else profileimag" src="https://mvp.herokuapp.com/{{imageUrl}}" alt="You have No Profile"
             height="250px" width="250px">
         <a (click)="gotoEditProfile()" style="cursor: pointer;"> Edit My Profile</a>
         <a (click)="gotoEditPhotos()" style="cursor: pointer;"> Edit My Photos</a>
@@ -43,7 +43,7 @@
             <hr />
             <div>
                 <div class="col" *ngIf="imageUrl;else imgUrl">
-                    <img src="http://localhost:5000/{{imageUrl}}" alt="You have No Profile" height="100px"
+                    <img src="https://mvp.herokuapp.com/{{imageUrl}}" alt="You have No Profile" height="100px"
                         width="100px">
                 </div>
                 <label class="btn btn-default">

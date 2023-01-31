@@ -33,7 +33,7 @@
                                     <ul class="chat-box chatContainerScroll" *ngFor="let message of chatList.messages">
                                         <li class="chat-left" *ngIf="message.sender!=CurrentUser._id ">
                                             <div class="chat-avatar"*ngIf="message.profile;else img">
-                                                    <img src="http://localhost:5000/{{message.profile}}"/>
+                                                    <img src="https://mvp.herokuapp.com/{{message.profile}}"/>
                                                 <!-- <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
                                                     alt="Retail Admin"> -->
                                                 <div class="chat-name"> {{message.name}}</div>
@@ -64,7 +64,7 @@
                                             <div class="chat-avatar" *ngIf="message.profile; else img">
                                                 <!-- <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
                                                     alt="Retail Admin"> -->
-                                                    <img src="http://localhost:5000/{{message.profile}}" />
+                                                    <img src="https://mvp.herokuapp.com/{{message.profile}}" />
                                                 <p class="chat-name">{{message.name}}</p>
                                             </div>
                                             <ng-template #img>

@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:5000/api',
-  url: 'http://localhost:5000',
+  apiBaseUrl: 'https://mvp.herokuapp.com/api',
+  url: 'https://mvp.herokuapp.com',
 
   firebase: {
   apiKey: "AIzaSyCeh8CsSH2euc7iA9lfVXR9sv2TQLiWiYA",

@@ -10,5 +10,5 @@ export const environment = {
     messagingSenderId: '180744314389',
   },
   production: true,
-  apiBaseUrl: 'http://localhost:5000/api',
+  apiBaseUrl: 'https://mvp.herokuapp.com/api',
 };

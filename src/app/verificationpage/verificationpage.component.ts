@@ -14,7 +14,7 @@ check=false;
     private route: ActivatedRoute) {
   this.route.paramMap.subscribe((params: any) => {
     this.id = params?.get("id") || "";
-    this.http.post("http://localhost:5000/api/verify",  {
+    this.http.post("https://mvp.herokuapp.com/api/verify",  {
      
       token:this.id
    

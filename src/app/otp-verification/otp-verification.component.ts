@@ -53,7 +53,7 @@ export class OtpVerificationComponent implements OnInit, AfterViewInit {
       .confirm(this.Otpverification.otp)
   
       .then((result:any) => {
-        this.http.post<any>('http://localhost:5000/api/user/otpverify',email)
+        this.http.post<any>('https://mvp.herokuapp.com/api/user/otpverify',email)
       })
   
       .catch((err:any) => {
