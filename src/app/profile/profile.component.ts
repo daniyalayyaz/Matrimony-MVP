@@ -33,7 +33,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
   url = environment.url;
 
   picture: SafeResourceUrl;
-  gallary: any;
+  gallary: any = [];
   id: any;
   constructor(private router: Router,
     private toasterservice: ToastrService,private sanitizer: DomSanitizer,    
@@ -192,19 +192,25 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
       }
     })
   }
+  
   getgallary() {
     this.appService.getGallaryImage(this.id).subscribe((res: any) => {
       // this.base64TrimmedURL = base64Data;
       // this.createBlobImageFileAndShow();
       // console.log(res[0].image);
-      // this.gallary = res[0].image;
+      // this.gallary = res.image;
 
       console.log(res);
-      if(res.private == false){
-        this.gallary
+      if(res.private === false && res.userId !== this.CurrentUser._id){
+        this.gallary  ='';
+        console.log(this.gallary);
+        
       }
       else{
+
         this.gallary = res.image;
+        console.log(this.gallary);
+        
       }
     });
   }

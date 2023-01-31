@@ -27,11 +27,11 @@
     <div class="bgDash">
         <div class="row responsivelist">
             <ng-container *ngIf="1 > 0">
-                <div class="col-md-4 mt-3" *ngFor="let person of personList">
+                <div class="col-md-4 mt-3" *ngFor="let person of personList;else devImg">
                     <div class="card mb-3 styleCard" style="width: 100%; cursor: pointer;">
                         <div class="row g-0 styleCard">
                             <div class="col-md-4 cardImageRes">
-                                <img src="https://bit.ly/3RzZK9J" class="rounded-start cardImage" alt="..." />
+                                <img src="http://localhost:5000\{{person.image}}" class="rounded-start cardImage" alt="..." />
                             </div>
                             <div class="col-md-8 cardbg cardbgRes">
                                 <div class="card-body">
@@ -72,6 +72,10 @@
                         </div>
                     </div>
                 </div>
+                <ng-template #devImg>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjbU1g5sdIpmGSYmMed1IwWkzHy1zeXeAOymJWKphA6ons9qKw2BkaV9eiO9JpBA4T_ZU&usqp=CAU"
+                        class="aletrimage cardImage">
+                </ng-template>
             </ng-container>
             <ng-container *ngIf="0 != 0" >
                     <h5 class="NoDataMessage">YOU HAVE NOT ADDED ANY FAVOURITE PROFILE YET!</h5>
