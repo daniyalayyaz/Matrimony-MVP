@@ -18,7 +18,7 @@ export class ChatComponent extends UnsubscribeHandelr implements OnInit, AfterVi
   showDiv: boolean = true;
   base64 = "base64";
   viewToView = "";
-  url =https://mvp.herokuapp.com
+  url ="https://mvp.herokuapp.com"
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   @ViewChild('fileInput') private fileInput: ElementRef;
   senderUrl: string;
