@@ -22,7 +22,7 @@ export class EditprofileComponent extends UnsubscribeHandelr implements OnInit {
   updateitem: Object | undefined;
   userId: any | null;
   imageUrl: string;
-  url = https://mvp.herokuapp.com;
+  url = "https://mvp.herokuapp.com";
   constructor(private router: Router,
     private appService: AppService,
     private activateRoute: ActivatedRoute) {

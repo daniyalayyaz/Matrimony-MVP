@@ -36,7 +36,7 @@ export class DashboardComponent extends UnsubscribeHandelr implements OnInit {
   public userId: any;
   userProfile: any;
   imageUrl: string;
-  url = https://mvp.herokuapp.com;
+  url = "https://mvp.herokuapp.com";
   connect: any;
   content: any;
   closeResult = '';

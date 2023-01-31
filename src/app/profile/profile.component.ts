@@ -30,7 +30,7 @@ export class ProfileComponent extends UnsubscribeHandelr implements OnInit {
   profileDetails: User;
   imageUrl: any;
   reportMessage:'';
-  url = https://mvp.herokuapp.com;
+  url = "https://mvp.herokuapp.com";
 
   picture: SafeResourceUrl;
   gallary: any = [];
