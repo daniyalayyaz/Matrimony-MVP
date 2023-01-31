@@ -39,7 +39,7 @@ export class ChangephotosComponent implements OnInit {
     this.displaySingleImage = false;
     this.displaySingleImageArray = [];
   }
-  url = environment.url;
+  url = https://mvp.herokuapp.com;
 
   ngOnInit(): void {
     this.id = this.activateRoute.snapshot.params['id'];
